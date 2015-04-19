@@ -1,0 +1,17 @@
+<html>
+
+<head>
+	<title>Examples using cgi-bin</title>
+</head>
+
+<body>
+<h1>Examples using cgi-bin</h1>
+	<a href="cgi-bin/first.pl">First cgi-bin script using perl</a>
+	<br>
+	<a href="cgi-bin/second.py">First cgi-bin script using python</a>
+	<br>
+	<a href="cgi-bin/third.o">First cgi-bin script using C</a>
+	<br>
+	<a href="cgi-bin/fourth.bash">First cgi-bin script using bash</a>
+</body>
+</html>

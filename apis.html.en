@@ -1,0 +1,29 @@
+<html>
+<head>
+<title>Sample form0s</title>
+</head>
+<body>
+<h2>
+Some sample form0s
+<br>
+</h2>
+	<a href="geo-api.html">geo location api</a>
+		<br>
+	<a href="geo-api-map.html">geo location api</a>
+		<br>
+	<a href="drag-api.html">Drag and Drop api</a>
+		<br>
+	<a href="web-worker-api.html">Web wrorker</a>
+		<br>
+	<a href="sses.html">Server Sent Events</a>
+		<br>
+	<a href="local-storage.html">Local Storage</a>
+		<br>
+	<a href="permanent-storage.html">Permanent Local Storage</a>
+		<br>
+	<a href="session-storage.html">Local Session Storage</a>
+		<br>
+	<a href="offline-demo.html">Offline Web Application</a>
+		<br>
+</body>
+</html>
