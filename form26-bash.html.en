@@ -1,0 +1,18 @@
+<HTML>
+<HEAD>
+	<TITLE>Hello and Welcome!</TITLE>
+</HEAD>
+<BODY>
+	<H1 ALIGN=CENTER>Hello and Welcome</H1>
+	<hr>
+	<FORM action="cgi-bin/java2.cgi?sixth" method="post">
+		What is your name?
+		<INPUT TYPE="text" NAME="name" VALUE=""><p>
+	
+		What is your email address?
+		<INPUT SIZE=40 TYPE="text" NAME="email" VALUE="">
+		<INPUT TYPE="submit" VALUE="Submit">.   <P>
+   </FORM>
+   <hr>
+</BODY>
+</HTML>

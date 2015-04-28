@@ -1,0 +1,84 @@
+<html>
+
+<head>
+	<title>Examples using cgi-bin</title>
+	<style>
+	table, th, td {
+	    border: 1px solid black;
+		border-collapse: collapse;
+		}
+	</style>
+</head>
+
+<body>
+
+<h1>Examples using cgi-bin</h1>
+<table border=1 style="width:100%">
+	<tr>
+		<td valign="top"> <a href="bootstrap/boot1.html">First cgi-bin script using perl</a></td>
+		<td valign="top"> Calls cgi-bin/first.pl</td>
+	</tr>
+	<tr>
+		<td valign="top"> <a href="bootstrap/boot2.html">First cgi-bin script using perl</a></td>
+		<td valign="top"> Calls cgi-bin/first.pl</td>
+	</tr>
+	<tr>
+		<td valign="top"> <a href="bootstrap/boot3.html">First cgi-bin script using perl</a></td>
+		<td valign="top"> Calls cgi-bin/first.pl</td>
+	</tr>
+	<tr>
+		<td valign="top"> <a href="bootstrap/boot4.html">First cgi-bin script using perl</a></td>
+		<td valign="top"> Calls cgi-bin/first.pl</td>
+	</tr>
+	<tr>
+		<td valign="top"> <a href="bootstrap/boot5.html">First cgi-bin script using perl</a></td>
+		<td valign="top"> Calls cgi-bin/first.pl</td>
+	</tr>
+	<tr>
+		<td valign="top"> <a href="bootstrap/boot6.html">First cgi-bin script using perl</a></td>
+		<td valign="top"> Calls cgi-bin/first.pl</td>
+	</tr>
+	<tr>
+		<td valign="top"> <a href="bootstrap/boot7.html">First cgi-bin script using perl</a></td>
+		<td valign="top"> Calls cgi-bin/first.pl</td>
+	</tr>
+	<tr>
+		<td valign="top"> <a href="bootstrap/boot8.html">First cgi-bin script using perl</a></td>
+		<td valign="top"> Calls cgi-bin/first.pl</td>
+	</tr>
+	<tr>
+		<td valign="top"> <a href="bootstrap/boot9.html">First cgi-bin script using perl</a></td>
+		<td valign="top"> Calls cgi-bin/first.pl</td>
+	</tr>
+	<tr>
+		<td valign="top"> <a href="bootstrap/boot10.html">First cgi-bin script using perl</a></td>
+		<td valign="top"> Calls cgi-bin/first.pl</td>
+	</tr>
+	<tr>
+		<td valign="top"> <a href="bootstrap/boot11.html">First cgi-bin script using perl</a></td>
+		<td valign="top"> Calls cgi-bin/first.pl</td>
+	</tr>
+	<tr>
+		<td valign="top"> <a href="bootstrap/boot12.html">First cgi-bin script using perl</a></td>
+		<td valign="top"> Calls cgi-bin/first.pl</td>
+	</tr>
+	<tr>
+		<td valign="top"> <a href="bootstrap/boot13.html">First cgi-bin script using perl</a></td>
+		<td valign="top"> Calls cgi-bin/first.pl</td>
+	</tr>
+	<tr>
+		<td valign="top"> <a href="bootstrap/boot14.html">First cgi-bin script using perl</a></td>
+		<td valign="top"> Calls cgi-bin/first.pl</td>
+	</tr>
+	<tr>
+		<td valign="top"> <a href="bootstrap/boot15.html">First cgi-bin script using perl</a></td>
+		<td valign="top"> Calls cgi-bin/first.pl</td>
+	</tr>
+	<tr>
+		<td valign="top"> <a href="bootstrap/boot16.html">First cgi-bin script using perl</a></td>
+		<td valign="top"> Calls cgi-bin/first.pl</td>
+	</tr>
+</table>
+
+</body>
+</html>

@@ -2,16 +2,48 @@
 
 <head>
 	<title>Examples using cgi-bin</title>
+	<style>
+	table, th, td {
+	    border: 1px solid black;
+		border-collapse: collapse;
+		}
+	</style>
 </head>
 
 <body>
+
 <h1>Examples using cgi-bin</h1>
-	<a href="cgi-bin/first.pl">First cgi-bin script using perl</a>
-	<br>
-	<a href="cgi-bin/second.py">First cgi-bin script using python</a>
-	<br>
-	<a href="cgi-bin/third.o">First cgi-bin script using C</a>
-	<br>
-	<a href="cgi-bin/fourth.bash">First cgi-bin script using bash</a>
+<table border=1 style="width:100%">
+	<tr>
+		<td valign="top"> <a href="cgi-bin/first.pl">First cgi-bin script using perl</a></td>
+		<td valign="top"> Calls cgi-bin/first.pl</td>
+	</tr>
+	<tr>
+		<td valign="top"> <a href="cgi-bin/second.py">First cgi-bin script using python</a></td>
+		<td valign="top"> Calls cgi-bin/second.py</td>
+	</tr>
+	<tr>
+		<td valign="top"> <a href="cgi-bin/third.o">First cgi-bin script using C</a></td>
+		<td valign="top"> Calls third.o, which was compiled from third.c</td>
+	</tr>
+	<tr>
+		<td valign="top"> <a href="cgi-bin/fourth.bash">First cgi-bin script using bash</a></td>
+		<td valign="top"> Calls fourth.bash which echoes out simple HTML code</td>
+	</tr>
+	<tr>
+		<td valign="top"> <a href="form25-java.html">First cgi-bin script using java</a></td>
+		<td valign="top"> Loads form25-java.html which contains a form with an action and <br>
+		method. The action is java.cgi (a bash sctips) which in turn calls <br>
+		java -classpath . fifth</td>
+	</tr>
+	<tr>
+		<td valign="top"> <a href="form26-bash.html">Second cgi-bin script using bash</a></td>
+		<td valign="top"> Loads form26-java.html which contains a form with an action and <br>
+		a method.  The action is java2.cgi sixth which takes sixth as a <br>
+		parameter, passed as $QUERYSTRING to the bash script java2.cgi <br>
+		which uses that to decide what java class to run</td>
+	</tr>
+</table>
+
 </body>
 </html>
