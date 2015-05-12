@@ -1,0 +1,19 @@
+<html>
+<head>
+<title>R samples</title>
+</head>
+<body>
+<h2>
+Some R samples
+<br>
+</h2>
+	<a href="R/n1.html.en">n1 rCharts</a>
+		<br>
+	<a href="R/r1.html.en">r1 Faceted Scatter Plot</a>
+		<br>
+	<a href="R/myplot.html.en">myplot</a>
+		<br>
+	<a href="R/myplot2.html.en">myplot 2</a>
+		<br>
+</body>
+</html>

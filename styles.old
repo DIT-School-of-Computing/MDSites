@@ -1,0 +1,7 @@
+<style>
+body {background-color:lightgrey;}
+h1   {color:red; font-family:verdana; font-size:300%;}
+h2   {color:green; font-family:courier; font-size:200%;}
+h3   {color:blue; font-family:times; font-size:100%;}
+p    {color:green;}
+</style>
