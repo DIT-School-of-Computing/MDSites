@@ -1,0 +1,25 @@
+<html>
+<head>
+<title>JavaScript samples</title>
+</head>
+<body>
+<h2>
+Some JavaScript samples
+<br>
+</h2>
+	<a href="js/json1.html.en">(json1.html) - JSON loading details from text file</a>
+		<br>
+	<a href="js/json2.html.en">(json2.html) - JSON with function in script file</a>
+		<br>
+	<a href="js/json3.html.en">(json3.html) - JSON with data from web service</a>
+		<br>
+	<a href="js/json4.html.en">(json4.html) - JSON with data from web service only pretty!</a>
+		<br>
+	<a href="js/json5.html.en">(json5.html) - JSON with data from web service only pretty and from a css file!</a>
+		<br>
+	<a href="js/ng1.html.en">(ng1.html) - Angular JS</a>
+		<br>
+	<a href="js/ng2.html.en">(ng2.html) - Angular JS - 2</a>
+		<br>
+</body>
+</html>
