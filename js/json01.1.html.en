@@ -21,11 +21,13 @@ xmlhttp.send();
 
 function myFunction(arr) {
     var out = "";
-    var i;
-    for(i = 0; i < arr.length; i++) {
-        out += '<a href="' + arr[i].url + '">' + 
-        arr[i].display + '</a><br>';
-    }
+    out += arr.responseHeader.status;
+    	out += "<br>";
+    out += arr.responseHeader.QTime;
+    	out += "<br>";
+    out += arr.responseHeader.params.wt		;
+    	out += "<br>";
+    	
     document.getElementById("id02").innerHTML = out;
 }
 </script>
