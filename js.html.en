@@ -7,19 +7,92 @@
 Some JavaScript samples
 <br>
 </h2>
-	<a href="js/json1.html.en">(json1.html) - JSON loading details from text file</a>
-		<br>
-	<a href="js/json2.html.en">(json2.html) - JSON with function in script file</a>
-		<br>
+<table>
+	<tr><td>
+		<a href="js/json1.html.en">(json1.html) - JSON loading details from text file</a>
+			</td><td>
+		<a href="js/json2.html.en">(json2.html) - JSON with function in script file</a>
+	</td></tr>
+	<tr><td>	
 	<a href="js/json3.html.en">(json3.html) - JSON with data from web service</a>
-		<br>
+		</td><td>
 	<a href="js/json4.html.en">(json4.html) - JSON with data from web service only pretty!</a>
-		<br>
+	</td></tr>
+	<tr><td>	
 	<a href="js/json5.html.en">(json5.html) - JSON with data from web service only pretty and from a css file!</a>
-		<br>
-	<a href="js/ng1.html.en">(ng1.html) - Angular JS</a>
-		<br>
-	<a href="js/ng2.html.en">(ng2.html) - Angular JS - 2</a>
-		<br>
+		</td><td>
+	<a href="js/ng01.html.en">(ng01.html) - Angular JS</a>
+	</td></tr>
+	<tr><td>	
+	<a href="js/ng01.1.html.en">(ng01.1.html) - Angular JS</a>
+		</td><td>
+	<a href="js/ng02.html.en">(ng02.html) - Angular JS - 02</a>
+	</td></tr>
+	<tr><td>	
+	<a href="js/ng03.html.en">(ng03.html) - Angular JS - 03</a>
+		</td><td>
+	<a href="js/ng04.html.en">(ng04.html) - Angular JS - 04</a>
+	</td></tr>
+	<tr><td>	
+	<a href="js/ng05.html.en">(ng05.html) - Angular JS - 05</a>
+		</td><td>
+	<a href="js/ng06.html.en">(ng06.html) - Angular JS - 06</a>
+	</td></tr>
+	<tr><td>	
+	<a href="js/ng07.html.en">(ng07.html) - Angular JS - 07</a>
+		</td><td>
+	<a href="js/ng08.html.en">(ng08.html) - Angular JS - 08</a>
+	</td></tr>
+	<tr><td>	
+	<a href="js/ng09.html.en">(ng09.html) - Angular JS - 09</a>
+		</td><td>
+	<a href="js/ng10.html.en">(ng10.html) - Angular JS - 10</a>
+	</td></tr>
+	<tr><td>	
+	<a href="js/ng11.html.en">(ng11.html) - Angular JS - 11</a>
+		</td><td>
+	<a href="js/ng12.html.en">(ng12.html) - Angular JS - 12</a>
+	</td></tr>
+	<tr><td>	
+	<a href="js/ng13.html.en">(ng13.html) - Angular JS - 13</a>
+		</td><td>
+	<a href="js/ng14.html.en">(ng14.html) - Angular JS - 14</a>
+	</td></tr>
+	<tr><td>	
+	<a href="js/ng15.html.en">(ng15.html) - Angular JS - 15</a>
+		</td><td>
+	<a href="js/ng16.html.en">(ng16.html) - Angular JS - 16</a>
+	</td></tr>
+	<tr><td>	
+	<a href="js/ng17.html.en">(ng17.html) - Angular JS - 17</a>
+		</td><td>
+	<a href="js/ng18.html.en">(ng18.html) - Angular JS - 18</a>
+	</td></tr>
+	<tr><td>	
+	<a href="js/ng19.html.en">(ng19.html) - Angular JS - 19</a>
+		</td><td>
+	<a href="js/ng20.html.en">(ng20.html) - Angular JS - 20</a>
+	</td></tr>
+	<tr><td>	
+	<a href="js/ng21.html.en">(ng21.html) - Angular JS - 21</a>
+		</td><td>
+	<a href="js/ng22.html.en">(ng22.html) - Angular JS - 22</a>
+	</td></tr>
+	<tr><td>	
+	<a href="js/ng23.html.en">(ng23.html) - Angular JS - 23</a>
+		</td><td>
+	<a href="js/ng24.html.en">(ng24.html) - Angular JS - 24</a>
+	</td></tr>
+	<tr><td>	
+	<a href="js/ng25.html.en">(ng25.html) - Angular JS - 25</a>
+		</td><td>
+	<a href="js/ng26.html.en">(ng25.html) - Angular JS - 26</a>
+	</td></tr>
+	<tr><td>	
+	<a href="js/json01.1.html.en">(json01.1.html) - Reading JSON from SOLR - 01.1</a>
+		</td><td>
+	<a href="js/ng28.html.en">(ng28.html) - Angular JS - 28</a>
+	</td></tr>
+</table>
 </body>
 </html>

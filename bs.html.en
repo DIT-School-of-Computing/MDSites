@@ -1,0 +1,66 @@
+<html>
+<head>
+<title>Bootstrap samples</title>
+</head>
+<body>
+<h2>
+Bootstrap samples
+<br>
+</h2>
+<table>
+	<tr><td>
+		<a href="bs/boot01.html.en">(boot01.html) - Bootstrap</a>
+			</td><td>
+		<a href="bs/boot02.html.en">(boot02.html) - Bootstrap</a>
+	<tr><td>
+		<a href="bs/boot03.html.en">(boot03.html) - Bootstrap</a>
+			</td><td>
+		<a href="bs/boot04.html.en">(boot04.html) - Bootstrap</a>
+	<tr><td>
+		<a href="bs/boot05.html.en">(boot05.html) - Bootstrap</a>
+			</td><td>
+		<a href="bs/boot06.html.en">(boot06.html) - Bootstrap</a>
+	<tr><td>
+		<a href="bs/boot07.html.en">(boot07.html) - Bootstrap</a>
+			</td><td>
+		<a href="bs/boot08.html.en">(boot08.html) - Bootstrap</a>
+	<tr><td>
+		<a href="bs/boot09.html.en">(boot09.html) - Bootstrap</a>
+			</td><td>
+		<a href="bs/boot10.html.en">(boot10.html) - Bootstrap</a>
+	<tr><td>
+		<a href="bs/boot11.html.en">(boot11.html) - Bootstrap</a>
+			</td><td>
+		<a href="bs/boot12.html.en">(boot12.html) - Bootstrap</a>
+	<tr><td>
+		<a href="bs/boot13.html.en">(boot13.html) - Bootstrap</a>
+			</td><td>
+		<a href="bs/boot14.html.en">(boot14.html) - Bootstrap</a>
+	<tr><td>
+		<a href="bs/boot15.html.en">(boot15.html) - Bootstrap</a>
+			</td><td>
+		<a href="bs/boot16.html.en">(boot16.html) - Bootstrap</a>
+	<tr><td>
+		<a href="bs/boot17.html.en">(boot17.html) - Bootstrap</a>
+			</td><td>
+		<a href="bs/boot18.html.en">(boot18.html) - Bootstrap</a>
+	<tr><td>
+		<a href="bs/boot19.html.en">(boot19.html) - Bootstrap</a>
+			</td><td>
+		<a href="bs/boot20.html.en">(boot20.html) - Bootstrap</a>
+	<tr><td>
+		<a href="bs/boot21.html.en">(boot21.html) - Bootstrap</a>
+			</td><td>
+		<a href="bs/boot22.html.en">(boot22.html) - Bootstrap</a>
+	<tr><td>
+		<a href="bs/boot23.html.en">(boot23.html) - Bootstrap</a>
+			</td><td>
+		<a href="bs/boot24.html.en">(boot24.html) - Bootstrap</a>
+	<tr><td>
+		<a href="bs/boot25.html.en">(boot25.html) - Bootstrap</a>
+			</td><td>
+		<a href="bs/boot26.html.en">(boot26.html) - Bootstrap</a>
+	</td></tr>
+</table>
+</body>
+</html>
