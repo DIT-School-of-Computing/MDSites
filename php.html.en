@@ -24,6 +24,10 @@ PHP samples
 		<a href="php/demo_sse2.php">(demo_sse2.php) - php</a>
 			</td><td>
 		<a href="php/phpinfo.php">(phpinfo.php) - php</a>
+	<tr><td>
+		<a href="php/php05.php">(php05.php) - php</a>
+			</td><td>
+		<a href="php/php06.php">(php06.php) - php</a>
 	</td></tr>
 </table>
 </body>
