@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<form action="action_page.php">
+<textarea name="message" rows="10" cols="30">
+The cat was playing in the garden.
+</textarea>
+<br><br>
+<input type="submit">
+</form>
+
+</body>
+</html>

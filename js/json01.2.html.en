@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<div id="id01"></div>
+<div id="id02"></div>
+
+<script>
+var xmlhttp = new XMLHttpRequest();
+var url = "http://localhost:8983/solr/gettingstarted_shard1_replica2/select?q=*%3A*&wt=json";
+
+xmlhttp.onreadystatechange = function() {
+    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+        var myResponse = JSON.parse(xmlhttp.responseText);
+        var myBooks = myResponse.response.docs;
+        myFunction(myResponse);
+
+    }
+    document.getElementById("id01").innerHTML = "This script reads JSON data from the solr server<hr><br>";
+}
+xmlhttp.open("GET", url, true);
+xmlhttp.send();
+
+function myFunction(arr) {
+    var out = "<table border=1>";
+	    out += "<tr><td>responseHeader.status:</td><td>"     + arr.responseHeader.status+"</td></tr>";
+    	out += "<tr><td>responseHeader.QTime:</td><td>"      + arr.responseHeader.QTime+"</td></tr>";
+    	out += "<tr><td>responseHeader.paramam.q:</td><td>" +arr.responseHeader.params.q+"</td></tr>";
+    	out += "<tr><td>responseHeader.paramam.wt:</td><td>" +arr.responseHeader.params.wt+"</td></tr>";
+	out += "</table>";    	
+out+= "<br>"
+	out += "<table border=1>";
+	    out += "<tr><td>response.numFound:</td><td>"     + arr.response.numFound+"</td></tr>";
+	    out += "<tr><td>response.start:</td><td>"        + arr.response.start+"</td></tr>";
+	    out += "<tr><td>response.maxScore:</td><td>"     + arr.response.maxScore+"</td></tr>";
+	out += "</table>";
+out+= "<br>"
+		
+	var i = 0;
+	out += "<table border=1>";
+	out += "<tr><td>id</td><td>cat</td><td>name</td><td>author</td><td>series_t</td><td>sequence_i</td><td>inStock</td><td>genre_s</td></tr>";
+	while (i < arr.response.numFound) {
+		out += "<tr><td>";
+			out += arr.response.docs[i].id;
+				out += "</td><td>";
+			out += arr.response.docs[i].cat;
+				out += "</td><td>";
+			out += arr.response.docs[i].name;
+				out += "</td><td>";
+			out += arr.response.docs[i].author;
+				out += "</td><td>";
+			out += arr.response.docs[i].series_t;
+				out += "</td><td>";
+			out += arr.response.docs[i].sequence_i;
+				out += "</td><td>";
+			out += arr.response.docs[i].inStock;
+				out += "</td><td>";
+			out += arr.response.docs[i].genre_s;
+		out += "</td></tr>";
+		i +=1;		
+	}
+	out += "</table>";
+	
+    document.getElementById("id02").innerHTML = out;
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<html>
+<head>
+<title>PHP samples</title>
+</head>
+<body>
+<h2>
+PHP samples
+<br>
+</h2>
+<table>
+	<tr><td>
+		<a href="php/php01.php">(php01.php) - php</a>
+			</td><td>
+		<a href="php/php02.php">(php02.php) - php</a>
+	<tr><td>
+		<a href="php/php03.php">(php03.php) - php</a>
+			</td><td>
+		<a href="php/php04.php">(php04.php) - php</a>
+	<tr><td>
+		<a href="php/action_page.php">(action_page.php) - php</a>
+			</td><td>
+		<a href="php/demo_sse.php">(demo_sse.php) - php</a>
+	<tr><td>
+		<a href="php/demo_sse2.php">(demo_sse2.php) - php</a>
+			</td><td>
+		<a href="php/phpinfo.php">(phpinfo.php) - php</a>
+	</td></tr>
+</table>
+</body>
+</html>
