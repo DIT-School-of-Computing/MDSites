@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<!DOCTYPE html>
-<html>
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta property="og:description" content="Information about courses, work-based learning and qualifications" />
 <meta property="og:site_name" content="Learning Opportunities and Qualifications in Europe" />
 <meta property="fb:admins" content="USER_ID" />
@@ -87,7 +85,7 @@ jQuery.extend(Drupal.settings, {"basePath":"\/ploteus\/","pathPrefix":"en\/","aj
 				<div class="panel-body content">
 					<div class="item-list">
 						<ul class="facetapi-facetapi-links facetapi-facet-im-field-education-level" id="facetapi-facet-apachesolrsolr-block-im-field-education-level">						
-		<?php include '../php/generateItems.php';?>
+							<?php include 'http://localhost/~mark/php/generateItems.php?arg1=~mark&arg2=10';?>
 						</ul>
 					</div>
 				</div>
@@ -98,36 +96,9 @@ jQuery.extend(Drupal.settings, {"basePath":"\/ploteus\/","pathPrefix":"en\/","aj
       				Filter by Subject:  
       			</div>
       			<div class="panel-body content">
-					<div class="item-list"><ul class="facetapi-facetapi-links facetapi-facet-im-field-thematic-area" id="facetapi-facet-apachesolrsolr-block-im-field-thematic-area">
-						<li class="collapsed first"><a href="/ploteus/en/search/site/?f[0]=im_field_entity_type%3A96&amp;f[1]=im_field_thematic_area%3A560" rel="nofollow" class="facetapi-inactive" id="facetapi-link">Agriculture (827)<span class="element-invisible"> Apply Agriculture filter </span></a></li>
-						<li class="collapsed"><a href="/ploteus/en/search/site/?f[0]=im_field_entity_type%3A96&amp;f[1]=im_field_thematic_area%3A557" rel="nofollow" class="facetapi-inactive" id="facetapi-link--2">Architecture and construction (1387)<span class="element-invisible"> Apply Architecture and construction filter </span></a></li>
-						<li class="collapsed"><a href="/ploteus/en/search/site/?f[0]=im_field_entity_type%3A96&amp;f[1]=im_field_thematic_area%3A497" rel="nofollow" class="facetapi-inactive" id="facetapi-link--3">Arts (4550)<span class="element-invisible"> Apply Arts filter </span></a></li>
-						<li class="collapsed"><a href="/ploteus/en/search/site/?f[0]=im_field_entity_type%3A96&amp;f[1]=im_field_thematic_area%3A486" rel="nofollow" class="facetapi-inactive" id="facetapi-link--4">Basic programmes and qualifications (2336)<span class="element-invisible"> Apply Basic programmes and qualifications filter </span></a></li>
-						<li class="collapsed"><a href="/ploteus/en/search/site/?f[0]=im_field_entity_type%3A96&amp;f[1]=im_field_thematic_area%3A528" rel="nofollow" class="facetapi-inactive" id="facetapi-link--5">Biological and Biochemistry (1791)<span class="element-invisible"> Apply Biological and Biochemistry filter </span></a></li>
-						<li class="collapsed"><a href="/ploteus/en/search/site/?f[0]=im_field_entity_type%3A96&amp;f[1]=im_field_thematic_area%3A518" rel="nofollow" class="facetapi-inactive" id="facetapi-link--6">Business, administration and commerce (7512)<span class="element-invisible"> Apply Business, administration and commerce filter </span></a></li>
-						<li class="collapsed"><a href="/ploteus/en/search/site/?f[0]=im_field_entity_type%3A96&amp;f[1]=im_field_thematic_area%3A577" rel="nofollow" class="facetapi-inactive" id="facetapi-link--7">Care and social work (2012)<span class="element-invisible"> Apply Care and social work filter </span></a></li>
-						<li class="collapsed"><a href="/ploteus/en/search/site/?f[0]=im_field_entity_type%3A96&amp;f[1]=im_field_thematic_area%3A492" rel="nofollow" class="facetapi-inactive" id="facetapi-link--8">Education science and Teacher training (4164)<span class="element-invisible"> Apply Education science and Teacher training filter </span></a></li>
-						<li class="collapsed"><a href="/ploteus/en/search/site/?f[0]=im_field_entity_type%3A96&amp;f[1]=im_field_thematic_area%3A545" rel="nofollow" class="facetapi-inactive" id="facetapi-link--9">Engineering and related technologies (5436)<span class="element-invisible"> Apply Engineering and related technologies filter </span></a></li>
-						<li class="collapsed"><a href="/ploteus/en/search/site/?f[0]=im_field_entity_type%3A96&amp;f[1]=im_field_thematic_area%3A531" rel="nofollow" class="facetapi-inactive" id="facetapi-link--10">Environment and wildlife (901)<span class="element-invisible"> Apply Environment and wildlife filter </span></a></li>
-						<li class="collapsed"><a href="/ploteus/en/search/site/?f[0]=im_field_entity_type%3A96&amp;f[1]=im_field_thematic_area%3A565" rel="nofollow" class="facetapi-inactive" id="facetapi-link--11">Fisheries (28)<span class="element-invisible"> Apply Fisheries filter </span></a></li>
-						<li class="collapsed"><a href="/ploteus/en/search/site/?f[0]=im_field_entity_type%3A96&amp;f[1]=im_field_thematic_area%3A563" rel="nofollow" class="facetapi-inactive" id="facetapi-link--12">Forestry (366)<span class="element-invisible"> Apply Forestry filter </span></a></li>
-						<li class="collapsed"><a href="/ploteus/en/search/site/?f[0]=im_field_entity_type%3A96&amp;f[1]=im_field_thematic_area%3A569" rel="nofollow" class="facetapi-inactive" id="facetapi-link--13">Health (4197)<span class="element-invisible"> Apply Health filter </span></a></li>
-						<li class="collapsed"><a href="/ploteus/en/search/site/?f[0]=im_field_entity_type%3A96&amp;f[1]=im_field_thematic_area%3A587" rel="nofollow" class="facetapi-inactive" id="facetapi-link--14">Hygiene, occupational health and safety services (191)<span class="element-invisible"> Apply Hygiene, occupational health and safety services filter </span></a></li>
-						<li class="collapsed"><a href="/ploteus/en/search/site/?f[0]=im_field_entity_type%3A96&amp;f[1]=im_field_thematic_area%3A541" rel="nofollow" class="facetapi-inactive" id="facetapi-link--15">Information and Communication Technologies (ICTs) (9433)<span class="element-invisible"> Apply Information and Communication Technologies (ICTs) filter </span></a></li>
-						<li class="collapsed"><a href="/ploteus/en/search/site/?f[0]=im_field_entity_type%3A96&amp;f[1]=im_field_thematic_area%3A515" rel="nofollow" class="facetapi-inactive" id="facetapi-link--16">Journalism and library (805)<span class="element-invisible"> Apply Journalism and library filter </span></a></li>
-						<li class="collapsed"><a href="/ploteus/en/search/site/?f[0]=im_field_entity_type%3A96&amp;f[1]=im_field_thematic_area%3A507" rel="nofollow" class="facetapi-inactive" id="facetapi-link--17">Languages and literature (11294)<span class="element-invisible"> Apply Languages and literature filter </span></a></li>
-						<li class="collapsed"><a href="/ploteus/en/search/site/?f[0]=im_field_entity_type%3A96&amp;f[1]=im_field_thematic_area%3A526" rel="nofollow" class="facetapi-inactive" id="facetapi-link--18">Law (740)<span class="element-invisible"> Apply Law filter </span></a></li>
-						<li class="collapsed"><a href="/ploteus/en/search/site/?f[0]=im_field_entity_type%3A96&amp;f[1]=im_field_thematic_area%3A488" rel="nofollow" class="facetapi-inactive" id="facetapi-link--19">Literacy and numeracy (10)<span class="element-invisible"> Apply Literacy and numeracy filter </span></a></li>
-						<li class="collapsed"><a href="/ploteus/en/search/site/?f[0]=im_field_entity_type%3A96&amp;f[1]=im_field_thematic_area%3A538" rel="nofollow" class="facetapi-inactive" id="facetapi-link--20">Mathematics and statistics (1627)<span class="element-invisible"> Apply Mathematics and statistics filter </span></a></li>
-						<li class="collapsed"><a href="/ploteus/en/search/site/?f[0]=im_field_entity_type%3A96&amp;f[1]=im_field_thematic_area%3A552" rel="nofollow" class="facetapi-inactive" id="facetapi-link--21">Mining, Manufacturing and processing (357)<span class="element-invisible"> Apply Mining, Manufacturing and processing filter </span></a></li>
-						<li class="collapsed"><a href="/ploteus/en/search/site/?f[0]=im_field_entity_type%3A96&amp;f[1]=im_field_thematic_area%3A490" rel="nofollow" class="facetapi-inactive" id="facetapi-link--22">Personal skills and development (2312)<span class="element-invisible"> Apply Personal skills and development filter </span></a></li>
-						<li class="collapsed"><a href="/ploteus/en/search/site/?f[0]=im_field_entity_type%3A96&amp;f[1]=im_field_thematic_area%3A534" rel="nofollow" class="facetapi-inactive" id="facetapi-link--23">Physical sciences (3801)<span class="element-invisible"> Apply Physical sciences filter </span></a></li>
-						<li class="collapsed"><a href="/ploteus/en/search/site/?f[0]=im_field_entity_type%3A96&amp;f[1]=im_field_thematic_area%3A590" rel="nofollow" class="facetapi-inactive" id="facetapi-link--24">Public and private security services (215)<span class="element-invisible"> Apply Public and private security services filter </span></a></li>
-						<li class="collapsed"><a href="/ploteus/en/search/site/?f[0]=im_field_entity_type%3A96&amp;f[1]=im_field_thematic_area%3A503" rel="nofollow" class="facetapi-inactive" id="facetapi-link--25">Religion, History and Philosophy (3479)<span class="element-invisible"> Apply Religion, History and Philosophy filter </span></a></li>
-						<li class="collapsed"><a href="/ploteus/en/search/site/?f[0]=im_field_entity_type%3A96&amp;f[1]=im_field_thematic_area%3A510" rel="nofollow" class="facetapi-inactive" id="facetapi-link--26">Social and behavioural sciences (4948)<span class="element-invisible"> Apply Social and behavioural sciences filter </span></a></li>
-						<li class="collapsed"><a href="/ploteus/en/search/site/?f[0]=im_field_entity_type%3A96&amp;f[1]=im_field_thematic_area%3A593" rel="nofollow" class="facetapi-inactive" id="facetapi-link--27">Transport services (159)<span class="element-invisible"> Apply Transport services filter </span></a></li>
-						<li class="collapsed"><a href="/ploteus/en/search/site/?f[0]=im_field_entity_type%3A96&amp;f[1]=im_field_thematic_area%3A581" rel="nofollow" class="facetapi-inactive" id="facetapi-link--28">Travel. Tourism, sports, beauty and other personal services (2749)<span class="element-invisible"> Apply Travel. Tourism, sports, beauty and other personal services filter </span></a></li>
-						<li class="collapsed last"><a href="/ploteus/en/search/site/?f[0]=im_field_entity_type%3A96&amp;f[1]=im_field_thematic_area%3A567" rel="nofollow" class="facetapi-inactive" id="facetapi-link--29">Veterinary (233)<span class="element-invisible"> Apply Veterinary filter </span></a></li>
+					<div class="item-list">
+						<ul class="facetapi-facetapi-links facetapi-facet-im-field-thematic-area" id="facetapi-facet-apachesolrsolr-block-im-field-thematic-area">
+							<?php include 'http://localhost/~mark/php/generateItems.php?arg1=~mark&arg2=6';?>
 						</ul>
 					</div>
 				</div>

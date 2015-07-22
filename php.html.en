@@ -9,25 +9,25 @@ PHP samples
 </h2>
 <table>
 	<tr><td>
-		<a href="php/php01.php">(php01.php) - php</a>
+		<a href="php/php01.html.en">(php01.html.en) - php</a>
 			</td><td>
-		<a href="php/php02.php">(php02.php) - php</a>
+		<a href="php/php02.html.en">(php02.html.en) - php</a>
 	<tr><td>
-		<a href="php/php03.php">(php03.php) - php</a>
+		<a href="php/php03.html.en">(php03.html.en) - php</a>
 			</td><td>
-		<a href="php/php04.php">(php04.php) - php</a>
+		<a href="php/php04.html.en">(php04.html.en) - php</a>
 	<tr><td>
-		<a href="php/action_page.php">(action_page.php) - php</a>
+		<a href="php/action_page.html.en">(action_page.html.en) - php</a>
 			</td><td>
-		<a href="php/demo_sse.php">(demo_sse.php) - php</a>
+		<a href="php/demo_sse.html.en">(demo_sse.html.en) - php</a>
 	<tr><td>
-		<a href="php/demo_sse2.php">(demo_sse2.php) - php</a>
+		<a href="php/demo_sse2.html.en">(demo_sse2.html.en) - php</a>
 			</td><td>
-		<a href="php/phpinfo.php">(phpinfo.php) - php</a>
+		<a href="php/phpinfo.html.en">(phpinfo.html.en) - php</a>
 	<tr><td>
-		<a href="php/php05.php">(php05.php) - php</a>
+		<a href="php/php05.html.en">(php05.html.en) - php</a>
 			</td><td>
-		<a href="php/php06.php">(php06.php) - php</a>
+		<a href="php/php06.html.en">(php06.html.en) - php</a>
 	</td></tr>
 </table>
 </body>
