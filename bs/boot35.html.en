@@ -85,7 +85,7 @@ jQuery.extend(Drupal.settings, {"basePath":"\/ploteus\/","pathPrefix":"en\/","aj
 				<div class="panel-body content">
 					<div class="item-list">
 						<ul class="facetapi-facetapi-links facetapi-facet-im-field-education-level" id="facetapi-facet-apachesolrsolr-block-im-field-education-level">						
-							<?php include 'http://localhost/~mark/php/generateItems.php?arg1=~mark&arg2=10';?>
+							<?php include 'http://localhost/~mark/php/generateItems.php?arg1=~mark&arg2=4';?>
 						</ul>
 					</div>
 				</div>
