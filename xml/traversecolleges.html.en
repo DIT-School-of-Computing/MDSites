@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="loadxmlstring.js"></script>
+<script src="loadXMLDocs.js"></script>
+</head>
+<body>
+<script>
+
+xmlDoc=loadXMLDoc("DIT.xml");
+
+// documentElement always represents the root node
+x=xmlDoc.documentElement.childNodes;
+for (i=0;i<x.length;i++)
+  {
+  var nn = (x[i].nodeName);
+  if(nn == "College")
+  	{
+  		document.write(i);document.write((x[i].childNodes[1]).childNodes[0].nodeValue);
+  		document.write("<br>");
+  	}
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="loadxmldoc.js"></script>
+</head>
+<body>
+
+<script>
+xmlDoc=loadXMLDoc("books.xml");
+
+x=xmlDoc.getElementsByTagName("book")[0].childNodes;
+y=xmlDoc.getElementsByTagName("book")[0].firstChild;
+for (i=0;i<x.length;i++)
+{
+if (y.nodeType==1)
+  {//Process only element nodes (type 1)
+  document.write(y.nodeName + "<br>");
+  }
+y=y.nextSibling;
+}
+</script>
+</body>
+</html>

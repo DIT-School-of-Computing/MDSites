@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="loadxmlstring.js"></script>
+</head>
+<body>
+<script>
+text="<bookstore><book>";
+text=text+"<title>Everyday Italian</title>";
+text=text+"<author>Giada De Laurentiis</author>";
+text=text+"<year>2005</year>";
+text=text+"</book></bookstore>";
+
+xmlDoc=loadXMLString(text);
+
+document.write(xmlDoc.getElementsByTagName("title")[0].childNodes[0].nodeValue);
+document.write("<br>");
+document.write(xmlDoc.getElementsByTagName("author")[0].childNodes[0].nodeValue);
+document.write("<br>");
+document.write(xmlDoc.getElementsByTagName("year")[0].childNodes[0].nodeValue);
+</script>
+</body>
+</html>

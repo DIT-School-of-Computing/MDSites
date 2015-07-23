@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="loadXMLDocs.js"></script>
+<script src="loadXMLString.js"></script>
+</head>
+<body>
+<script>
+xmlDoc=loadXMLDoc("DIT.xml");
+
+document.write(xmlDoc.getElementsByTagName("Name")[0].childNodes[0].nodeValue + "<br>");
+document.write(xmlDoc.getElementsByTagName("Code")[0].childNodes[0].nodeValue + "<br>");
+document.write(xmlDoc.getElementsByTagName("Title")[0].childNodes[0].nodeValue);
+
+</script>
+</body>
+</html>

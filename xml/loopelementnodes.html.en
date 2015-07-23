@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="loadxmldoc.js"></script>
+</head>
+<body>
+
+<script>
+xmlDoc=loadXMLDoc("books.xml");
+
+x=xmlDoc.documentElement.childNodes;
+for (i=0;i<x.length;i++)
+{ 
+if (x[i].nodeType==1)
+  {//Process only element nodes (type 1) 
+  document.write(x[i].nodeName);
+  document.write("<br>");
+  } 
+}
+</script>
+</body>
+</html>

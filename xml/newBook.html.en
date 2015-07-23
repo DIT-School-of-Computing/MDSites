@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script>
+text="<bookstore><book>";
+text=text+"<title>Everyday Italian</title>";
+text=text+"<author>Giada De Laurentiis</author>";
+text=text+"<year>2005</year>";
+text=text+"</book></bookstore>";
+if (window.DOMParser)
+  {
+  parser=new DOMParser();
+  xmlDoc=parser.parseFromString(text,"text/xml");
+  }
+else // Internet Explorer
+  {
+  xmlDoc=new ActiveXObject("Microsoft.XMLDOM");
+  xmlDoc.async=false;
+  xmlDoc.loadXML(text); 
+  } 
+document.write("XML string is loaded into an XML DOM Object");
+</script>
+</body>
+</html>

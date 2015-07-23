@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="loadxmlstring.js"></script>
+</head>
+<body>
+<script>
+text="<book>";
+text=text+"<title>Everyday Italian</title>";
+text=text+"<author>Giada De Laurentiis</author>";
+text=text+"<year>2005</year>";
+text=text+"</book>";
+
+xmlDoc=loadXMLString(text);
+
+// documentElement always represents the root node
+x=xmlDoc.documentElement.childNodes;
+for (i=0;i<x.length;i++)
+  {
+  document.write(x[i].nodeName);
+  document.write(": ");
+  document.write(x[i].childNodes[0].nodeValue);
+  document.write("<br>");
+  }
+</script>
+</body>
+</html>

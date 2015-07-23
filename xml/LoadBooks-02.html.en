@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="loadXMLDocs.js"></script>
+</head>
+<body>
+<script>
+xmlDoc=loadXMLDoc("books.xml");
+
+document.write(xmlDoc.getElementsByTagName("title")[0].childNodes[0].nodeValue + "<br>");
+document.write(xmlDoc.getElementsByTagName("author")[0].childNodes[0].nodeValue + "<br>");
+document.write(xmlDoc.getElementsByTagName("year")[0].childNodes[0].nodeValue);
+</script>
+</body>
+</html>

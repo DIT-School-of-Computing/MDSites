@@ -45,6 +45,15 @@
 		<School>
 			<Name>School of Civil Engineering</Name>
 			<URL>http://www.dit.ie/civilengineering/</URL>
+			<HeadOfSchool>John Turner</HeadOfSchool>
+			<HeadOfSchoolEMail>john.turner@dit.ie</HeadOfSchoolEMail>
+			<HeadOfSchoolPhone>+353-1-4023654</HeadOfSchoolPhone>
+			<AssistantHeadOfSchool>Una Beagon</AssistantHeadOfSchool>
+			<AssistantHeadOfSchoolEMail>una.beagon@dit.ie</AssistantHeadOfSchoolEMail>
+			<HeadOfSchoolPhone>+353-1-4023638</HeadOfSchoolPhone>
+			<SchoolAdmin>Caroline O'Dowd</SchoolAdmin>
+			<SchoolAdminEMail>caroline.odowd@dit.ie</SchoolAdminEMail>
+			<SchoolAdminPhone>+353-1-4023711</SchoolAdminPhone>
 			<Programme>
 				<Code>DT027</Code>
 				<Title>B.E. (Honours) Civil Engineering</Title>
