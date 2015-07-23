@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="http://localhost/~mark/xml/LO.xsl" ?>
+
+<LOs>
+	<LO>
+		<Title>BSc in Computer Science</Title>
+		<CC>IE</CC>
+	</LO>
+	<LO>
+		<Title>BSc in Computing</Title>
+		<CC>IE</CC>
+	</LO>
+	<LO>
+		<Title>BSc in Information Systems</Title>
+		<CC>IE</CC>
+	</LO>
+</LOs>		

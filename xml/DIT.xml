@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="http://localhost/~mark/xml/DIT.xsl" ?>
+
+<DIT>
+	<URL>http://www.dit.ie</URL>
+	<College>
+		<Name>College of Engineering &amp; Built Environment</Name>
+		<URL>http://www.dit.ie/colleges/collegeofengineeringbuiltenvironment/</URL>
+		<School>
+			<Name>Dublin School of Architecture</Name>
+			<URL>http://www.dit.ie/architecture/</URL>
+			<Programme>
+				<Code>DT101</Code>
+				<Title>B.Arch. (Honours) Architecture</Title>				
+			</Programme>
+			<Programme>
+				<Code>DT175</Code>
+				<Title>BSc. (Honours) Architectural Technology</Title>
+			</Programme>
+			<Programme>
+				<Code>DT774</Code>
+				<Title>Postgraduate Certifice Digital Analysis &amp; Energy Rerofit</Title>
+			</Programme>
+			<Programme>
+				<Code>DT775b</Code>
+				<Title>CPD Diploma Thermal Bridge Assessment</Title>
+			</Programme>
+			<Programme>
+				<Code>DT775c</Code>
+				<Title>CPD Diploma Hygrothermal Assessment</Title>
+			</Programme>
+			<Programme>
+				<Code></Code>
+				<Title>CPD Certificate External Wall Insulation</Title>
+			</Programme>
+			<Programme>
+				<Code></Code>
+				<Title>CPD Certificate Air Tightness Testing</Title>
+			</Programme>
+			<Programme>
+				<Code></Code>
+				<Title>CPD Certificate IT for Site Workers</Title>
+			</Programme>
+		</School>
+		<School>
+			<Name>School of Civil Engineering</Name>
+			<URL>http://www.dit.ie/civilengineering/</URL>
+			<Programme>
+				<Code>DT027</Code>
+				<Title>B.E. (Honours) Civil Engineering</Title>
+			</Programme>
+			<Programme>
+				<Code>DT024</Code>
+				<Title>B.E. (Honours) Structural Engineering</Title>
+			</Programme>
+		</School>
+		<School>
+			<Name>School of Electrical &amp; Electronic Engineering</Name>
+			<URL>http://www.dit.ie/electricalelectronicengineering/</URL>
+			<Programme>
+				<Code>DT021</Code>
+				<Title>B.E. (Honours) Electrical Electronic Engineering</Title>
+			</Programme>
+			<Programme>
+				<Code>DT081</Code>
+				<Title>B.E. (Honours) Computer &amp; Communications Engineering</Title>
+			</Programme>
+			<Programme>
+				<Code>DT712</Code>
+				<Title>B.Sc. (Honours) Electrical Services &amp; Energy Management - Advanced Entry</Title>
+			</Programme>
+			<Programme>
+				<Code>DT080B</Code>
+				<Title>B.Sc. (Honours) Networking Applications &amp; Services - Advanced Entry</Title>
+			</Programme>
+		</School>
+		<School>
+			<Name>School of Mechanical &amp; Design Engineering</Name>
+			<URL>http://www.dit.ie/mechanicalanddesignengineering/</URL>
+			<Programme>
+				<Code>DT001</Code>
+			</Programme>
+			<Programme>
+				<Code>DT002</Code>
+			</Programme>
+			<Programme>
+				<Code>DT003A</Code>
+			</Programme>
+			<Programme>
+				<Code>DT005</Code>
+			</Programme>
+			<Programme>
+				<Code>DT006</Code>
+			</Programme>
+			<Programme>
+				<Code>DT012</Code>
+			</Programme>
+			<Programme>
+				<Code>DT022</Code>
+				<Title>B.E. (Honours) Mechanical Engineering</Title>
+			</Programme>
+			<Programme>
+				<Code>DT023</Code>
+				<Title>B.E. (Honours) Manufacturing &amp; Design Engineering</Title>
+			</Programme>
+			<Programme>
+				<Code>DT026</Code>
+				<Title>B.E. (Honours) Building Services Engineering</Title>
+			</Programme>
+			<Programme>
+				<Code>DT030</Code>
+			</Programme>
+			<Programme>
+				<Code>DT031</Code>
+			</Programme>
+			<Programme>
+				<Code>DT033</Code>
+			</Programme>
+		</School>
+		<School>
+			<Name>School of Multidisciplinary Technologies</Name>
+		</School>
+		<School>
+			<Name>School of Surveying &amp; Construction Management</Name>
+		</School>
+		<School>
+			<Name>School of Spatial Planning &amp; Transport Engineering</Name>
+			<Programme>
+				<Code>DT106</Code>
+				<Title>B.Sc. (Honours) Spatial Planning</Title>
+			</Programme>
+			<Programme>
+				<Code>DT106</Code>
+				<Title>B.Sc. (Honours) Environmental Management</Title>
+			</Programme>			
+		</School>
+	</College>
+	<College>
+		<Name>College of Sciences &amp; Health</Name>
+		<URL>http://www.dit.ie/colleges/collegeofscienceshealth/</URL>
+		<School>
+			<Name>School of Biological Sciences</Name>
+		</School>
+		<School>
+			<Name>School of Chemical &amp; Pharmaceutical Sciences</Name>
+		</School>
+		<School>
+			<Name>School of Computing</Name>
+			<Programme>
+				<Code>DT228</Code>
+				<Title>BSc. (Honours) in Computer Science</Title>
+			</Programme>
+			<Programme>
+				<Code>DT211</Code>
+				<Title>BSc. (Honours) in Computing</Title>
+			</Programme>
+			<Programme>
+				<Code>DT265</Code>
+				<Title>HDip in Computing</Title>
+			</Programme>
+		</School>
+		<School>
+			<Name>School of Food Science &amp; Environmental Health</Name>
+		</School>
+		<School>
+			<Name>School of Mathematical Sciences</Name>
+		</School>
+		<School>
+			<Name>School of Physics</Name>
+		</School>
+	</College>
+	<College>
+		<Name>College of Arts &amp; Tourism</Name>
+		<URL>http://www.dit.ie/cat/</URL>
+		<School>
+			<Name>Dublin School of Creative Arts</Name>
+		</School>
+		<School>
+			<Name>School of Culinary Arts &amp; Food Technology</Name>
+		</School>
+		<School>
+			<Name>School of Hospitality Management &amp; Tourism</Name>
+		</School>
+		<School>
+			<Name>School of Languages, Law &amp; Social Sciences</Name>
+		</School>
+		<School>
+			<Name>School of Media</Name>
+		</School>
+		<School>
+			<Name>School of Music &amp; Drama</Name>
+		</School>
+	</College>
+	<College>
+		<Name>College of Business</Name>
+		<URL>http://www.dit.ie/colleges/collegeofbusiness/</URL>
+		<School>
+			<Name>School of Accounting &amp; Finance</Name>
+		</School>
+		<School>
+			<Name>Graduate Business School</Name>
+		</School>
+		<School>
+			<Name>School of Management</Name>
+		</School>
+		<School>
+			<Name>School of Marketing</Name>
+		</School>
+		<School>
+			<Name>School of Retail &amp; Services Management</Name>
+		</School>
+	</College>
+</DIT>

@@ -1,0 +1,34 @@
+<html>
+<head>
+<title>PHP samples</title>
+</head>
+<body>
+<h2>
+PHP samples
+<br>
+</h2>
+<table>
+	<tr><td>
+		<a href="xml/DIT.xml">(DIT.xml) - xml</a>
+			</td><td>
+		<a href="xml/MarkLOs.xml">(MarkLOs.xml) - xml</a>
+	<tr><td>
+		<a href="xml/cd_catalog-02.xml">(cd_catalog-02.xml) - xml</a>
+			</td><td>
+		<a href="xml/cd_catalog.xml">(cd_catalog.xml) - xml</a>
+	<tr><td>
+		<a href="xml/action_page.html.en">(action_page.html.en) - xml</a>
+			</td><td>
+		<a href="xml/note.xml">(note.xml) - xml</a>
+	<tr><td>
+		<a href="xml/note_error.xml">(note_error.xml) - xml</a>
+			</td><td>
+		<a href="xml/plant_catalog.xml">(plant_catalog.xml) - xml</a>
+	<tr><td>
+		<a href="xml/simple.xml">(simple.xml) - xml</a>
+			</td><td>
+		<a href="xml/simplexsl.xml">(simplexsl.xml) - xml</a>
+	</td></tr>
+</table>
+</body>
+</html>
