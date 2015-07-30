@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<title>Customers</title>
+<link rel="stylesheet" href="style.css">
+<script src="http://www.w3schools.com/appml/2.0.2/appml.js"></script>
+<body>
+
+<div appml-controller="myController" appml-data="customers.js">
+<h1>Customers</h1>
+<table>
+	<tr>
+		<th>Customer</th>
+		<th>City</th>
+		<th>Country</th>
+	</tr>
+	<tr appml-repeat="records">
+		<td>{{CustomerName}}</td>
+		<td>{{City}}</td>
+		<td>{{Country}}</td>
+	</tr>
+</table>
+</div>
+
+<script>
+function myController($appml) {
+	if ($appml.message == "display") {
+		if ($appml.display.name == "CustomerName") {
+			$appml.display.value = $appml.display.value.substr(0,15);
+		}
+		if ($appml.display.name == "Country") {
+			$appml.display.value = $appml.display.value.toUpperCase();
+		}
+	}
+}
+</script>
+
+</body>
+</html>

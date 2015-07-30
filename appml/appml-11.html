@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<title>Customers</title>
+<link rel="stylesheet" href="style.css">
+<script src="http://www.w3schools.com/appml/2.0.2/appml.js"></script>
+<body>
+
+<p id="demo"></p>
+
+<script>
+var myObj, myArr, len, i, txt = "";
+
+// Create an AppML object and fetch the data
+myObj = new AppML();
+myObj.dataSource = "http://www.w3schools.com/appml/customers.php";
+myObj.getData();
+
+// Locate the data records
+myArr = myObj.data.records;
+len = myArr.length;
+
+// Display the records
+for (i = 0; i < myArr.length; i++) {
+	txt += (	i+1) + ": "+ myArr[i].CustomerName + " - " + myArr[i].City + "<br>";
+}
+
+document.getElementById("demo").innerHTML = txt;
+</script>
+
+</body>
+</html>

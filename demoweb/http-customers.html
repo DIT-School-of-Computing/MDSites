@@ -7,21 +7,18 @@
 </head>
 
 <body>
+
 <nav id="nav01"></nav>
 
 <div id="main">
-  <h1>Customers</h1>
-  <div id="id01"></div>
-  <footer id="foot01"></footer>
-</div>
-
-<script src="script.js"></script>
+<h1>Customers</h1>
+<div id="id01"></div>
 
 <script>
 var xmlhttp = new XMLHttpRequest();
-var url = "http://www.w3schools.com/website/customers_db_sql.aspx";
+var url = "http://www.w3schools.com/website/customers.php";
 
-xmlhttp.onreadystatechange=function() {
+xmlhttp.onreadystatechange = function() {
     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
         myFunction(xmlhttp.responseText);
     }
@@ -44,10 +41,16 @@ function myFunction(response) {
         arr[i].Country +
         "</td></tr>";
     }
+
     out += "</table>"
     document.getElementById("id01").innerHTML = out;
 }
 </script>
 
+<footer id="foot01"></footer>
+</div>
+
+<script src="script.js"></script>
+
 </body>
-</html>
+</html> 
