@@ -1,0 +1,47 @@
+<div id="appml_filtercontainer" class="jumbotron" style="display:none;">
+  <button id="appmlbtn_queryClose" type="button" class="close"><span>&times;</span></button>
+  <h2>Filter</h2>
+  <div id="appml_filter">
+    <div appml-repeat="filteritems">
+      <div class="row">
+        <div class="col-sm-3">
+          <label>{{label||item}}:</label>
+        </div>
+        <div class="col-sm-2">
+          <input id="appml_datatype_{{item}}" type='hidden'>
+          <select id="appml_operator_{{item}}" class="form-control">
+            <option value="0">=</option>
+            <option value="1">&lt;&gt;</option>
+            <option value="2">&lt;</option>
+            <option value="3">&gt;</option>
+            <option value="4">&lt;=</option>
+            <option value="5">&gt;=</option>
+            <option value="6">%</option>
+          </select>
+        </div>
+        <div class="col-sm-7">
+          <input id="appml_query_{{item}}" class="form-control">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="appml_orderby">
+    <h2>Order By</h2>
+    <div class="row">
+      <div class="col-sm-5">
+        <select id='appml_orderselect' class="form-control">
+          <option value=''></option>
+          <option appml-repeat="sortitems" value="{{item}}">{{label || item}}</option>
+        </select>
+      </div>
+      <div class="col-sm-7">
+        ASC <input type='radio' id="appml_orderdirection_asc"
+        name='appml_orderdirection' value='asc'>
+        DESC <input type='radio' id="appml_orderdirection_desc"
+        name='appml_orderdirection' value='desc'>
+      </div>
+    </div>
+  </div>
+  <br>
+  <button id="appmlbtn_queryOK" type="button" class="btn btn-primary">OK</button>
+</div>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<title>Customers</title>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"> 
+<script src="http://www.w3schools.com/appml/2.0.2/appml.js"></script>
+<script src="http://www.w3schools.com/appml/2.0.2/appml_sql.js"></script>
+<body>
+
+<div class="container" appml-data="local?model=proto_customers_all">
+<h1>Customers</h1>
+<table class="table table-striped table-bordered">
+  <tr>
+    <th>Customer</th>
+    <th>City</th>
+    <th>Country</th>
+  </tr>
+  <tr appml-repeat="records">
+    <td>{{CustomerName}}</td>
+    <td>{{City}}</td>
+    <td>{{Country}}</td>
+  </tr>
+</table>
+</div>
+
+</body>
+</html>

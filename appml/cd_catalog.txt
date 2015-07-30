@@ -1,0 +1,32 @@
+Empire Burlesque,Bob Dylan,USA,Columbia,10.90,1985
+Hide your heart,Bonnie Tyler,UK,CBS Records,9.90,1988
+Greatest Hits,Dolly Parton,USA,RCA,9.90,1982
+Still got the blues,Gary Moore,UK,Virgin records,10.20,1990
+Eros,Eros Ramazzotti,EU,BMG,9.90,1997
+One night only,Bee Gees,UK,Polydor,10.90,1998
+Sylvias Mother,Dr.Hook,UK,CBS,8.10,1973
+Maggie May,Rod Stewart,UK,Pickwick,8.50,1990
+Empire Burlesque,Bob Dylan,USA,Columbia,10.90,1985
+Hide your heart,Bonnie Tyler,UK,CBS Records,9.90,1988
+Greatest Hits,Dolly Parton,USA,RCA,9.90,1982
+Still got the blues,Gary Moore,UK,Virgin records,10.20,1990
+Eros,Eros Ramazzotti,EU,BMG,9.90,1997
+One night only,Bee Gees,UK,Polydor,10.90,1998
+Sylvias Mother,Dr.Hook,UK,CBS,8.10,1973
+Maggie May,Rod Stewart,UK,Pickwick,8.50,1990
+Empire Burlesque,Bob Dylan,USA,Columbia,10.90,1985
+Hide your heart,Bonnie Tyler,UK,CBS Records,9.90,1988
+Greatest Hits,Dolly Parton,USA,RCA,9.90,1982
+Still got the blues,Gary Moore,UK,Virgin records,10.20,1990
+Eros,Eros Ramazzotti,EU,BMG,9.90,1997
+One night only,Bee Gees,UK,Polydor,10.90,1998
+Sylvias Mother,Dr.Hook,UK,CBS,8.10,1973
+Maggie May,Rod Stewart,UK,Pickwick,8.50,1990
+Empire Burlesque,Bob Dylan,USA,Columbia,10.90,1985
+Hide your heart,Bonnie Tyler,UK,CBS Records,9.90,1988
+Greatest Hits,Dolly Parton,USA,RCA,9.90,1982
+Still got the blues,Gary Moore,UK,Virgin records,10.20,1990
+Eros,Eros Ramazzotti,EU,BMG,9.90,1997
+One night only,Bee Gees,UK,Polydor,10.90,1998
+Sylvias Mother,Dr.Hook,UK,CBS,8.10,1973
+Maggie May,Rod Stewart,UK,Pickwick,8.50,1990
