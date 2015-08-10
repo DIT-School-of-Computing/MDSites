@@ -6,6 +6,7 @@
 	<College>
 		<Name>College of Engineering &amp; Built Environment</Name>
 		<URL>http://www.dit.ie/colleges/collegeofengineeringbuiltenvironment/</URL>
+		<YouTubeURL>https://youtu.be/G3Po5Mev3Cs</YouTubeURL>
 		<School>
 			<Name>Dublin School of Architecture</Name>
 			<URL>http://www.dit.ie/architecture/</URL>
@@ -66,21 +67,165 @@
 		<School>
 			<Name>School of Electrical &amp; Electronic Engineering</Name>
 			<URL>http://www.dit.ie/electricalelectronicengineering/</URL>
+
+			<StaffMember>
+				<Name>Keith Sunderland</Name>
+				<EMail>keith.sunderland@dit.ie</EMail>
+				<Phone>4882</Phone>
+			</StaffMember>
+			
 			<Programme>
+				<Title>BE in Electrical/Electronic Engineering</Title>
+				<FullOrPartTime>Full Time</FullOrPartTime>
 				<Code>DT021</Code>
-				<Title>B.E. (Honours) Electrical Electronic Engineering</Title>
+				<Level>8</Level>
 			</Programme>
+
 			<Programme>
+				<Title>BE in Electrical/Electronic Engineering</Title>
+				<FullOrPartTime>Part Time</FullOrPartTime>
+				<Code>DT073</Code>
+				<Level>8</Level>
+			</Programme>
+
+			<Programme>
+				<Title>BE in Computer and Communications Engineering</Title>
+				<FullOrPartTime>Full Time</FullOrPartTime>
 				<Code>DT081</Code>
-				<Title>B.E. (Honours) Computer &amp; Communications Engineering</Title>
+				<Level>8</Level>
 			</Programme>
+
 			<Programme>
-				<Code>DT712</Code>
-				<Title>B.Sc. (Honours) Electrical Services &amp; Energy Management - Advanced Entry</Title>
-			</Programme>
-			<Programme>
+				<Title>BSc in Networking Applications &amp; Services</Title>
+				<FullOrPartTime>Full Time</FullOrPartTime>
 				<Code>DT080B</Code>
-				<Title>B.Sc. (Honours) Networking Applications &amp; Services - Advanced Entry</Title>
+				<Level>8</Level>
+			</Programme>
+
+			<Programme>
+				<Title>BSc in Electrical Services and Energy Management</Title>
+				<FullOrPartTime>Full Time</FullOrPartTime>
+				<Code>DT712</Code>
+				<Level>8</Level>
+			</Programme>
+
+			<Programme>
+				<Title>BSc in Electrical Services and Energy Management</Title>
+				<FullOrPartTime>Part Time</FullOrPartTime>
+				<Code>DT018</Code>
+				<Level>8</Level>
+			</Programme>
+
+			<Programme>
+				<Title>BTech in Networking Technologies</Title>
+				<FullOrPartTime>Full Time</FullOrPartTime>
+				<Code>DT080A</Code>
+				<Level>7</Level>
+			</Programme>
+
+			<Programme>
+				<Title>BEngTech in Sustainable Design in Electrical Services Engineering</Title>
+				<FullOrPartTime>Full Time</FullOrPartTime>
+				<Code>DT010</Code>
+				<Level>7</Level>
+			</Programme>
+
+			<Programme>
+				<Title>Bachelor Engineering Tec (Ord) Electrical Services Engineering</Title>
+				<FullOrPartTime>Part Time</FullOrPartTime>
+				<Code>DT083</Code>
+				<Level>7</Level>
+			</Programme>
+
+			<Programme>
+				<Title>BEngTech in Electrical and Control Engineering</Title>
+				<FullOrPartTime>Full Time</FullOrPartTime>
+				<Code>DT009</Code>
+				<Level>7</Level>
+			</Programme>
+
+			<Programme>
+				<Title>BEngTech in Electrical and Control Engineering</Title>
+				<FullOrPartTime>Part Time</FullOrPartTime>
+				<Code>DT016</Code>
+				<Level>7</Level>
+			</Programme>
+
+			<Programme>
+				<Title>BEngTech in Electronics and Communications Engineering</Title>
+				<FullOrPartTime>Full Time</FullOrPartTime>
+				<Code>DT008</Code>
+				<Level>7</Level>
+			</Programme>
+
+			<Programme>
+				<Title>MSc in Electronic and Communications Engineering</Title>
+				<FullOrPartTime>Full Time</FullOrPartTime>
+				<Code>DT086</Code>
+				<Level>9</Level>
+			</Programme>
+
+			<Programme>
+				<Title>MSc in Electronic and Communications Engineering</Title>
+				<FullOrPartTime>Part Time</FullOrPartTime>
+				<Code>DT085</Code>
+				<Level>9</Level>
+			</Programme>
+
+			<Programme>
+				<Title>Master of Science Energy Management</Title>
+				<FullOrPartTime>Full Time</FullOrPartTime>
+				<Code>DT711</Code>
+				<Level>9</Level>
+			</Programme>
+
+			<Programme>
+				<Title>Master of Science Energy Management</Title>
+				<FullOrPartTime>Part Time</FullOrPartTime>
+				<Code>DT015</Code>
+				<Level>9</Level>
+			</Programme>
+
+			<Programme>
+				<Title>Certificate of Attendance Programmable Logic Controllers</Title>
+				<FullOrPartTime>Part Time</FullOrPartTime>
+				<Code>DT075</Code>
+				<Level>6</Level>
+			</Programme>
+
+			<Programme>
+				<Title>Higher Certificate in Electrical Services Engineering</Title>
+				<FullOrPartTime>Part Time</FullOrPartTime>
+				<Code>DT078</Code>
+				<Level>6</Level>
+			</Programme>
+
+			<Programme>
+				<Title>Apprenticeship Electrical Update Phase 6</Title>
+				<FullOrPartTime>Part Time</FullOrPartTime>
+				<Code>DT096</Code>
+				<Level>6</Level>
+			</Programme>
+
+			<Programme>
+				<Title>Higher Certificate Power Plant Technology (Plant Operations)</Title>
+				<FullOrPartTime>Part Time</FullOrPartTime>
+				<Code>DT098</Code>
+				<Level>6</Level>
+			</Programme>
+
+			<Programme>
+				<Title>Higher Certificate Power Plant Technology (Plant Management)</Title>
+				<FullOrPartTime>Part Time</FullOrPartTime>
+				<Code>DT099</Code>
+				<Level>6</Level>
+			</Programme>
+
+			<Programme>
+				<Title>Apprenticeship Electrical</Title>
+				<FullOrPartTime>Part Time</FullOrPartTime>
+				<Code>SBE</Code>
+				<Level>6</Level>
 			</Programme>
 		</School>
 		<School>
@@ -125,6 +270,185 @@
 			<Programme>
 				<Code>DT033</Code>
 			</Programme>
+			<Programme>
+				<Title>Apprenticeships in Industrial Insulation</Title>
+				<FullOrPartTime>Part Time</FullOrPartTime>
+				<Code>B100</Code>
+			</Programme>
+
+			<Programme>
+				<Title>Apprenticeship Mechanical Automation and Maintenance Fitting (M.A.M.F)</Title>
+				<FullOrPartTime>Part Time</FullOrPartTime>
+				<Code>B810</Code>
+			</Programme>
+			
+			<Programme>
+				<Title>Apprenticeship Sheet Metal Work</Title>
+				<FullOrPartTime>Part Time</FullOrPartTime>
+				<Code>B844</Code>
+			</Programme>
+			
+			<Programme>
+				<Title>Apprenticeship Metal Fabrication</Title>
+				<FullOrPartTime>Part Time</FullOrPartTime>
+				<Code>B846</Code>
+			</Programme>
+			
+			<Programme>
+				<Title>National Craft Certificate in Plumbing</Title>
+				<FullOrPartTime>Part Time</FullOrPartTime>
+				<Code>B870</Code>
+			</Programme>
+			
+			<Programme>
+				<Title>National Craft Certificate in Refrigeration and Air-condition</Title>
+				<FullOrPartTime>Part Time</FullOrPartTime>
+				<Code>B872</Code>
+			</Programme>
+			
+			<Programme>
+				<Title>Bachelor of Science (Hons) Product Design</Title>
+				<FullOrPartTime>Full Time</FullOrPartTime>
+				<Code>DT001</Code>
+			</Programme>
+			
+			<Programme>
+				<Title>Bachelor Engineering Tec (Ord) Engineering Systems Maintenance</Title>
+				<FullOrPartTime>Full Time</FullOrPartTime>
+				<Code>DT002</Code>
+			</Programme>
+			
+			<Programme>
+				<Title>Bachelor Engineering Tec (Ord) Automation Engineering</Title>
+				<FullOrPartTime>Full Time</FullOrPartTime>
+				<Code>DT003A</Code>
+			</Programme>
+			
+			<Programme>
+				<Title>Bachelor Engineering Tec (Ord) Building Services Engineering</Title>
+				<FullOrPartTime>Full Time</FullOrPartTime>
+				<Code>DT005</Code>
+			</Programme>
+			
+			<Programme>
+				<Title>Bachelor Engineering Tec (Ord) Mechanical Engineering</Title>
+				<FullOrPartTime>Full Time</FullOrPartTime>
+				<Code>DT006</Code>
+			</Programme>
+			
+			<Programme>
+				<Title>Bachelor Engineering Tec (Ord) Engineering Systems Maintenance</Title>
+				<FullOrPartTime>Part Time</FullOrPartTime>
+				<Code>DT012</Code>
+				</Programme>
+				
+			<Programme>
+				<Title>Bachelor of Engineering (Hons) Mechanical Engineering</Title>
+				<FullOrPartTime>Full Time</FullOrPartTime>
+				<Code>DT022</Code>
+			</Programme>
+			
+			<Programme>
+				<Title>Bachelor of Engineering (Hons) Manufacturing Engineering</Title>
+				<FullOrPartTime>Full Time</FullOrPartTime>
+				<Code>DT023</Code>
+			</Programme>
+			
+			<Programme>
+				<Title>Bachelor of Engineering (Hons) Building Services Engineering</Title>
+				<FullOrPartTime>Full Time</FullOrPartTime>
+				<Code>DT026</Code>
+			</Programme>
+			
+			<Programme>
+				<Title>CPD Engineering Bridging Studies Certificate</Title>
+				<FullOrPartTime>Part Time</FullOrPartTime>
+				<Code>DT030</Code>
+			</Programme>
+			
+			<Programme>
+				<Title>Bachelor of Engineering (Hons) Mechanical Engineering</Title>
+				<FullOrPartTime>Part Time</FullOrPartTime>
+				<Code>DT031</Code>
+			</Programme>
+			
+			<Programme>
+				<Title>Higher Certificate Building Services Engineering</Title>
+				<FullOrPartTime>Part Time</FullOrPartTime>
+				<Code>DT033</Code>
+			</Programme>
+			
+			<Programme>
+				<Title>Welder Approval</Title>
+				<FullOrPartTime>Part Time</FullOrPartTime>
+				<Code>DT039</Code>
+			</Programme>
+			
+			<Programme>
+				<Title>Welder Approval</Title>
+				<FullOrPartTime>Part Time</FullOrPartTime>
+				<Code>DT040</Code>
+			</Programme>
+			
+			<Programme>
+				<Title>Welder Approval</Title>
+				<FullOrPartTime>Part Time</FullOrPartTime>
+				<Code>DT041</Code>
+			</Programme>
+			
+			<Programme>
+				<Title>Master of Engineering Mechanical Engineering</Title>
+				<FullOrPartTime>Full Time</FullOrPartTime>
+				<Code>DT087</Code>
+			</Programme>
+			
+			<Programme>
+				<Title>Master of Engineering Mechanical Engineering</Title>
+				<FullOrPartTime>Part Time</FullOrPartTime>
+				<Code>DT088</Code>
+			</Programme>
+			
+			<Programme>
+				<Title>Higher Certificate Advanced Plumbing and Heating Technology</Title>
+				<FullOrPartTime>Part Time</FullOrPartTime>
+				<Code>DT151A</Code>
+			</Programme>
+			
+			<Programme><Title>Bachelor of Science (Hons) Medical Device Innovation</Title>
+				<FullOrPartTime>Full Time</FullOrPartTime>
+				<Code>DT710</Code>
+			</Programme>
+			
+			<Programme>
+				<Title>Master of Science Sustainability, Technology and Innovation</Title>
+				<FullOrPartTime>Full Time</FullOrPartTime>
+				<Code>DT713</Code>
+			</Programme>
+			
+			<Programme>
+				<Title>Bachelor Engineering Tec (Ord) Fire Engineering</Title>
+				<FullOrPartTime>Part Time</FullOrPartTime>
+				<Code>DT715</Code>
+			</Programme>
+			
+			<Programme>
+				<Title>Bachelor of Science (Hons) Medical Device Innovation</Title>
+				<FullOrPartTime>Part Time</FullOrPartTime>
+				<Code>DT764</Code>
+			</Programme>
+			
+			<Programme>
+				<Title>Research students (Full-time)</Title>
+				<FullOrPartTime>Full Time</FullOrPartTime>
+				<Code></Code>
+			</Programme>
+
+			<Programme>
+				<Title>Research students (Part-time)</Title>
+				<FullOrPartTime>Part Time</FullOrPartTime>
+				<Code></Code>
+			</Programme>
+			
 		</School>
 		<School>
 			<Name>School of Multidisciplinary Technologies</Name>
@@ -134,14 +458,75 @@
 		</School>
 		<School>
 			<Name>School of Spatial Planning &amp; Transport Engineering</Name>
+			<HeadOfSchool>Henk VanDerKamp</HeadOfSchool>
+			<HeadOfSchoolEMail>Henk.VanDerKamp@dit.ie</HeadOfSchoolEMail>
+			<HeadOfSchoolPhone>+353-1-4023475</HeadOfSchoolPhone>
+			<AssistantHeadOfSchool>Conor Norton</AssistantHeadOfSchool>
+			<AssistantHeadOfSchoolEMail>Conor.Norton@dit.ie</AssistantHeadOfSchoolEMail>
+			<AssistantHeadOfSchoolPhone>+353-1-4023709</AssistantHeadOfSchoolPhone>
+ 			<AssistantHeadOfSchool>Declan Allen</AssistantHeadOfSchool>
+ 			<AssistantHeadOfSchoolEMail>Declan.Allen@dit.ie</AssistantHeadOfSchoolEMail>
+ 			<AssistantHeadOfSchoolPhone>+353-1-402 3782</AssistantHeadOfSchoolPhone>
+ 			<SchoolAdministrator>Jackie Rigney</SchoolAdministrator>
+ 			<SchoolAdministratorEMail>Jackie.Rigney@dit.ie</SchoolAdministratorEMail>
+ 			<SchoolAdministratorPhone>+353-1-402 3605</SchoolAdministratorPhone>
+ 			<SchoolAdministrator>Orla Hosford</SchoolAdministrator>
+ 			<SchoolAdministratorEMail>Orla.Hosford@dit.ie</SchoolAdministratorEMail>
+ 			<SchoolAdministratorPhone>+353-1-402 3605</SchoolAdministratorPhone>
 			<Programme>
+				<Title>Bachelor of Science (Hons) Environmental Planning and Management</Title>
+				<FullOrPartTime>FT</FullOrPartTime>
 				<Code>DT106</Code>
-				<Title>B.Sc. (Honours) Spatial Planning</Title>
 			</Programme>
+
 			<Programme>
-				<Code>DT106</Code>
-				<Title>B.Sc. (Honours) Environmental Management</Title>
-			</Programme>			
+				<Title>Master of Science Sustainable Development</Title>
+				<FullOrPartTime>FT</FullOrPartTime>
+				<Code>DT118</Code>
+			</Programme>
+
+			<Programme>
+				<Title>Postgraduate Certificate Sustainable Development (MIN)</Title>
+				<FullOrPartTime>PT</FullOrPartTime>
+				<Code>DT118C</Code>
+			</Programme>
+			
+			<Programme>
+				<Title>Master of Science Local Development and Innovation</Title>
+				<FullOrPartTime>FT</FullOrPartTime>
+				<Code>DT121A</Code>
+			</Programme>
+			
+			<Programme>
+				<Title>Master of Science Local Development and Innovation</Title>
+				<FullOrPartTime>PT</FullOrPartTime>
+				<Code>DT9121</Code>
+			</Programme>
+			
+			<Programme>
+				<Title>Master of Science Planning and Development</Title>
+				<FullOrPartTime>PT</FullOrPartTime>
+				<Code>DT122</Code>
+			</Programme>
+			
+			<Programme>
+				<Title>Master of Science Urban Regeneration and Development</Title>
+				<FullOrPartTime>PT</FullOrPartTime>
+				<Code>DT9119</Code>
+			</Programme>
+			
+			<Programme>
+				<Title>Postgraduate Certificate Urban Regeneration and Development</Title>
+				<FullOrPartTime>PT</FullOrPartTime>
+				<Code>DT9119A</Code>
+			</Programme>
+			
+			<Programme>
+				<Title>Master of Science Spatial Planning</Title>
+				<FullOrPartTime>PT</FullOrPartTime>
+				<Code>DT123</Code>
+			</Programme>
+						
 		</School>
 	</College>
 	<College>

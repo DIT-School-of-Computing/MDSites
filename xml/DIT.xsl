@@ -16,6 +16,10 @@
 
 			</span>
 		</div>
+		<div title="HeadOfSchool">
+			<b>Head of School: </b> <xsl:value-of select="HeadOfSchool"/> - <xsl:value-of select="HeadOfSchoolEMail"/>					
+		</div>
+		
 		<xsl:for-each select="Programme">
 			<div style="padding:2px">
 				<span style="font-weight:plain">
