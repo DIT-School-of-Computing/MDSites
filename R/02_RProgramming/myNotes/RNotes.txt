@@ -1,0 +1,213 @@
+R is a dialect of S
+S is a language developed by Bell Labs (1976) internal statistical analysis as Fortran libraries
+Early versions did not contain function
+1988, re-written in C
+"Statistical Models in S" 
+1998 V.4
+"Programming with Data" John Chambers (The Green Book)
+1993, Bell Labs gave it to StatSci
+
+1991 - R
+Paper in 1996
+Ross and Robert, made R free software
+Two main mailing lists, RHelp and RDevelop
+R even runs on PlayStation 3
+Useful for interactive work
+Very active user community
+Free:
+	Doesn't cost anything
+	Free Software: 
+	Free Software Foundation
+	0: To run for any purpose
+	1: Freedom to study how the program works, make changes to it yourself, sell changes etc.
+	2: Freedom to redistribute, can sell copies
+	3: Can improve the program to benefit the entire community
+	 
+Drawbacks: 
+	Based on 4-year-old technology. Little built-in support for dynamic or 3d Graphics
+	Functionality is based on community demand. If nobody has seen fit to implement the
+	feature that you would like, you have to do it yourself
+	Objects you create have to be stored in the physical memory of your computer
+	If the objects you create are larger, then you have to deal with that yourself
+	Not ideal for all possible situations
+	Larger and larger datasets makes a limitation of the fact that the objects must be loaded
+	into physical memory.
+	
+Two Conceptual Parts
+1: Base R System
+	Base package, all the low-level functionality you need to run the R system.
+	From CRAN
+	Other packages, utils stats, data sets graphics, fundamental packages
+	Other recommended packages, boot, class, cluster, codetools, etc..
+	Commonly-used packages
+	 
+2: Everything Else
+	There are alo about 4,000 other packages on CRAN which are user-contributed.
+	CRAN has a number of restrictions in order to get a package onto CRAN
+	Documentation for all functions, pass tests etc.
+	Also packages associated with the bio-conductor project, genomic and biological data analysis.
+	
+Some R resources
+	1: An introduction to R, a long PDF document.
+	2: Writing R extensions manual, for developers of packages
+	3: RData Import and Export manual
+	4: R installation and Administration manual
+	5: RInternals manual, a really technical document about the internals of R
+	
+Standard Texts
+	John Chambers
+	Venables and Ripley
+	Pinheiro and Bates
+	Murrell - RGraphics
+	
+	Springer: Use R!
+	A longer list of books also at R web site
+	
+Getting Help
+	Asking Questions
+		Steps to reproduce the problem
+		Expected output
+		What you see instead
+		What version of the product and Libraries are you using
+		What OS
+		Additional Information
+	Subject Heading in Emails, make it very clear
+	
+	Describe the goal, not the step
+	Be explicit about your question
+	Provide the minimum amount of information necessary
+	Be courteous
+	Follow up with the solution if and when you get it resolved
+	
+	DO NOT claim you found a bug because you can't get it to work
+	Don't email multiple mailing lists at once
+	Specify where you think the problem is
+	
+	Example of wasting a cycle of emails and responses by asking such a vague and high-level
+	issue, with no evidence that the writer ever made any effort to resolve it themselves
+	
+	Class discussion board
+	R-Help mailing list
+	Other project-specific emailing lists	
+	
+	
+Evaluation
+	Evaluated and printed
+	If the expression evaluates to nothing, then there is nothing to show;
+	[1] indicates the first element of the vector.
+	If we store a single element object it is still stored as a vector
+	
+R Data Types - Objects and Attributes
+	Basic, atomic classes.
+	character, numeric, integer, complex and logical
+	The most basic object in R is a vector, which can be a vetor of consistent object types
+	Everything in a vector has to be of the same class.
+	The list, is a type of vector that can have objects of different classes
+	vector function, class and length
+	R treats numbers as double precision types, but you can force it to use integer by using captal L
+	1L is an integer, 1 is 1.00f
+	Inf is infinity
+	NaN is also included
+	R objects can have attributes;
+		names, dimnames, dimensions, class, length,  other user-defined attributes and meta-data
+		Attributes of an object can be accessed using the attributes() function
+		
+	
+Creating Vectors
+	C function to create vectors
+	c == Concatenate things
+	including complex numbers
+	vector function can create a vector of a type and length, buy default initialised to 0
+	
+Vector of mixed objects, coerce the vector to be the class of the least common denominator class
+	number and string gives a vector of strings
+	numeric and boolean converted to vector of numbers
+	letter and boolean is converted to a character vector
+	be aware of the coercion that occurs in R
+	
+	You can explicitly coerce using the as.* functions
+	This represents the data as the specified type, but does not alter the state of the operated object
+	it simply presents it as a different class
+	x <- 0:6
+	as.numeric(x);
+	as.logical(x);
+	as.character(x);
+	Coercion does not always work and NaN will be returned when it does not make sense
+	
+	list function()
+	Different from vectors in that every element of a list could be an object of a different class
+	elements of lists are indexed using the double brackets
+	elements of other types of vector are indexed with only single brackets around them
+
+Data Types : Matrices
+	Special type of vector
+	vectors that have a dimension attribute, vector of dimension 2, rows and columns
+	m <- matrix(nrow=5, ncol=6);
+	attributes(m)
+	matrix are constructed column-wise, first column gets filled before second column is started
+	m <- matrix(1:6, nrow=5, ncol=6);
+	can also convert a vector to a matrix by assigning the dim attribute to the number of 
+	rows and columns in the vector data
+	m <- 1:10
+	dim(n) <- c(2,5)
+	matrices can be created by binding columns or by binding rows
+	x <- 1:3
+	y <- 10:12
+	cbind(x,y)
+	rbind(x,y)
+	Creates a matrix either with 3,2 rows and columns or 2,3 rows and columns
+	
+Factor
+	Factor is a special type of vector for storing data that are either unordered, Male/Female
+	or categorical and ordered, L, SL1, SL2, SL3
+	Can deine High, Medium, Low, for example in an ordered Factor
+	Factors are treated specially by modelling functions such as lm() and glm()
+	Factors with labels better than integer variables.
+	variable Male/Female better than just 1/2.
+	
+	x <-factor(c("yes","yes","no","no","no"))
+	> x
+		[1] yes yes no  no  no 
+		Levels: no yes
+	> table(x)
+		x
+		 no yes 
+		  3   2 
+	> unclass(x)
+		[1] 2 2 1 1 1
+		attr(,"levels")
+		[1] "no"  "yes"
+
+
+	Ordinarily "no" is baseline level, because "no" comes before "yes" in the alphabet
+	We can set the order of the levels in the factor vector by specifying it upon creation
+	f <- factor(c("yes","yes","no","no","yes"), levels = c("yes","no"))
+	Useful if the factor variables are based on some sort of baseline level
+	single:1 double:1
+	
+	Missing Values 
+	denoted by either NA or NaN
+	is.na() tests objects to see if they are missing values
+	is.nan() tests for NaNs
+	NA values can also have a class, the missing object can also have a class
+	a NaN is also a missing NA, but not vice versa
+	
+	> g <- c(1, 2, NA, 4, 5)
+	> g
+		[1]  1  2 NA  4  5
+	> is.na(g)
+		[1] FALSE FALSE  TRUE FALSE FALSE
+		
+	> g <- c(1, 2, NA, NaN, 5)
+	> g
+		[1]   1   2  NA NaN   5
+	> is.na(g)
+		[1] FALSE FALSE  TRUE  TRUE FALSE
+	> is.nan(g)
+		[1] FALSE FALSE FALSE  TRUE FALSE
+		
+	Data Frames
+		Used to store Tabular Data
+		Special type of list where every element has the same length
+		Each column foes not have to be same type
+		
