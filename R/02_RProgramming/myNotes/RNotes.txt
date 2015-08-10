@@ -100,7 +100,7 @@ Evaluation
 R Data Types - Objects and Attributes
 	Basic, atomic classes.
 	character, numeric, integer, complex and logical
-	The most basic object in R is a vector, which can be a vetor of consistent object types
+	The most basic object in R is a  x <- 1:4 , which can be a vetor of consistent object types
 	Everything in a vector has to be of the same class.
 	The list, is a type of vector that can have objects of different classes
 	vector function, class and length
@@ -185,7 +185,7 @@ Factor
 	Useful if the factor variables are based on some sort of baseline level
 	single:1 double:1
 	
-	Missing Values 
+Missing Values 
 	denoted by either NA or NaN
 	is.na() tests objects to see if they are missing values
 	is.nan() tests for NaNs
@@ -205,9 +205,259 @@ Factor
 		[1] FALSE FALSE  TRUE  TRUE FALSE
 	> is.nan(g)
 		[1] FALSE FALSE FALSE  TRUE FALSE
+	
+Data Frames
+	Used to store Tabular Data
+	Represented as a special type of list where every element has the same length
+	Each column does not have to be same type
+	Unlike Matrices which have to store the same types in each cel
+	Every row can have a name rowname, but often we use 1,2,3
+	read.table read.csv
+	can also create a matrix from a  table by calling the matrix.table function
+	forces coercion
+	Dataframes can be created using the data.frame function
+	specifying the column names
+	> x <- data.frame(foo=1:4, bar=c(T,T,F,F));
+	> x
+		foo   bar
+	1   1  TRUE
+	2   2  TRUE
+	3   3 FALSE
+	4   4 FALSE
+	> nrow(x)
+		[1] 4
+	> ncol(x)
+		[1] 2
+
+Names
+	All R objects can also have names
+	Very useful for writing readable code and self-derscribing objects
+	> w <- 1:3
+	> w
+		[1] 1 2 3
+	> names(w) <- c("foo","bar","norf");
+	> w
+		foo  bar norf 
+		1    2    3 
+	> names(w);
+		[1] "foo"  "bar"  "norf"
+	
+	Lists can also have names
+	
+	> v <- list(a=1, b=2, c=4);
+	> v
+	$a
+	[1] 1
+
+	$b
+	[1] 2
+
+	$c
+	[1] 4
+	
+	Matrices can have names
+	> m <- matrix(1:4, nrow=2, ncol=2);
+	> dimnames(m) <- list(c("r1", "row2"),c("col1","c2")); 
+	> m
+		 col1 c2
+	r1      1  3
+	row2    2  4
+
+Data Types Summary
+	atomic classes, numeric logical, character, integer and complex
+	vectors, lists
+	factors (ordered and unordered)
+	missing values (NA and NaN)
+	data frames
+	names
+	
+Reading (and Writing) Tabular Data in R
+		read.table
+		read.csv
+	read tabular data from text files and return a data frame in R
+
+		readLines
+	gives you text as a character vector in R
+	can read any type of file
+	
+		source
+	important for reading R code
+		dget
+	also reads R code files, for reading R objects that have been de=parsed into text files
+	(does this mean serialized?)
+
+		load and unserialize
+	are for reading binary objects into R
+	
+	Analogous functions for writing are
+		write.table
+		writeLines
+		dump
+		dput
+		save
+		serialize
 		
-	Data Frames
-		Used to store Tabular Data
-		Special type of list where every element has the same length
-		Each column foes not have to be same type
+	read.table is the most commonly used function for reading data into R
+	it takes some arguments
+	file or connection
+	header, indicating if first line is a header line
+	sep is the separator string
+	colClasses is a character vector indicating the class of each column in the dataset
+		length the same as the number of columns in the data
+	nrows
+	comment.char character string indicating the comment character, default is #
+	skip the number of lines at the start to skip
+		useful for ignoring start data etc.
+	stringsAsFactors defaults to true, do you want to encode character variables as factors
+		R assumes you want to factorize this data.
 		
+	read.table
+		data <- read.table("foo.txt");
+	will automatically try to figure things out itself
+	skip lines beginning with #
+	figure out how many lines etc.
+	Usually not much advantage to providing specific arguments in any case, as R will do
+	pretty well in figuring this out itself
+	read.csv is identical to read.table except that it uses the comma, by default as the separator.
+	for read.table, the default separator is the space
+	read.csv always specifies header=true by default
+
+	
+Reading Large Tables
+	making your life a lot easier and prevent R from choking read the help page for read.Table
+	memorize it even.
+	A lot of important information there on how to optimize read.data particularly for large data sets
+	In particular you will want to know how much memory you need to store the dataset you are about to read.
+	R will try to store the entire dataset in physical memory
+	If there are no comment lines in your file, just set the comment char to be an empty string
+	Using the colClasses argument correctly will also help a lot.
+	If you don't, then R will go through every column and try to figure out what kind of data it is.
+	That's fine for small to moderate data sets and generally slows things down.
+	Will make read.table run a lot faster if used correctly.
+	Even if you give only a single value here, it will assume that every column has that same value
+	Otherwise, you can read in the first 100 or 100 rows by specifying the nrows argument and 
+	going through each of the columns using sapply to identify the derived classes for each column
+	then save this and use it as the colClasses argument for read.table to save R from having to do
+	so on the larger data sets.
+		initial <- read.table("datatable.txt", nrows=100);
+		classes <- sapply(initial, class);
+		tabAll <- read.table("rataset.txt", colClasses=classes);
+		
+	you should also consider setting nrows. It does not help Ro to run any faster.
+	A slight overestimate is ok, but it helps r to  decide how much memory to reserve for 
+	the dataset. Using the unix tool we to count the lines in the file will help here.
+	
+	Knowing your own system, memory available, other applications in use
+	etc...
+	
+	Calculating memory requirements
+
+	1,500,000 rows and 120 columns, all columns are numeric
+	1,500,000 x 120 x 8bytes (8 bytes for each numeric)
+	1,373.20 MB
+	1.34 GB
+	
+Textual data formats dput() and dump()
+	produce text format versions of objects
+	dump or dput will include in the output the class of the data in each column of the 
+	data frame. Still a textual format, but also contains meta data.
+	Produces somewhat less readable output, but saves the down-stream user from having 
+	to re-engineer the data classes etc.
+	Textual formats can be a lot more useful than binary formats as tools like git, etc
+	can more readily track meaningful changes which can be done in text formats rather than
+	binary data.
+	Textual data also adheres to the UNIX philosophy of storing things by text by default 
+	and whenever possible. The can be rather inefficient in terms of space usage.
+	
+	dput
+	
+	> y <- data.frame(a=1, b="a")
+	> dput(y);
+		structure(list(a = 1, 
+						b = structure(1L, .Label = "a", class = "factor")),
+						.Names = c("a", "b"), 
+						row.names = c(NA, -1L), 
+						class = "data.frame")
+	> dput(y, file="y.R");
+	> new.y <-dget("y.R");
+	> new.y
+		  a b
+		1 1 a
+	> y
+		  a b
+		1 1 a
+		
+	So, we can serialize the object y, using dput and then use dget to read it back in
+	
+	dump is a lot like dge
+	dget can only be used on a single r obhect
+	dump can be used on multiple r objects
+	you can pass a character vector of the names of the objects if interest.
+	
+	> d <- "foo";
+	> e <- data.frame(a=1, b="a");
+	> dump(c("d", "e"), file="deData.R");
+	> rm(d,e);
+	> d
+		Error: object 'd' not found
+	> e
+		Error: object 'e' not found
+	> source("deData.R");
+	> d
+		[1] "foo"
+	> e
+ 		  a b
+		1 1 a
+		
+Connections: Interfaces to the Outside World
+	We can interface between R and the outside world
+	functions that are used to open up 'connections' to the outside world
+	most commonly to a file, or a compressed file etc.
+	when we do read.tabe from a file, the connection is done in the background
+	you can also open up a connection to a web page using the url function
+		file
+		gzfile - compressed using gzip
+	 	bzfile - compressed using bzip2
+		url
+	file arguments
+		description  
+		r, w, a, rb, wb, ab
+	
+	con <- file("foo.txt", "r");
+	data <- read.csv(con);
+	close(con);
+		
+	above is the same as doing read.csv on the file
+	useful, though, of you only want to read parts from the file
+	
+	con <- gzfile("words.gz");
+	x <- readLines(con, 10)
+	reads 10 lines from the file words.gz
+	
+	writeLines takes a character vector argument which writes each element one line at a 
+	time to a text file
+	
+	readLines can also be used to read lines from a web page
+	> con <- url("http://www.jhsph.edu","r");
+	> x <- readLines(con)
+	> head(x);
+		[1] "<!DOCTYPE html>"                                               
+		[2] "<html lang=\"en\">"                                            
+		[3] ""                                                              
+		[4] "<head>"                                                        
+		[5] "<meta charset=\"utf-8\" />"                                    
+		[6] "<title>Johns Hopkins Bloomberg School of Public Health</title>"
+		
+	
+Subsetting R Objects - Basics
+				
+	
+Quiz 1
+	>  x <- 1:4 
+	> y <- 2
+	> x+y
+		[1] 3 4 5 6
+	>  x <- c(3, 5, 1, 10, 12, 6) 
+	> x[x %in% 1:5] <- 0
+	> x
+		[1]  0  0  0 10 12  6
