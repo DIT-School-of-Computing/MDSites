@@ -461,3 +461,256 @@ Quiz 1
 	> x[x %in% 1:5] <- 0
 	> x
 		[1]  0  0  0 10 12  6
+
+Subsetting R Objects - Basics
+	[
+	[[
+	$
+	can all be used for subsetting
+	[ - returns an object of the same class as the original, vector/vector list/list 
+		can be used to select more than one elemenbt of an object (usually)
+	[[ used to extract a single element of a list or a dataframe
+		the returned object will not necessarily be an instance of list or dataframe
+		lists can hold things of different classes, so [[ can return different class objects
+	$ used to extract elements of a list or dataframe that has a name
+		otherwise semantics are the same as [[
+	
+	example:
+		> x <- c("a", "b", "c", "c", "d", "a");
+		> x[1]
+		[1] "a"
+		> x[2]
+		[1] "b"
+		> x[1:4]
+		[1] "a" "b" "c" "c"
+		
+	these are examples of using numeric index
+	but we can also subset using a logical index
+	
+	so we can return a character vector that returns only those letters > a, for example
+	> x[x>"a"]
+		[1] "b" "c" "c" "d"
+	
+	we can create a logical vector, u, so that it is a true or false vector meeting the condition
+	of being greater than a, for example. A bit like a select statement, where the SQL
+	statement is the content of the logical vector
+	
+	> u<- x > "a"
+	> u
+		[1] FALSE  TRUE  TRUE  TRUE  TRUE FALSE
+	each of which match the statement x > "a", for the elements in the original vector x
+	> x[u]
+		[1] "b" "c" "c" "d"
+	
+	So we have used both a numeric index and a logical index
+	
+Subsetting R objects: lists
+	a bit different from subsetting a vector
+	> x <- list(foo=1:4, bar = 0.6);
+	> x[1]
+		$foo
+		[1] 1 2 3 4
+	> x$bar
+		[1] 0.6
+	> x[["bar"]]
+		[1] 0.6
+	> x["bar"]
+	$bar
+		[1] 0.6
+		
+	a list with two elements in it.
+	[a] always returns an element with the same class as the original element
+	so x[1] returns a list containing the sequence 1:4
+	x[[1]] returns just the sequence 1:4
+	
+	subsetting an element using its name means we don't have to remember its numeric position
+	
+	To extract multiple elements of a list, we need to use the [ operator
+	So, give me elements 1 and 3 of the original list
+	> x <- list(foo=1:4, bar = 0.6, baz="hello");
+	so, pass the numeric vector 1,3 to x using the single bracket operator
+	which returns to me a list with elements foo and baz
+	
+	> x[c(1, 3)]
+		$foo
+		[1] 1 2 3 4
+
+		$baz
+		[1] "hello"
+		
+	[[ can be used to index a list where the index itself was computed
+	sometimes the name of the element is the result of some computation
+	so we can create a variable called name, and use that as the operator to
+	the [[ operator
+	
+	> name <- "foo";
+	> x[name]
+		$foo
+		[1] 1 2 3 4
+
+	> x$name # name does not exist as a name, but only as a variable
+		NULL
+	> x$foo
+		[1] 1 2 3 4
+
+	[[ operator can take an integer sequence rather than just a single number.
+	it recurses into the list, effectively 2-D indexing (double subsetting)
+	
+	> x <- list(a = list(10,12,14), b=c(3.14, 2.81))
+	> x[[c(1,3)]] # element 3 of element 1
+		[1] 14
+	> x[[c(2,1)]] # element 1 of element 2
+		[1] 3.14
+
+Subsetting R objects: Matrices
+	matrices can be subsetted in the usual way using the i,j notation
+	> x <- matrix(1:6, 2, 3)
+	> x[1,2]
+		[1] 3
+	> x[2,1]
+		[1] 2
+	> x[1, ] # indices can also be missing, giving row 1
+		[1] 1 3 5
+	> x[ ,2] # or giving column 2
+		[1] 3 4
+
+	by default when a single element of a matrix is retrieved, is returned a vector of length 1
+	rather than a 1x1 matrix.
+	I don't get back a matrix, but an vector with just that element in it
+	so x[1,2] returns a vector with element 1,2 in it, not a matrix 1x1 containing that element
+	we can override this behaviouR with the drop=FALSE argument to the subsetting operation
+	by default the subsetting drops the dimension, with drop=FALSE this is not done
+	so we get a 2 dimensional object back, rather than the 1 dimensional object that
+	would be returned by the drop=TRUE default behaviour
+	> x[1,2]
+		[1] 3
+	> x[1,2, drop=FALSE];
+		 [,1]
+	[1,]    3
+	
+	when you subset a single column or a single row, you don't get back a matrix
+	when you subset out the first row, you might expect a matrix 1x3 containing the 
+	elements of the first row. That's not what you get
+	you get back a vector containing the elements of the first row
+	> x <- matrix(1:6, 2, 3)
+	> x[1, ]
+		[1] 1 3 5
+	> x[1, , drop=FALSE]
+		 [,1] [,2] [,3]
+	[1,]    1    3    5
+
+Subsetting R objects: Subsetting with names
+	Partial Matching - can save a lot of time at the command-line
+	works with [[ and $ operators
+	lets's just alias a to aardvark
+	
+	> x <- list(aardvark=1:5)
+	> x$a
+		[1] 1 2 3 4 5
+	> x[["a"]]
+		NULL
+	> x[["a", exact = FALSE]]
+		[1] 1 2 3 4 5
+	
+	[[ expects that the name will be an exact match, but we can suppress this by 
+	specifying the exact=FALSE argument
+	
+Subsetting R objects, removing NA objects
+	> x <- c(1, 2, NA, 4, NA, 5)
+	> bad <- is.na(x)
+	> bad
+		[1] FALSE FALSE  TRUE FALSE  TRUE FALSE
+	> x[bad]
+		[1] NA NA
+	> x[!bad]
+		[1] 1 2 4 5
+
+	Now, consider multiple objects, x and y, each of which have some missing values
+	we can use complete.cases to create a vector containing logical values
+	for complete cases, 
+	TRUE if both are present, FALSE otherwise
+	
+	> x <- c(1, 2, NA, 4, NA, 5)
+	> y <- c("a", "b", NA, "d", NA, "f")
+	> good <- complete.cases(x,y);
+	> good
+		[1]  TRUE  TRUE FALSE  TRUE FALSE  TRUE
+	> x[good]
+		[1] 1 2 4 5
+	> y[good]
+		[1] "a" "b" "d" "f"
+
+	you can also use complete cases to remove missing values from data frames
+	in the following example, all we want are the rows where all values are non missing
+	so, load the airquality data
+	
+	> airquality <- read.csv("hw1_data.csv");
+	> airquality[1:6, ]
+	  Ozone Solar.R Wind Temp Month Day
+	1    41     190  7.4   67     5   1
+	2    36     118  8.0   72     5   2
+	3    12     149 12.6   74     5   3
+	4    18     313 11.5   62     5   4
+	5    NA      NA 14.3   56     5   5
+	6    28      NA 14.9   66     5   6
+
+	# build the good matrix using complete.cases
+	> good <- complete.cases(airquality);
+	# use the good matrix to subset airquality
+	# and then take the first 6 good rows
+	> airquality[good, ][1:6, ]
+	  Ozone Solar.R Wind Temp Month Day
+	1    41     190  7.4   67     5   1
+	2    36     118  8.0   72     5   2
+	3    12     149 12.6   74     5   3
+	4    18     313 11.5   62     5   4
+	7    23     299  8.6   65     5   7
+	8    19      99 13.8   59     5   8
+	
+	complete.cases very useful function
+	
+Vectorized operations
+	Makes it easy to use on the command-line and write code without having to do 
+	lots of looping
+	things can happen in parallel over two vectors
+	> x <- 1:4; y <-6:9
+	> x+y
+		[1]  7  9 11 13
+
+	we can also do vectorized operations on boolean expressions and other arithmetic 
+	expressions 
+	> x >2
+		[1] FALSE FALSE  TRUE  TRUE
+	> x >= 2
+		[1] FALSE  TRUE  TRUE  TRUE
+	> y ==8
+		[1] FALSE FALSE  TRUE FALSE
+	> x * y
+		[1]  6 14 24 36
+	> x / y
+		[1] 0.1666667 0.2857143 0.3750000 0.4444444
+
+	We can also apply vectorized operations to matrices
+	> x <- matrix(1:4, 2, 2); y <- matrix(rep(10,4), 2, 2)
+	> x * y
+ 	    [,1] [,2]
+	[1,]   10   30
+	[2,]   20   40
+	
+	This is not MATRIX multiplication, simply element by element multiplication
+	
+	> x/y
+	     [,1] [,2]
+	[1,]  0.1  0.3
+	[2,]  0.2  0.4
+
+	This IS matrix multiplication
+	> x %*% y
+     [,1] [,2]
+	[1,]   40   40
+	[2,]   60   60
+
+Introduction to swirl
+	Experimental feature, statistics with interactive r learning
+	SWIRL
+	
