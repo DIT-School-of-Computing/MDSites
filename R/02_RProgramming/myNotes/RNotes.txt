@@ -1032,6 +1032,8 @@ Lexical scoping Rules
 	Usually this is the .Global environment (workspace) or the namespace of a package
 	After the top-level environment, we continue down the search list until we hit the 
 	empty environment. If a value for a given symbol cannot be found once the empty 
-	environment is reached, then an error is thrown
+	environment is reached, then an error is thrown saying a value cannot be found for that 
+	symbol
+	
 	
 	
