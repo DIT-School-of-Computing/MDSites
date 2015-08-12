@@ -1035,5 +1035,7 @@ Lexical scoping Rules
 	environment is reached, then an error is thrown saying a value cannot be found for that 
 	symbol
 	
+	I'm going to skip the rest of this, as I feel it has more to do with Compiler design 
+	than with the use of the R programming language.
 	
 	
