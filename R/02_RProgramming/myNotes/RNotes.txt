@@ -889,7 +889,7 @@ More on Functions
    	 contrasts = NULL, offset, ...) 
 
 
-	Argument matching. On the command-line, named arguments are very useful, particularly
+Argument matching. On the command-line, named arguments are very useful, particularly
 	if you want to call arguments by name other than the ones that are to take
 	default arguments.
 	Also very useful for plotting, as these functions often have a very long argument
@@ -899,5 +899,141 @@ More on Functions
 	and as long as the short name supplied is unique, then R will do a partial match
 	If exact name does not match, R will look for a partial match, and if that does not work
 	R will look for a positional match
+	
+	In addition to not specifying a default value you can also set an argument value to NULL
+
+R includes lazy evaluation.
+	This means that the arguments to a function are only evaluated as they are needed
+	If the function uses, for example, only the first argument, and the second is not used,
+	then the function does not use the second argument, does not evaluate it, and 
+	R does not complain about the missing argument which was never used
+	
+	In the following example, R does not complain
+	
+	f2 <- function(a,b)
+	{
+	  a^2
+	}
+
+	# but in this case, R does complain, but only after the print(a) call
+	f3 <- function(a, b)
+	{
+	  print(a)
+	  print(b)
+	}
+		[1] 45
+		Error in print(b) : argument "b" is missing, with no default
+	
+The ... argument
+	Used when extending another function and you don't want to copy across
+	all the arguments used in the first function.
+	So, in the following example, myplot can be called with all the same arguments that 
+	we expect in a call to plot, but we don't have to specify them explicitly.
+	
+	myplot <- function(x, y, type = "1", ...)
+	{
+		plot(x,y, type = type, ...);
+	}
+
+Generic functions use ... so that extra arguments can be passed to methods
+	> mean
+	function (x, ...)
+	UseMethod("mean")
+	
+	the .. argument is necessary when the number of arguments passed to a function cannot
+	be known in advance
+	One good example would be in the paste function which concatenates a vector of strings
+	it can take a variable number of arguments, the number of whcih cannot be known in 
+	advance.
+	
+	> args(paste)
+	function (..., sep = " ", collapse = NULL) 
+	
+	> args(cat)
+	function (..., file = "", sep = " ", fill = FALSE, labels = NULL, 
+		append = FALSE) 
+		
+	Cat pastes together a number of strings(like cat in UNIX/Linux/Mac OSX)
+	One catch with ... is that any arguments that appear after the ... on the 
+	argument list must be named explicitly and cannot be partially matched.
+	You cannot use positional matching or partial matching for the arguments that come 
+	after the ...
+	Otherwise there is no way for R to know if you are passing something onwards via the 
+	... or passing something as a different argument
+	
+	This can lead to unexpected results, so be careful when using
+	..., partial matching etc.
+	
+Scoping Rules, Symbol Binding
+	How does R assign a value to a symbol from within a function
+	Example of function lm, which already exists in R
+	Is it the existing or the new declaration that is used
+	
+	R searches through a number of environments, which are lists of symbols and values
+	search the global environment, for the requested symbol
+	If there is a symbol found, it will take that symbol first
+	
+	If there is no match in the global environment, then R will search the namespaces of 
+	the packages that are loaded
+	
+	search()
+	 [1] ".GlobalEnv"        "tools:rstudio"     "package:stats"     "package:graphics"  "package:grDevices"
+ 	[6] "package:utils"     "package:datasets"  "package:methods"   "Autoloads"         "package:base"     
+	
+	somewhere on this list, R is going to look for a function called lm (linear models)
+	.GlobalEnv is equivalent to the user's workspace.
+	The order of packages matters, and the users can specify the order in which packages
+	get loaded when they start up, so you cannot assume
+	that a symbol will always match to the same thing.
+	
+	When a user loads a package with the library call, the namespace of that package
+	gets put in position 2 of the search list (immediately after .GlobalEnv).
+	and everything else gets pushed down one place on the list
+	
+	R has separate namespaces for functions and non-functions, so it is possible to have
+	an object names c and a function also named c
+
+Scoping Rules
+	Determine how a value is bound to a free variabel in a function
+	R uses lexical scoping or static scoping
+	A common alternative is dynamic scoping
+	Lexical scoping turns out to be particularly valuable for simplifying statistical 
+	calculations
+	
+	In the following, z is a free variable, since it was not specified in the declaration 
+	of the function
+	
+	f4 <- function(x, y) 
+	{
+ 	 x^2 + y^2 / z
+	}
+	
+Lexical scoping Rules
+	The valuables of free variables are searched for in the environment in which the 
+	function was defined
+	An environment is a collection of (symbol, value) pairs
+	x and 3.14
+	Every environment has a parent environment, and it is possible for a parent to have 
+	multiple children
+	
+	The only environment without a parent is the empty environment
+	a function + an environment = a closure or a function closure
+	
+	These function closures are the key to a lot of interesting operations in R
+	
+	Searching for the value of a free variable
+	First, look for the environment in which the function was defined
+	That is the parent environment.
+	If I can't find something in that environment, the search continues in the parent
+	of that environment
+	
+	The search continues through the list of parent environments until we find the value 
+	for this free variable. This continues until we hit the top-level environment
+	Usually this is the .Global environment (workspace) or the namespace of a package
+	After the top-level environment, we continue down the search list until we hit the 
+	empty environment. If a value for a given symbol cannot be found once the empty 
+	environment is reached, then an error is thrown saying a value cannot be found for that 
+	symbol
+	
 	
 	
