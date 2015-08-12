@@ -1,0 +1,41 @@
+myFunction();
+ls
+ls
+ls;
+ls();
+myFunction()#
+{#
+	y <- rnorm(100);#
+	mean(y);#
+}
+ls
+ls();
+getwd();
+dir;
+dir();
+setwd("/Users/mark/Sites/R/02_RProgramming/myCode")
+dir();
+source("myFunction.r");
+ls();
+source("myFunction.r");
+ls();
+second(4);
+=second(4);
+= second(4)
+= second(4)
+second(4)
+source("myFunction.r");
+ls();
+second(4)
+second(4)
+second(4)
+second(4)
+second(4)
+second(4)
+second(4)
+second(4)
+second(4)
+second(4:10)
+library(datasets)
+data(airquality)
+cor(airquality)
