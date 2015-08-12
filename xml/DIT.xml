@@ -68,12 +68,16 @@
 			<Name>School of Electrical &amp; Electronic Engineering</Name>
 			<URL>http://www.dit.ie/electricalelectronicengineering/</URL>
 
-			<StaffMember>
-				<Name>Keith Sunderland</Name>
-				<EMail>keith.sunderland@dit.ie</EMail>
-				<Phone>4882</Phone>
-			</StaffMember>
-			
+			<AssistantHeadOfSchool>
+				<StaffMember>
+					<Title>Dr.</Title>
+					<FirstName>Keith</FirstName>
+					<Surname>Sunderland</Surname>
+					<EMail>keith.sunderland@dit.ie</EMail>
+					<Phone>4882</Phone>
+				</StaffMember>
+			</AssistantHeadOfSchool>
+		
 			<Programme>
 				<Title>BE in Electrical/Electronic Engineering</Title>
 				<FullOrPartTime>Full Time</FullOrPartTime>
