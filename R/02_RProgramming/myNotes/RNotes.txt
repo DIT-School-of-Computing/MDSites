@@ -848,3 +848,38 @@ Next, Return
 	  }
 	  means;
 	}
+	
+	
+More on Functions
+	Functions are R objects of class Function
+	Functions are considered first-class objects, so they can be treated in the same
+	way as any other first-class objects. Functions can also be defined within the scope of
+	other functions. The implications of this are discussed in Lexical Scoping
+	The return value of a function is the value of the last expression to be evaluated
+	within an R function
+	
+	Arguments. Named arguments can have default values.
+	Formal arguments are those that are included in the function definition
+	The formals() function returns a list of all the formal arguments of a function
+	Not every function call makes use of all the formal arguments
+	Function arguments may be missing or might have default values if they have not been
+	specified by the user.
+	Function arguments can be matched by position or by name
+	 sd()
+	calculates the standard deviation
+	Arguments can be specified based on position, or by name
+	this allows you to mess around with the order of arguments, but why bother?
+	
+	> mydata <- rnorm(100)
+	> sd(mydata)
+		[1] 1.154282
+	> sd(x = mydata)
+		[1] 1.154282
+	> sd(x = mydata, na.rm=FALSE)
+		[1] 1.154282
+	> sd(na.rm=FALSE, x = mydata)
+		[1] 1.154282
+	> sd(na.rm=FALSE, mydata)
+		[1] 1.154282
+
+
