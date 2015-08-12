@@ -868,6 +868,7 @@ More on Functions
 	 sd()
 	calculates the standard deviation
 	Arguments can be specified based on position, or by name
+	You can mix positional arguments and named arguments
 	this allows you to mess around with the order of arguments, but why bother?
 	
 	> mydata <- rnorm(100)
@@ -882,4 +883,21 @@ More on Functions
 	> sd(na.rm=FALSE, mydata)
 		[1] 1.154282
 
+	args(lm)
+	function (formula, data, subset, weights, na.action, method = "qr", 
+   	 model = TRUE, x = FALSE, y = FALSE, qr = TRUE, singular.ok = TRUE, 
+   	 contrasts = NULL, offset, ...) 
 
+
+	Argument matching. On the command-line, named arguments are very useful, particularly
+	if you want to call arguments by name other than the ones that are to take
+	default arguments.
+	Also very useful for plotting, as these functions often have a very long argument
+	list
+	
+	Function name matching also works. You can provide a partial match for an argument name
+	and as long as the short name supplied is unique, then R will do a partial match
+	If exact name does not match, R will look for a partial match, and if that does not work
+	R will look for a positional match
+	
+	
