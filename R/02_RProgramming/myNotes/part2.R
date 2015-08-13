@@ -12,4 +12,36 @@ complete <- function(directory, id = 1:332) {
   ## ...
   ## where 'id' is the monitor ID number and 'nobs' is the
   ## number of complete cases
+  
+  # add all data from the specified .csv files to the allData data frame
+  # this code loops through all the values in the id argument to the function call
+  # and for each, either creates (if it is the first value) or appends the records read from 
+  # the .csv file to the allData data frame
+  for( i in id) # for each numeric in the id list provided (or not provided) as an argument
+  { # begin for loop
+    
+    # this converts single or double-digit file numbers into a three-digit file number
+    # padded with leading 0
+    # for example 1 becomes 001, 21 becomes 021 and 321 remains 321
+    fileNum <- formatC(i, width=3,flag="0");
+    
+    # this builds the file name using the directory, the padded file number and the .csv extension
+    fname <- paste(directory,"/",fileNum,".csv",sep="");
+    # the following was used for debugging purposes
+    # print(fname);
+    # this checks if the allData frame already exists, 
+    # if not, then we create it by reading in a .csv file
+    if(!exists("allData")) {
+      allData <- read.csv(fname, header=TRUE);
+    } # end if statement
+    # if it does exist, then we add the data from the data file to the excisting data frame using rbind
+    else {
+      allData <- rbind(allData, read.csv(fname, header=TRUE));  
+    } # end else statement
+  } # end for loop
+  
+  print(nrow(allData));
+  ok <- complete.cases(allData);
+  sum(ok);
+
 }

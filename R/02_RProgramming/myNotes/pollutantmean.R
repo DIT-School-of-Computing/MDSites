@@ -5,14 +5,16 @@ pollutantmean <- function(directory, pollutant, id = 1:332) {
     ## 'id' is an integer vector indicating the monitor ID numbers
     ## to be used
   
-    print(paste("We will be reading",length(id),"files from the directory:",directory));
+    # the following was used for debugging purposes
+        # print(paste("We will be reading",length(id),"files from the directory:",directory));
     
     ## 'pollutant' is a character vector of length 1 indicating
     ## the name of the pollutant for which we will calculate the
     ## mean; either "sulfate" or "nitrate".
     if((pollutant == "nitrate") || (pollutant == "sulfate"))
     {
-      print(paste(pollutant, ":is a valid pollutant name, so we will continue"));
+      # the following was used for debugging purposes
+          # print(paste(pollutant, ":is a valid pollutant name, so we will continue"));
     }
     else
     {
@@ -39,7 +41,8 @@ pollutantmean <- function(directory, pollutant, id = 1:332) {
 
       # this builds the file name using the directory, the padded file number and the .csv extension
       fname <- paste(directory,"/",fileNum,".csv",sep="");
-      print(fname);
+      # the following was used for debugging purposes
+        # print(fname);
       # this checks if the allData frame already exists, 
       # if not, then we create it by reading in a .csv file
       if(!exists("allData")) {
@@ -58,6 +61,6 @@ pollutantmean <- function(directory, pollutant, id = 1:332) {
 
     # the mean of the specified pollutant is the mean of the above vector 
     pollutantMean = mean(good);
-    print(paste("The mean value of pollutant:",pollutant,"is", pollutantMean));
-
+    # print(paste("The mean value of pollutant:",pollutant,"is", pollutantMean));
+  return(pollutantMean);
 }
