@@ -22,5 +22,9 @@ pollutantmean <- function(directory, pollutant, id = 1:332) {
     ## Return the mean of the pollutant across all monitors list
     ## in the 'id' vector (ignoring NA values)
     ## NOTE: Do not round the result!
+    
+    agg1 <- read.csv("./specdata//001.csv");
+    agg2 <- read.csv("./specdata//002.csv");
+    agg3 <- agg1 + agg2;
   }
 
