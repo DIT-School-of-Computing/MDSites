@@ -30,35 +30,16 @@ complete <- function(directory, id = 1:332) {
     
     # this builds the file name using the directory, the padded file number and the .csv extension
     fname <- paste(directory,"/",fileNum,".csv",sep="");
-    # the following was used for debugging purposes
-    # print(fname);
-    # this checks if the allData frame already exists, 
-    # if not, then we create it by reading in a .csv file
-    if(!exists("allData")) {
-      # create a new vector, allData by reading the (first) .csv file specified
-      allData <- read.csv(fname, header=TRUE);
+
+    # we will (temporarily) store the new data in a vector of its own so we can count the 
+    # number of complete cases being read from the specified file
+    newData <- read.csv(fname, header=TRUE);
       
-      # # in the following statement, the complete.cases function elimintaes all NAs
-      # and the sum function counts all the TRUE entries in that vector
-      completeCount <- sum(complete.cases(allData));
-      
-    } # end if statement
-    # if it does exist, then we add the data from the data file to the excisting data frame using rbind
-    else {
-      # we will (temporarily) store the new data in a vector of its own so we can count the 
-      # number of complete cases being read from the specified file
-      newData <- read.csv(fname, header=TRUE);
-      
-      # # in the following statement, the complete.cases function elimintaes all NAs
-      # and the sum function counts all the TRUE entries in that vector
-      completeCount <- sum(complete.cases(newData));
-      
-      # and now add the newData (including incomplete cases) to the allData vector
-      allData <- rbind(allData, newData);  
-    } # end else statement
+    # # in the following statement, the complete.cases function elimintaes all NAs
+    # and the sum function counts all the TRUE entries in that vector
+    completeCount <- sum(complete.cases(newData));
     
-    # print out the number of complete cases for this iteration
-    print(c(as.numeric(i), as.numeric(completeCount)));
+    # padd a new record to the correctFrame for this iteration
     correctFrame <- rbind(correctFrame, c(as.numeric(i), as.numeric(completeCount)));
     
   } # end for loop
@@ -66,7 +47,7 @@ complete <- function(directory, id = 1:332) {
   # assign the correct column names to the data Frame
   colnames(correctFrame) <- c("id","nobs")
   
-  # print the resulting data frame
+  # return the resulting data frame
   return(correctFrame);
   
 } # end of for loop
