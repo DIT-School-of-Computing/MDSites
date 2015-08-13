@@ -1,7 +1,11 @@
 pollutantmean <- function(directory, pollutant, id = 1:332) {
     ## 'directory' is a character vector of length 1 indicating
     ## the location of the CSV files
-    print(paste("We will be reading files from the directory:",directory));
+
+    ## 'id' is an integer vector indicating the monitor ID numbers
+    ## to be used
+  
+    print(paste("We will be reading",length(id),"files from the directory:",directory));
     
     ## 'pollutant' is a character vector of length 1 indicating
     ## the name of the pollutant for which we will calculate the
@@ -15,10 +19,7 @@ pollutantmean <- function(directory, pollutant, id = 1:332) {
       # print(paste(pollutant, " is not a valid pollutant name, so we will exit here."));
       stop(paste(pollutant, "is not a valid pollutant name, so we will exit here."));
     }
-    
-    ## 'id' is an integer vector indicating the monitor ID numbers
-    ## to be used
-    print(length(id));
+
     
     ## Return the mean of the pollutant across all monitors list
     ## in the 'id' vector (ignoring NA values)
@@ -28,8 +29,8 @@ pollutantmean <- function(directory, pollutant, id = 1:332) {
     # this code loops through all the values in the id argument to the function call
     # and for each, either creates (if it is the first value) or appends the records read from 
     # the .csv file to the allData data frame
-    for( i in id) 
-    {
+    for( i in id) # for each numeric in the id list provided (or not provided) as an argument
+    { # begin for loop
       
       # this converts single or double-digit file numbers into a three-digit file number
       # padded with leading 0
@@ -52,10 +53,6 @@ pollutantmean <- function(directory, pollutant, id = 1:332) {
     
     nrow(allData);
     
-    #good <- na.omit(agg1[["sulfate"]])
-    #sum(agg1[["sulfate"]], na.rm=TRUE);
-    
-    #f <- factor(c("Date","sulfate","nitrate","ID"),ordered=TRUE);
-    
-  }
-
+    good <- na.omit(allData[pollutant]);
+    good;
+}
