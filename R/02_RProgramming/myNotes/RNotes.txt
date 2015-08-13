@@ -114,7 +114,7 @@ R Data Types - Objects and Attributes
 		
 	
 Creating Vectors
-	C function to create vectors
+	c function to create vectors
 	c == Concatenate things
 	including complex numbers
 	vector function can create a vector of a type and length, buy default initialised to 0
