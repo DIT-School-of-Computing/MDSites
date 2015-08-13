@@ -54,5 +54,5 @@ pollutantmean <- function(directory, pollutant, id = 1:332) {
     nrow(allData);
     
     good <- na.omit(allData[pollutant]);
-    good;
+    mean(good[2,])
 }
