@@ -50,9 +50,14 @@ pollutantmean <- function(directory, pollutant, id = 1:332) {
         allData <- rbind(allData, read.csv(fname, header=TRUE));  
       } # end else statement
     } # end for loop
-    
-    nrow(allData);
-    
-    good <- na.omit(allData[pollutant]);
-    mean(good[2,])
+
+    # this will select, from the allData data frame
+    # the column with the name specified as a function argument pollutant
+    # it will then exclude al NA values from that column only and assign that the the good vector
+    good <- na.omit(allData[,pollutant]);
+
+    # the mean of the specified pollutant is the mean of the above vector 
+    pollutantMean = mean(good);
+    print(paste("The mean value of pollutant:",pollutant,"is", pollutantMean));
+
 }
