@@ -1038,7 +1038,6 @@ Lexical scoping Rules
 	I'm going to skip the rest of this, as I feel it has more to do with Compiler design 
 	than with the use of the R programming language.
 	
-Week 3
 Coding Standards in  R
 	Some basic minimal standard when coding in R:
 		Always write and save using text editor. 
@@ -1056,4 +1055,144 @@ Dates and Times in R:
 	Dates are stored internally as number of days since 1st January 1970
 	Times are stored internally as number of seconds since 1st January 1970
 	
+	x <- as.Date("1970-01-01"); # as YYYY-MM-DD
+	> x;
+		[1] "1970-01-01"
+	> unclass(x);
+		[1] 0
+	> unclass(as.Date("1970-01-02"))
+		[1] 1
 	
+	POSIX - Family of Computing Standards (based on UNIX)
+	POSIXct, times are represented as very large integers.
+	Useful for storing dates, for example, in a Data Frame, makes more efficient use of space
+	POSIXlt, Stores time as a list, including a bunch of other useful information, day 
+	of week, etc... day of the year or month, month itself
+	Generic functions that operate on dates and times 
+	weekdays() gives the day of the week
+	months() gives the month names
+	quarters() gives the quarter numbers "Q1", Q2, Q3, Q4
+	These generic functions operate on instances of class POSIXct, POSIXlt or Date
+	
+	x <- Sys.time();
+	> x
+		[1] "2015-08-17 11:11:12 IST"
+	> p <- as.POSIXlt(x);
+	> names(unclass(p));
+		[1] "sec"    "min"    "hour"   "mday"   "mon"    "year"   "wday"   "yday"   "isdst"  "zone"   "gmtoff"
+	> p$sec
+		[1] 12.93365
+	
+	strptime() function converts dates writte in character string format into date or time objects
+	these use format strings
+	
+	dateString <- c("January 10, 2012 10:40", "December 14, 2015 11:15");
+	> datestring;
+		[1] "January 10, 2012 10:40"  "December 14, 2015 11:15"
+	> x <- strptime(dateString, "%B %d, %Y %H:%M");
+	> x;
+		[1] "2012-01-10 10:40:00 GMT" "2015-12-14 11:15:00 GMT"
+	> class(x);
+		[1] "POSIXlt" "POSIXt" 
+	You don't need to remember all of these, look them up using help(strptime)
+	
+	Once you have them in one of the date/time formats, you can compare and operate on them
+	add, subtract, compare etc..
+	x <- as.Date("2012-01-01");
+	> y <- strptime("09 Jan 2011 11:23:45", "%d %b %Y %H:%M:%S")
+	> x <- as.POSIXlt(x);
+	> x-y
+		Time difference of 356.5252 days
+		
+	Date/Time operators keep track of very tricky things like leap years, 
+	leap seconds, daylight savings time, etc...
+		
+	x <- as.Date("2012-02-28");
+	> y <- as.Date("2012-03-01");
+	> y-x
+		Time difference of 2 days
+		
+	x<- as.POSIXct("2012-03-01 04:00", tz="GMT")
+	> y<- as.POSIXct("2012-03-01 04:00", tz="EST")
+	> x-y
+		Time difference of -5 hours
+	
+	Many of the plot functions recognise date/time functions
+	
+Week 3
+	Loop functions are very useful particularly in the interactive setting
+	they usually have the word  apply in the somewhere
+	lapply, tapply, mapply, sapply, apply
+		lapply() loop over a list
+		sapply() loop over a list, but try to simplify the output
+		apply() apply a function over the margins(?) of an array
+		tapply() apply a function over a vector
+		mapply() multivariate(?) version of apply
+	an associated function split() is also useful, particularly in conjunction
+	with lapply()
+	
+	lapply() applies over a list of objects and apply a function to every
+	element of that list
+	
+	takes three arguments, a list, a function name, and other arguments via ... 
+	to be passed to the function
+	if x is not a list, it will be coerced to a list. If it is not possible to 
+	coerce it to a list, this will throw an error
+	
+	The looping is done internally in C code (to make it faster)
+	
+	List can contain any number of different types of objects
+	The function will return something for every single objects in that list
+	and the returned objects will be assembled into a list
+	
+	x <- list(a = 1:5, b = rnorm(10));
+	> lapply(x,mean);
+	$a
+		[1] 3
+	$b
+		[1] 0.1031459
+
+	What comes out will always be a list
+	In this case, the output list is the mean of each of the constituent elements
+	in the input list
+	
+	x <- list(a = 1:4, b = rnorm(10), c=rnorm(20,1), d=rnorm(100,5));
+	> lapply(x,mean);
+	$a
+		[1] 2.5
+	$b
+		[1] -0.6492157
+	$c
+		[1] 1.137573
+	$d
+		[1] 4.956495
+
+	# this will apply runif to generate 1, 2, 3 and 4 random variables 
+	# in vectors if size 1, 2, 3 and 4, using a uniform distribution between
+	0 (default value) and 1 (default value)
+	x <- 1:4
+	> lapply(x, runif);
+		[[1]]
+			[1] 0.9317706
+		[[2]]
+			[1] 0.7362802 0.6930730
+		[[3]]
+			[1] 0.3659086 0.2882903 0.7089693
+		[[4]]
+			[1] 0.37149867 0.82295571 0.37008393 0.03329836
+
+	# or, we would generate random variables in the range 0 - 10
+	# then we need to pass some arguments to the runif function which are not
+	# the default values
+	x <- 1:4
+	> lapply(x, runif, min=0, max=10);
+		[[1]]
+			[1] 8.089035
+		[[2]]
+			[1] 5.300923 8.660419
+		[[3]]
+			[1] 8.061041 7.846111 4.685600
+		[[4]]
+			[1] 2.2900960 0.8437773 6.7850869 8.6298249
+			
+			
