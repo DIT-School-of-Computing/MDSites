@@ -1195,4 +1195,219 @@ Week 3
 		[[4]]
 			[1] 2.2900960 0.8437773 6.7850869 8.6298249
 			
+	Anonymous Functions - functions that don't have names
+	lapply() and others make heavy use of anonymous functions
+	(inner functions)
+	
+	> x <- list(a=matrix(1:4, 2, 2), b=matrix(1:6,3,2));
+	> x
+	$a
+    		 [,1] [,2]
+		[1,]    1    3
+		[2,]    2    4
+	$b
+    		 [,1] [,2]
+		[1,]    1    4
+		[2,]    2    5
+		[3,]    3    6
+
+	> lapply(x, function(elt) elt[,1]);
+	$a
+		[1] 1 2
+	$b
+	[1] 1 2 3
+	
+	sapply() is just a variant of lapply that tries to simplify the output of lapply
+	lapply always returns a list, but sometimes you don't want a list
+	if the result is a list where element is a list of length 1
+	sapply will simplify that into a vector
+	if lapply would have returned a list of elements, each of which was the same length,
+	say 5, then instead of a list of list objects, sapply will return a single matrix
+	of width 5
+	if it cannot figure out how to simplify it, it will just return the same list
+	as lapply would have returned.
+	
+	in the case of an earlier example, the out is provided as a list of lists
+	we would like a list of elements
+	> x <- list(a = 1:4, b = rnorm(10), c=rnorm(20,1), d=rnorm(100,5));
+	> lapply(x,mean);
+	$a
+		[1] 2.5
+	$b
+		[1] 0.3371954
+	$c
+		[1] 1.272654
+	$d
+		[1] 5.086493
+
+		 sapply(x,mean)
+ 	       a         b         c         d 
+	2.5000000 0.3371954 1.2726539 5.0864931
+	
+Loop functions:
+	apply function
+	"over the margins of an array" 
+	Usually used to apply a function to the rows or columns of an array, 
+	may be matrices, or 3-d arrays etc.
+	Such, as taking the average of a list of matrices for example
+	Some say using apply is faster or better, but not true.
+	It just involves less typing.
+	Very useful in the command-line doing exploratory analysis
+	
+	first argument x is an array ( a vector that has dimensions attached)
+	a MARGIN is an integer vector which indicates which margins should be retained
+	fun is the applied function to be applied to the MARGINS
+
+	# This calculates the mean of each column of the matrix
+	# the following matrix has two dimensions
+	# dimension 1 has 20 rows and dimension 2 has 10 columns
+	x <- matrix(rnorm(200), 20, 10)
+
+	# when you apply the funciton mean over the matrix, you want to keep the second dimension (10 columns)
+	# and you want to collapse the first dimension (20 columns)
+	# so the following will generate a vector of length 10
+	apply(x,2,mean);
+		[1]  0.27439271  0.32592794 -0.37209174  0.01005297 -0.22061227  0.63044951
+ 		[7]  0.12472902  0.60910339 -0.06899427 -0.32565312
+
+	# now, when you apply the function sum over the matrix, you want to keep the first dimension (20 rows)
+	# and you want to collapse the second dimension (10 columns)
+	# so the following will generate a vector of length 20
+	apply(x,1,sum);
+	 [1]  1.470405287  3.695373058 -3.585167659  2.414553973  1.577486709
+	 [6]  0.219698090  6.265557982  0.004990271  1.113412301  5.298736570
+	[11]  0.543325828 -3.273780387 -1.790707802 -0.308723057  3.545024282
+	[16]  2.711870941 -2.659647312  3.349008835 -1.835894980  0.990560095
+	
+	For simple operations, there are special functions
+	For example, calculating the sum or mean of a column or a row etc
+	rowSums, rowMeans, colSums, colMeans, but they have been highly optimzed as an
+	alternative to apply
+	
+	apply can also be used to apply other types of functions
+	Say, I want to calculate the 25th and the 75th percentile of the data in an array
+	
+	> x <- matrix(rnorm(200),20,10);
+	> apply(x,1,quantile, probs=c(0.25, 0.75));
+				  [,1]       [,2]        [,3]       [,4]       [,5]       [,6]
+		25% -0.5963915 -0.1922137 -0.96006166 -0.8619080 -1.5543563 -0.5973851
+		75%  1.1314451  0.6993099  0.07166677  0.5263077 -0.2096217  0.5076171
+					[,7]       [,8]       [,9]      [,10]      [,11]      [,12]
+		25% -1.475460827 -0.8091843 -0.9161577 -0.3761905 -0.5335400 -0.3678845
+		75%  0.004992461 -0.2066058  0.2033654  0.6435745  0.9019949  0.5778434
+				[,13]      [,14]      [,15]     [,16]      [,17]      [,18]      [,19]
+		25% 0.5833988 -0.9756746 -0.3707922 0.2106178 -0.7990245 -0.2621262 -0.6105674
+		75% 1.1283707  0.6410594  0.7419447 1.3510771  0.4040058  0.6751226  0.6095528
+				 [,20]
+		25% -0.7567691
+		75%  0.6987747
+	
+	
+	gives us 20 x 25th percentile and 20 x 75th percentile for each of the 20 columns (which I want to keep)
+	goes through each row and calculates 25th and 75th percentile
+	Will create a matrix 2x20 with 2 rows and 20 coulmns
+	
+	Suppose I had more than a Matrix, an array, two rows and two columns and depth 10
+	2x2 matrices, 10 of them
+	I want to take the average of each of these
+	I want to keep the first and second dimensions, but collapse the third
+	so, 
+	
+	a <- array(rnorm(2,2,10),c(2,2,10));
+	> apply(a, c(1,2), mean);
+		          [,1]      [,2]
+		[1,] -3.313492 -3.313492
+		[2,]  3.905647  3.905647
+
+	# we gave a vector 1,2 as an argument, so we collapsed 3 and left 1 and 2 intact
+	We can also use rowmeans using dims=2 as an argument
+	
+	mapply is a multivariate version of lappy and sapply functions
+	applies a function in parallel over a set of different arguments
+	lappy, sapply, tapply only apply over the elements of a single object
+	If you have the elemtns of 2 lists as the arguments, then mapply is used
+	to take the elements of list 1 as one argument and elements of list 2 as the other.
+	So, mapply can take many lists as arguments.
+	so, the first argument is the function you wish to apply
+	has to have be at least as many as the number of lists you are going to pass to mapply
+	so the lists will be passed through the... argument to the function
+	The simplify argument is the same as in sapply
+	
+	So, we create a list 1,2,3,4
+	> a <- list(rep(1,4), rep(2,3), rep(3,2), r .... [TRUNCATED] 
+	> # or we could use mapply, by supplying the correct arguments
+	> # since we are repeatedly calling the rep function with
+	> # different arguments
+	> b < .... [TRUNCATED] 
+	> a
+		[[1]]
+		[1] 1 1 1 1
+
+		[[2]]
+		[1] 2 2 2
+
+		[[3]]
+		[1] 3 3
+
+		[[4]]
+		[1] 4
+
+	> b
+		[[1]]
+		[1] 1 1 1 1
+
+		[[2]]
+		[1] 2 2 2
+
+		[[3]]
+		[1] 3 3
+
+		[[4]]
+		[1] 4
+		
+	> noise <- function(n,mean,sd) {
+		rnorm(n,mean,sd);
+	} # end function definition
+	> noise(5,1,2)
+		[1]  1.55801004 -2.59574494 -0.08577167  3.44983739 -2.08045156
+	> noise(1:5,1:5,2)
+		[1] 0.7447444 0.9643688 6.6826463 6.6946668 2.7778213
+		
+	What we wanted was 1 normal random of mean 1, 2 random normals of mean 2 etc
+	But that function isn;t doing that, so we will use the mapply function instead
+	by vectorizing it.
+	
+	> mapply(noise, 1:5, 1:5, 2)
+		[[1]]
+		[1] 1.691292
+
+		[[2]]
+		[1]  3.259897 -2.562828
+
+		[[3]]
+		[1]  1.7971323 -0.3170168  0.4553192
+
+		[[4]]
+		[1] 2.890792 4.524819 5.133898 4.620507
+
+		[[5]]
+			[1] 1.290508 3.341373 7.027103 8.080626 2.792093
 			
+	# which is the same as, but a lot simpler than
+	a <- list(noise(1,1,2), noise(2,2,2), noise (3,3,2), noise(4,4,2), noise(5,5,2))
+
+		
+		[[1]]
+			[1] 0.3077276
+
+		[[2]]
+			[1]  6.407149 -2.685521
+
+		[[3]]
+			[1] -1.200097  2.139853  4.939929
+
+		[[4]]
+			[1]  1.4694777  3.6278634  5.8051157 -0.6909731
+
+		[[5]]
+			[1] 5.889085 3.759678 3.460615 2.173719 3.694151
