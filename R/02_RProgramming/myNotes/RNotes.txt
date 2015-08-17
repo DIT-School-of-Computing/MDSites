@@ -1411,3 +1411,6 @@ Loop functions:
 
 		[[5]]
 			[1] 5.889085 3.759678 3.460615 2.173719 3.694151
+
+Loop functions: tapply
+	
