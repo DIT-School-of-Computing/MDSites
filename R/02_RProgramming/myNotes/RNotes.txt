@@ -1038,4 +1038,22 @@ Lexical scoping Rules
 	I'm going to skip the rest of this, as I feel it has more to do with Compiler design 
 	than with the use of the R programming language.
 	
+Week 3
+Coding Standards in  R
+	Some basic minimal standard when coding in R:
+		Always write and save using text editor. 
+		Indentation
+		Limit the width of your code
+		Using preferences to change indentation
+		Limit the length of functions. Keep them simple by doing only one basic activity
+		This enhances both readability and modularity
+		This also assists debugging and traceback by examining the function stack
+		
+Dates and Times in R:
+	R has a special way to represent dates and times, using special classes.
+	Dates are represented by the Date class
+	Times are represented by the POSIXct and the POSIXlt classes
+	Dates are stored internally as number of days since 1st January 1970
+	Times are stored internally as number of seconds since 1st January 1970
+	
 	

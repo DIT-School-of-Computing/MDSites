@@ -13,9 +13,9 @@ corr <- function(directory, threshold = 0) {
   
   ## Return a numeric vector of correlations
   ## NOTE: Do not round the result!
-
+  
   # dir(directory, pattern = "^[0-9]", full.names = TRUE, ignore.case = TRUE)
-    
+  
   # generate a list of all files in the specified directory
   
   results <- vector();
@@ -31,12 +31,12 @@ corr <- function(directory, threshold = 0) {
       allData <- read.csv(fname, header=TRUE);  
       allData <- na.omit(allData);
       
-#      print(paste("count:",correct,"correlate", fname));
+      #      print(paste("count:",correct,"correlate", fname));
       result <- cor(allData["nitrate"],allData["sulfate"]);
       # print(result);
       results <- c(results, result);
     } # end if (threshold) loop
-
+    
   } # end for loop
   return(results);
   
@@ -66,19 +66,19 @@ countComplete <- function(fname) {
   # this code loops through all the values in the id argument to the function call
   # and for each, either creates (if it is the first value) or appends the records read from 
   # the .csv file to the allData data frame
-
+  
   # this converts single or double-digit file numbers into a three-digit file number
-    # padded with leading 0
-    # for example 1 becomes 001, 21 becomes 021 and 321 remains 321
-    
-    # we will (temporarily) store the new data in a vector of its own so we can count the 
-    # number of complete cases being read from the specified file
-    newData <- read.csv(fname, header=TRUE);
-    
-    # # in the following statement, the complete.cases function elimintaes all NAs
-    # and the sum function counts all the TRUE entries in that vector
-    completeCount <- sum(complete.cases(newData));
-
-    return(completeCount);
+  # padded with leading 0
+  # for example 1 becomes 001, 21 becomes 021 and 321 remains 321
+  
+  # we will (temporarily) store the new data in a vector of its own so we can count the 
+  # number of complete cases being read from the specified file
+  newData <- read.csv(fname, header=TRUE);
+  
+  # # in the following statement, the complete.cases function elimintaes all NAs
+  # and the sum function counts all the TRUE entries in that vector
+  completeCount <- sum(complete.cases(newData));
+  
+  return(completeCount);
   
 } # end of countComplete function
