@@ -1413,4 +1413,20 @@ Loop functions:
 			[1] 5.889085 3.759678 3.460615 2.173719 3.694151
 
 Loop functions: tapply
+	Used to apply function over subsets of a vector
+	You are going to have another object to identify which elements of the numeric
+	vector represents a group
+	first argument is a numeric (or other vector) second vector identifies to which 
+	group each element of the first vector belongs
+	fun is the function you want to apply, or an anonymous function and then ... arguments
+	simplify indicates whether you want to simplify the result
+	ten normal variables, ten uniform variables, and ten normals having a mean of 1
+
+	> x <- c(rnorm(10), runif(10), rnorm(10,1));
+	> f <- gl(3,10);
+	> tapply(x, f, mean);
+		         1          2          3 
+		-0.3959345  0.6943702  1.1775065 	
+	
+	
 	
