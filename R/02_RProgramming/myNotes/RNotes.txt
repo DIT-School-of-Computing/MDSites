@@ -1671,4 +1671,91 @@ Debugging tools (built-in part of R)
 		Were your expectations correct in the first place?
 		Can you reproduce the problem?
 		
-		
+Debugging tools in R
+	traceback: prints the function stack
+	debug: flags a function for debug mode, by allowing you to step through it
+	browser: suspends the execution of a function whenever it is called and puts the 
+		function in debug mode, similar to debug, but occurs later in the function
+		like a breakpoint
+	trace: allows you to insert debugging code into a function at specific places.
+		Allows you to edit the behaviour of the function without modifying its code, 
+		to which we may not have access
+	recover: allows you to modify the error behaviour so that you can browse the 
+		function call stack. Recover allows you to resume execution, to override the 
+		fact that an error caused the function to halt. For use with error 
+		handlers.
+	Of course, the usual print and cat functions will also help.
+	Some people argue that over-reliance on the debugger causes sloppy coding habits
+	That some people would just code it and let it fail, then use the debugger to sort it out.
+	
+Debugging examples
+	
+	> mean(xyz)
+		Error in mean(xyz) : object 'xyz' not found
+	> traceback()
+		1: mean(xyz)
+	
+A more complex example	
+	> lm(y-x)
+		Error in formula.default(object, env = baseenv()) : invalid formula
+		In addition: Warning message:
+		In Ops.factor(y, x) : ‘-’ not meaningful for factors
+	> traceback()
+		9: stop("invalid formula")
+		8: formula.default(object, env = baseenv())
+		7: formula(object, env = baseenv())
+		6: as.formula(formula)
+		5: model.frame.default(formula = y - x, drop.unused.levels = TRUE)
+		4: stats::model.frame(formula = y - x, drop.unused.levels = TRUE)
+		3: eval(expr, envir, enclos)
+		2: eval(mf, parent.frame())
+		1: lm(y - x)
+
+	This shows us that at the 7th level, the error occurred.
+	
+	Debug function does not really work well in the static format, but this example
+	illustrates it in any case
+	
+	> debug(lm)
+	> lm(y - x)
+	debugging in: lm(y - x)
+	debug: {
+ 	   ret.x <- x
+ 		...
+		...
+		...
+		z$qr <- NULL
+ 		z
+	}
+	
+	You can debug any function, whether you wrote it or not. 
+	It will print out the entire function body code
+	the a browse prompt.
+	You are now in the browser
+	This is just like the workspace, an embedded workspace.
+	The environment of that browser is what is in the environment of the function
+	
+	n <cr> causes the next line to be executed, and the code environment to be
+	highlighted above
+	
+	You can further debug function calls from within the browser, bringing you to
+	a third level in the browser.
+	
+	debug(<function about to be called>)
+	n <cr>
+	So we can nest debug calls
+	
+	Recover: you can set the global option to be to recover
+	This presents you with a menu of options, traceback, 
+	read.csv is a wrapper for read.table which calls file()
+	so, error occurred at the third level, so you can step into the function calls
+	before where the error occurred, to see what caused the ultimate function 
+	call to fail.
+	
+ 	Message
+ 	Warning
+ 	Error
+ 	
+ 	Summary of debugging techniques and tools.
+ 	These are interactive tools, which is their strength.
+ 	Debugging tools are not a substitute for thinking! 	
