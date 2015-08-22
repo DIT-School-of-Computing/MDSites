@@ -1429,4 +1429,123 @@ Loop functions: tapply
 		-0.3959345  0.6943702  1.1775065 	
 	
 	
+	If you don't simplify the result, then what you get back is going to be a list
+	simplify=TRUE by default
 	
+	> tapply(x, f, mean, simplify=FALSE);
+		$`1`
+		[1] -0.1702084
+
+		$`2`
+		[1] 0.516251
+
+		$`3`
+		[1] 1.599594
+		
+	> tapply(x, f, range); # range is giving me the min and max of each group
+		$`1`
+		[1] -1.386647  1.350640
+
+		$`2`
+		[1] 0.03477939 0.83334492
+
+		$`3`
+		[1] -0.1450584  1.9151964
+		
+Loop Functions, split
+	tapply splits a vector into little pieces and applies a summary function 
+	to those pieces, and then brings those pieces back together again.
+	split splits a vector into pieces determined by a factor or a list of factors.
+	x is a vector
+	f is a factor (or coerced to one, or a list of factors)
+	drop indicates whether empty factors levels should be dropped
+	
+	very handy for use in conjunction with lapply and mapply etc.
+	
+	x <- c(rnorm(10), runif(10), rnorm(10,1));
+	f <- gl(3,10);
+
+	> split(x, f);
+		$`1`
+		 [1]  1.68342471 -0.08852192  0.47162544  0.29418558 -2.75552260  2.40914205
+		 [7]  0.26817213 -0.00787619  1.20306115 -0.45129049
+
+		$`2`
+		 [1] 0.7341148 0.8084971 0.2598419 0.7843998 0.3313043 0.8531947 0.4565995
+		 [8] 0.5108040 0.6142145 0.1117540
+
+		$`3`
+		 [1]  2.3412805 -0.5494704  1.5514728 -0.5698357  1.2037660  1.5213003
+		 [7]  1.3188308 -1.3655054  0.8787376  1.1181909
+
+		Factor variable splits x into three parts
+		factor variable has three levels
+		get a list back for the forst 10 (normals)
+		10 uniforms and 10 normals
+		split always returns a list back 
+	
+	If you want to do something with this list, you can use lapply or sapply
+	so, we can embed a split call within a lapply function call etc.
+	
+	x <- c(rnorm(10), runif(10), rnorm(10,1));
+	f <- gl(3,10);
+
+	> lapply(split(x, f), mean);
+		$`1`
+		[1] -0.1312475
+
+		$`2`
+		[1] 0.4266008
+
+		$`3`
+		[1] 1.238804
+		
+	
+	USing split to split the x vector, and then take the output and send it to 
+	lapply with function mean
+	
+	This could also be done directly using the tapply function, but this offers 
+	an option
+	
+	Split can be used to split much more complex types of objects than would be 
+	the case with the tapply function directly
+	
+	library(datasets);
+	head(airquality);
+		  Ozone Solar.R Wind Temp Month Day
+		1    41     190  7.4   67     5   1
+		2    36     118  8.0   72     5   2
+		3    12     149 12.6   74     5   3
+		4    18     313 11.5   62     5   4
+		5    NA      NA 14.3   56     5   5
+		6    28      NA 14.9   66     5   6
+		
+	Say we wanted to calculate the mean within each month of the data above
+	split the data frame into monthly pieces, then calculate the monthly 
+	means of the individual columns
+	We are going to split by creating a factor variable based on the month
+	variable
+	
+	library(datasets);
+	> s <- split(airquality, airquality$Month);
+	> lapply(s, function(x) colMeans(x[, c("Ozone", "Solar.R", "Wind")]));
+	$`5`
+	   Ozone  Solar.R     Wind 
+		  NA       NA 11.62258 
+
+	$`6`
+		Ozone   Solar.R      Wind 
+		   NA 190.16667  10.26667 
+
+	$`7`
+		 Ozone    Solar.R       Wind 
+			NA 216.483871   8.941935 
+
+	$`8`
+	   Ozone  Solar.R     Wind 
+		  NA       NA 8.793548 
+
+	$`9`
+	   Ozone  Solar.R     Wind 
+		  NA 167.4333  10.1800 
+		  
