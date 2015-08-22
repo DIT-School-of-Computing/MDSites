@@ -1570,3 +1570,105 @@ Loop Functions, split
 		Wind     11.62258  10.26667   8.941935   8.793548  10.18000
 		
 	
+	Split is a very powerful function for splitting a vector according to
+	the contents of a factor, and then applying a function across those
+	partial-vectors. 
+	
+Splitting on more than one level.
+	So far, we have split only on one dimension;
+	What if we want to split based on several factors. 
+	Say, gender and race
+
+
+	> x  <- rnorm(10);
+	> f1 <- gl(2,5); # 2 levels, 5 times
+	> f2 <- gl(5,2); # 5 levels, 2 times
+	> interaction(f1, f2);
+		 [1] 1.1 1.1 1.2 1.2 1.3 2.3 2.4 2.4 2.5 2.5
+		Levels: 1.1 2.1 1.2 2.2 1.3 2.3 1.4 2.4 1.5 2.5
+		(we will see later that there are empty levels in this interaction)
+		2.1, 2.1, 1.4, 1.5 do not exist in the top array
+		
+	Total combination of 10 different levels.
+	Interaction prints out a total of 10 levels
+	
+	Now we can split the numeric vector, x, according to the two factors
+	we don't have to call the interaction function, that will be called
+	automatically for us.
+	
+	> str(split(x, list(f1, f2)));
+		List of 10
+		 $ 1.1: num [1:2] 1.154 0.783
+		 $ 2.1: num(0) 
+		 $ 1.2: num [1:2] -1.1594 -0.0932
+		 $ 2.2: num(0) 
+		 $ 1.3: num 0.623
+		 $ 2.3: num 0.819
+		 $ 1.4: num(0) 
+		 $ 2.4: num [1:2] -1.189 -0.114
+		 $ 1.5: num(0) 
+		 $ 2.5: num [1:2] 0.0129 -0.3515
+	
+	Just pass a list with the two factors, f1 and f2
+	Returns a list with the levels of the 10 different interaction factors
+	There are some empty levels, with zero elements in them.
+	We could take that list and lapply or sapply over it, or we could
+	drop the empty levels by using the drop=TRUE argument
+	
+	> str(split(x, list(f1, f2),drop=TRUE));
+		List of 6
+		 $ 1.1: num [1:2] -0.783 -0.879
+		 $ 1.2: num [1:2] 1.1427 0.0465
+		 $ 1.3: num -0.738
+		 $ 2.3: num -0.525
+		 $ 2.4: num [1:2] 0.3298 0.0324
+		 $ 2.5: num [1:2] -1.0797 0.0498
+	
+Debugging tools (built-in part of R)
+	Message, Warning, Error, Condition,
+	These may indicate that something is wrong
+	Warning: something unexpected happened, not enough to kill the whole thing
+	Error: Fatal problem, stops execution of the function
+	Condition: All three of the above are conditions. You can create your own
+	condition classes
+	
+	Warning:
+	log(-1);
+		[1] NaN
+		Warning message:
+		In log(-1) : NaNs produced
+	
+	Aside: In the following code, invisible prevents autoprinting, which is the 
+	printing of the last value returned by the function.
+	Calling the function causes the object to be returned, but not printed 
+	as is automatically the case.
+	All print functions actually return the object that got printed.
+	So you could assigned the output of a print statement to an object.
+	
+	So, our function does not know how to handle NA, so it will throw an error
+	> printmessage(1);
+		[1] "x is greater than zero"
+	> printmessage(0);
+		[1] "x is less than or equal to zero"
+	> printmessage(-2);
+		[1] "x is less than or equal to zero"
+	> printmessage(NA);
+		Error in if (x > 0) { : missing value where TRUE/FALSE needed
+
+	We can fix this by handling the NA value
+	> printmessage(log(-1));
+		[1] "x is a missing value!"
+		Warning message:
+		In log(-1) : NaNs produced
+		
+	Questions:
+		Is it coder error, or user error?
+		What WAS your input? How did you call the function?
+		What were you expecting? Output messages, other results?
+			I was expecting this (was that correct), I got that (was that correct?)
+		What did you get?
+		How does what you got differ from what you were expecting?
+		Were your expectations correct in the first place?
+		Can you reproduce the problem?
+		
+		
