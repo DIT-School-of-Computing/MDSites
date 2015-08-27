@@ -1,0 +1,10 @@
+x <- rpois(10,1);
+print(x);
+y <- rpois(10, 20);
+print(y);
+z <- ppois(2,2);
+print(z);
+v <- ppois(4,2);
+print(v);
+w <- ppois(6,2);
+print(w);
