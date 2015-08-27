@@ -1758,4 +1758,62 @@ A more complex example
  	
  	Summary of debugging techniques and tools.
  	These are interactive tools, which is their strength.
- 	Debugging tools are not a substitute for thinking! 	
+ 	Debugging tools are not a substitute for thinking!
+ 	
+ Week 4 - Simulation and Profiling
+ 	The str function - display the internal structure of an R object
+ 	an alternative to summary
+ 	Useful for large lists, which may contain nested lists
+ 	one line of output per nested object
+ 	> str(str)
+ 	> str(lm)
+ 	> st(ls) 
+ 	etc..
+ 	x <- rnorm(100, 2, 4)
+ 		str(x)
+			num [1:100] -5.06 0.12 7.46 1.85 -1.03 ...	
+	tells us it is a number vector and gives us the first 5 values
+	Create a factor
+	> f <- gl(40, 10)
+	> str(f)
+ 		Factor w/ 40 levels "1","2","3","4",..: 1 1 1 1 1 1 1 1 1 1 ...
+	It is a factor with 40 levels, named as "1", "2", "3", "4", all of which have the label 1
+	
+	> library(datasets)
+	> # head(airquality)
+	> str(airquality)
+		'data.frame':	153 obs. of  6 variables:
+		 $ Ozone  : int  41 36 12 18 NA 28 23 19 8 NA ...
+		 $ Solar.R: int  190 118 149 313 NA NA 299 99 19 194 ...
+		 $ Wind   : num  7.4 8 12.6 11.5 14.3 14.9 8.6 13.8 20.1 8.6 ...
+		 $ Temp   : int  67 72 74 62 56 66 65 59 61 69 ...
+		 $ Month  : int  5 5 5 5 5 5 5 5 5 5 ...
+		 $ Day    : int  1 2 3 4 5 6 7 8 9 10 ...
+	
+	Very useful for quick examination of the structure of R objects
+	> m <- matrix(rnorm(100),10,10)
+	> str(m)
+	 num [1:10, 1:10] -1.401 -1.716 -0.432 -1.027 0.85 ...
+
+	> # print column 1
+	> m[,1]
+	 [1] -1.4006718 -1.7157018 -0.4323202 -1.0269951  0.8500790  1.6980681
+	 [7] -0.5201369  1.1274070 -0.9279968 -0.4422805
+ 
+	library(datasets)
+	s <- split(airquality, airquality$Month);
+	str(s);
+	
+	This gives us a list of 5 different data frames
+	Each data frame gives us data for a given month
+	The data are only collected over 5 different months.
+	September, for example, is as follows
+	 $ 9:'data.frame':	30 obs. of  6 variables:
+	  ..$ Ozone  : int [1:30] 96 78 73 91 47 32 20 23 21 24 ...
+	  ..$ Solar.R: int [1:30] 167 197 183 189 95 92 252 220 230 259 ...
+	  ..$ Wind   : num [1:30] 6.9 5.1 2.8 4.6 7.4 15.5 10.9 10.3 10.9 9.7 ...
+	  ..$ Temp   : int [1:30] 91 92 93 93 87 84 80 78 75 73 ...
+	  ..$ Month  : int [1:30] 9 9 9 9 9 9 9 9 9 9 ...
+	  ..$ Day    : int [1:30] 1 2 3 4 5 6 7 8 9 10 ...
+	  
+	  
