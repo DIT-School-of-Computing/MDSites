@@ -1,0 +1,1823 @@
+R is a dialect of S
+S is a language developed by Bell Labs (1976) internal statistical analysis as Fortran libraries
+Early versions did not contain function
+1988, re-written in C
+"Statistical Models in S" 
+1998 V.4
+"Programming with Data" John Chambers (The Green Book)
+1993, Bell Labs gave it to StatSci
+
+1991 - R
+Paper in 1996
+Ross and Robert, made R free software
+Two main mailing lists, RHelp and RDevelop
+R even runs on PlayStation 3
+Useful for interactive work
+Very active user community
+Free:
+	Doesn't cost anything
+	Free Software: 
+	Free Software Foundation
+	0: To run for any purpose
+	1: Freedom to study how the program works, make changes to it yourself, sell changes etc.
+	2: Freedom to redistribute, can sell copies
+	3: Can improve the program to benefit the entire community
+	 
+Drawbacks: 
+	Based on 4-year-old technology. Little built-in support for dynamic or 3d Graphics
+	Functionality is based on community demand. If nobody has seen fit to implement the
+	feature that you would like, you have to do it yourself
+	Objects you create have to be stored in the physical memory of your computer
+	If the objects you create are larger, then you have to deal with that yourself
+	Not ideal for all possible situations
+	Larger and larger datasets makes a limitation of the fact that the objects must be loaded
+	into physical memory.
+	
+Two Conceptual Parts
+1: Base R System
+	Base package, all the low-level functionality you need to run the R system.
+	From CRAN
+	Other packages, utils stats, data sets graphics, fundamental packages
+	Other recommended packages, boot, class, cluster, codetools, etc..
+	Commonly-used packages
+	 
+2: Everything Else
+	There are alo about 4,000 other packages on CRAN which are user-contributed.
+	CRAN has a number of restrictions in order to get a package onto CRAN
+	Documentation for all functions, pass tests etc.
+	Also packages associated with the bio-conductor project, genomic and biological data analysis.
+	
+Some R resources
+	1: An introduction to R, a long PDF document.
+	2: Writing R extensions manual, for developers of packages
+	3: RData Import and Export manual
+	4: R installation and Administration manual
+	5: RInternals manual, a really technical document about the internals of R
+	
+Standard Texts
+	John Chambers
+	Venables and Ripley
+	Pinheiro and Bates
+	Murrell - RGraphics
+	
+	Springer: Use R!
+	A longer list of books also at R web site
+	
+Getting Help
+	Asking Questions
+		Steps to reproduce the problem
+		Expected output
+		What you see instead
+		What version of the product and Libraries are you using
+		What OS
+		Additional Information
+	Subject Heading in Emails, make it very clear
+	
+	Describe the goal, not the step
+	Be explicit about your question
+	Provide the minimum amount of information necessary
+	Be courteous
+	Follow up with the solution if and when you get it resolved
+	
+	DO NOT claim you found a bug because you can't get it to work
+	Don't email multiple mailing lists at once
+	Specify where you think the problem is
+	
+	Example of wasting a cycle of emails and responses by asking such a vague and high-level
+	issue, with no evidence that the writer ever made any effort to resolve it themselves
+	
+	Class discussion board
+	R-Help mailing list
+	Other project-specific emailing lists	
+	
+	
+Evaluation
+	Evaluated and printed
+	If the expression evaluates to nothing, then there is nothing to show;
+	[1] indicates the first element of the vector.
+	If we store a single element object it is still stored as a vector
+	
+R Data Types - Objects and Attributes
+	Basic, atomic classes.
+	character, numeric, integer, complex and logical
+	The most basic object in R is a  x <- 1:4 , which can be a vetor of consistent object types
+	Everything in a vector has to be of the same class.
+	The list, is a type of vector that can have objects of different classes
+	vector function, class and length
+	R treats numbers as double precision types, but you can force it to use integer by using captal L
+	1L is an integer, 1 is 1.00f
+	Inf is infinity
+	NaN is also included
+	R objects can have attributes;
+		names, dimnames, dimensions, class, length,  other user-defined attributes and meta-data
+		Attributes of an object can be accessed using the attributes() function
+		
+	
+Creating Vectors
+	c function to create vectors
+	c == Concatenate things
+	including complex numbers
+	vector function can create a vector of a type and length, buy default initialised to 0
+	
+Vector of mixed objects, coerce the vector to be the class of the least common denominator class
+	number and string gives a vector of strings
+	numeric and boolean converted to vector of numbers
+	letter and boolean is converted to a character vector
+	be aware of the coercion that occurs in R
+	
+	You can explicitly coerce using the as.* functions
+	This represents the data as the specified type, but does not alter the state of the operated object
+	it simply presents it as a different class
+	x <- 0:6
+	as.numeric(x);
+	as.logical(x);
+	as.character(x);
+	Coercion does not always work and NaN will be returned when it does not make sense
+	
+	list function()
+	Different from vectors in that every element of a list could be an object of a different class
+	elements of lists are indexed using the double brackets
+	elements of other types of vector are indexed with only single brackets around them
+
+Data Types : Matrices
+	Special type of vector
+	vectors that have a dimension attribute, vector of dimension 2, rows and columns
+	m <- matrix(nrow=5, ncol=6);
+	attributes(m)
+	matrix are constructed column-wise, first column gets filled before second column is started
+	m <- matrix(1:6, nrow=5, ncol=6);
+	can also convert a vector to a matrix by assigning the dim attribute to the number of 
+	rows and columns in the vector data
+	m <- 1:10
+	dim(n) <- c(2,5)
+	matrices can be created by binding columns or by binding rows
+	x <- 1:3
+	y <- 10:12
+	cbind(x,y)
+	rbind(x,y)
+	Creates a matrix either with 3,2 rows and columns or 2,3 rows and columns
+	
+Factor
+	Factor is a special type of vector for storing data that are either unordered, Male/Female
+	or categorical and ordered, L, SL1, SL2, SL3
+	Can deine High, Medium, Low, for example in an ordered Factor
+	Factors are treated specially by modelling functions such as lm() and glm()
+	Factors with labels better than integer variables.
+	variable Male/Female better than just 1/2.
+	
+	x <-factor(c("yes","yes","no","no","no"))
+	> x
+		[1] yes yes no  no  no 
+		Levels: no yes
+	> table(x)
+		x
+		 no yes 
+		  3   2 
+	> unclass(x)
+		[1] 2 2 1 1 1
+		attr(,"levels")
+		[1] "no"  "yes"
+
+
+	Ordinarily "no" is baseline level, because "no" comes before "yes" in the alphabet
+	We can set the order of the levels in the factor vector by specifying it upon creation
+	f <- factor(c("yes","yes","no","no","yes"), levels = c("yes","no"))
+	Useful if the factor variables are based on some sort of baseline level
+	single:1 double:1
+	
+Missing Values 
+	denoted by either NA or NaN
+	is.na() tests objects to see if they are missing values
+	is.nan() tests for NaNs
+	NA values can also have a class, the missing object can also have a class
+	a NaN is also a missing NA, but not vice versa
+	
+	> g <- c(1, 2, NA, 4, 5)
+	> g
+		[1]  1  2 NA  4  5
+	> is.na(g)
+		[1] FALSE FALSE  TRUE FALSE FALSE
+		
+	> g <- c(1, 2, NA, NaN, 5)
+	> g
+		[1]   1   2  NA NaN   5
+	> is.na(g)
+		[1] FALSE FALSE  TRUE  TRUE FALSE
+	> is.nan(g)
+		[1] FALSE FALSE FALSE  TRUE FALSE
+	
+Data Frames
+	Used to store Tabular Data
+	Represented as a special type of list where every element has the same length
+	Each column does not have to be same type
+	Unlike Matrices which have to store the same types in each cel
+	Every row can have a name rowname, but often we use 1,2,3
+	read.table read.csv
+	can also create a matrix from a  table by calling the matrix.table function
+	forces coercion
+	Dataframes can be created using the data.frame function
+	specifying the column names
+	> x <- data.frame(foo=1:4, bar=c(T,T,F,F));
+	> x
+		foo   bar
+	1   1  TRUE
+	2   2  TRUE
+	3   3 FALSE
+	4   4 FALSE
+	> nrow(x)
+		[1] 4
+	> ncol(x)
+		[1] 2
+
+Names
+	All R objects can also have names
+	Very useful for writing readable code and self-derscribing objects
+	> w <- 1:3
+	> w
+		[1] 1 2 3
+	> names(w) <- c("foo","bar","norf");
+	> w
+		foo  bar norf 
+		1    2    3 
+	> names(w);
+		[1] "foo"  "bar"  "norf"
+	
+	Lists can also have names
+	
+	> v <- list(a=1, b=2, c=4);
+	> v
+	$a
+	[1] 1
+
+	$b
+	[1] 2
+
+	$c
+	[1] 4
+	
+	Matrices can have names
+	> m <- matrix(1:4, nrow=2, ncol=2);
+	> dimnames(m) <- list(c("r1", "row2"),c("col1","c2")); 
+	> m
+		 col1 c2
+	r1      1  3
+	row2    2  4
+
+Data Types Summary
+	atomic classes, numeric logical, character, integer and complex
+	vectors, lists
+	factors (ordered and unordered)
+	missing values (NA and NaN)
+	data frames
+	names
+	
+Reading (and Writing) Tabular Data in R
+		read.table
+		read.csv
+	read tabular data from text files and return a data frame in R
+
+		readLines
+	gives you text as a character vector in R
+	can read any type of file
+	
+		source
+	important for reading R code
+		dget
+	also reads R code files, for reading R objects that have been de=parsed into text files
+	(does this mean serialized?)
+
+		load and unserialize
+	are for reading binary objects into R
+	
+	Analogous functions for writing are
+		write.table
+		writeLines
+		dump
+		dput
+		save
+		serialize
+		
+	read.table is the most commonly used function for reading data into R
+	it takes some arguments
+	file or connection
+	header, indicating if first line is a header line
+	sep is the separator string
+	colClasses is a character vector indicating the class of each column in the dataset
+		length the same as the number of columns in the data
+	nrows
+	comment.char character string indicating the comment character, default is #
+	skip the number of lines at the start to skip
+		useful for ignoring start data etc.
+	stringsAsFactors defaults to true, do you want to encode character variables as factors
+		R assumes you want to factorize this data.
+		
+	read.table
+		data <- read.table("foo.txt");
+	will automatically try to figure things out itself
+	skip lines beginning with #
+	figure out how many lines etc.
+	Usually not much advantage to providing specific arguments in any case, as R will do
+	pretty well in figuring this out itself
+	read.csv is identical to read.table except that it uses the comma, by default as the separator.
+	for read.table, the default separator is the space
+	read.csv always specifies header=true by default
+
+	
+Reading Large Tables
+	making your life a lot easier and prevent R from choking read the help page for read.Table
+	memorize it even.
+	A lot of important information there on how to optimize read.data particularly for large data sets
+	In particular you will want to know how much memory you need to store the dataset you are about to read.
+	R will try to store the entire dataset in physical memory
+	If there are no comment lines in your file, just set the comment char to be an empty string
+	Using the colClasses argument correctly will also help a lot.
+	If you don't, then R will go through every column and try to figure out what kind of data it is.
+	That's fine for small to moderate data sets and generally slows things down.
+	Will make read.table run a lot faster if used correctly.
+	Even if you give only a single value here, it will assume that every column has that same value
+	Otherwise, you can read in the first 100 or 100 rows by specifying the nrows argument and 
+	going through each of the columns using sapply to identify the derived classes for each column
+	then save this and use it as the colClasses argument for read.table to save R from having to do
+	so on the larger data sets.
+		initial <- read.table("datatable.txt", nrows=100);
+		classes <- sapply(initial, class);
+		tabAll <- read.table("rataset.txt", colClasses=classes);
+		
+	you should also consider setting nrows. It does not help Ro to run any faster.
+	A slight overestimate is ok, but it helps r to  decide how much memory to reserve for 
+	the dataset. Using the unix tool we to count the lines in the file will help here.
+	
+	Knowing your own system, memory available, other applications in use
+	etc...
+	
+	Calculating memory requirements
+
+	1,500,000 rows and 120 columns, all columns are numeric
+	1,500,000 x 120 x 8bytes (8 bytes for each numeric)
+	1,373.20 MB
+	1.34 GB
+	
+Textual data formats dput() and dump()
+	produce text format versions of objects
+	dump or dput will include in the output the class of the data in each column of the 
+	data frame. Still a textual format, but also contains meta data.
+	Produces somewhat less readable output, but saves the down-stream user from having 
+	to re-engineer the data classes etc.
+	Textual formats can be a lot more useful than binary formats as tools like git, etc
+	can more readily track meaningful changes which can be done in text formats rather than
+	binary data.
+	Textual data also adheres to the UNIX philosophy of storing things by text by default 
+	and whenever possible. The can be rather inefficient in terms of space usage.
+	
+	dput
+	
+	> y <- data.frame(a=1, b="a")
+	> dput(y);
+		structure(list(a = 1, 
+						b = structure(1L, .Label = "a", class = "factor")),
+						.Names = c("a", "b"), 
+						row.names = c(NA, -1L), 
+						class = "data.frame")
+	> dput(y, file="y.R");
+	> new.y <-dget("y.R");
+	> new.y
+		  a b
+		1 1 a
+	> y
+		  a b
+		1 1 a
+		
+	So, we can serialize the object y, using dput and then use dget to read it back in
+	
+	dump is a lot like dge
+	dget can only be used on a single r obhect
+	dump can be used on multiple r objects
+	you can pass a character vector of the names of the objects if interest.
+	
+	> d <- "foo";
+	> e <- data.frame(a=1, b="a");
+	> dump(c("d", "e"), file="deData.R");
+	> rm(d,e);
+	> d
+		Error: object 'd' not found
+	> e
+		Error: object 'e' not found
+	> source("deData.R");
+	> d
+		[1] "foo"
+	> e
+ 		  a b
+		1 1 a
+		
+Connections: Interfaces to the Outside World
+	We can interface between R and the outside world
+	functions that are used to open up 'connections' to the outside world
+	most commonly to a file, or a compressed file etc.
+	when we do read.tabe from a file, the connection is done in the background
+	you can also open up a connection to a web page using the url function
+		file
+		gzfile - compressed using gzip
+	 	bzfile - compressed using bzip2
+		url
+	file arguments
+		description  
+		r, w, a, rb, wb, ab
+	
+	con <- file("foo.txt", "r");
+	data <- read.csv(con);
+	close(con);
+		
+	above is the same as doing read.csv on the file
+	useful, though, of you only want to read parts from the file
+	
+	con <- gzfile("words.gz");
+	x <- readLines(con, 10)
+	reads 10 lines from the file words.gz
+	
+	writeLines takes a character vector argument which writes each element one line at a 
+	time to a text file
+	
+	readLines can also be used to read lines from a web page
+	> con <- url("http://www.jhsph.edu","r");
+	> x <- readLines(con)
+	> head(x);
+		[1] "<!DOCTYPE html>"                                               
+		[2] "<html lang=\"en\">"                                            
+		[3] ""                                                              
+		[4] "<head>"                                                        
+		[5] "<meta charset=\"utf-8\" />"                                    
+		[6] "<title>Johns Hopkins Bloomberg School of Public Health</title>"
+		
+	
+Subsetting R Objects - Basics
+				
+	
+Quiz 1
+	>  x <- 1:4 
+	> y <- 2
+	> x+y
+		[1] 3 4 5 6
+	>  x <- c(3, 5, 1, 10, 12, 6) 
+	> x[x %in% 1:5] <- 0
+	> x
+		[1]  0  0  0 10 12  6
+
+Subsetting R Objects - Basics
+	[
+	[[
+	$
+	can all be used for subsetting
+	[ - returns an object of the same class as the original, vector/vector list/list 
+		can be used to select more than one elemenbt of an object (usually)
+	[[ used to extract a single element of a list or a dataframe
+		the returned object will not necessarily be an instance of list or dataframe
+		lists can hold things of different classes, so [[ can return different class objects
+	$ used to extract elements of a list or dataframe that has a name
+		otherwise semantics are the same as [[
+	
+	example:
+		> x <- c("a", "b", "c", "c", "d", "a");
+		> x[1]
+		[1] "a"
+		> x[2]
+		[1] "b"
+		> x[1:4]
+		[1] "a" "b" "c" "c"
+		
+	these are examples of using numeric index
+	but we can also subset using a logical index
+	
+	so we can return a character vector that returns only those letters > a, for example
+	> x[x>"a"]
+		[1] "b" "c" "c" "d"
+	
+	we can create a logical vector, u, so that it is a true or false vector meeting the condition
+	of being greater than a, for example. A bit like a select statement, where the SQL
+	statement is the content of the logical vector
+	
+	> u<- x > "a"
+	> u
+		[1] FALSE  TRUE  TRUE  TRUE  TRUE FALSE
+	each of which match the statement x > "a", for the elements in the original vector x
+	> x[u]
+		[1] "b" "c" "c" "d"
+	
+	So we have used both a numeric index and a logical index
+	
+Subsetting R objects: lists
+	a bit different from subsetting a vector
+	> x <- list(foo=1:4, bar = 0.6);
+	> x[1]
+		$foo
+		[1] 1 2 3 4
+	> x$bar
+		[1] 0.6
+	> x[["bar"]]
+		[1] 0.6
+	> x["bar"]
+	$bar
+		[1] 0.6
+		
+	a list with two elements in it.
+	[a] always returns an element with the same class as the original element
+	so x[1] returns a list containing the sequence 1:4
+	x[[1]] returns just the sequence 1:4
+	
+	subsetting an element using its name means we don't have to remember its numeric position
+	
+	To extract multiple elements of a list, we need to use the [ operator
+	So, give me elements 1 and 3 of the original list
+	> x <- list(foo=1:4, bar = 0.6, baz="hello");
+	so, pass the numeric vector 1,3 to x using the single bracket operator
+	which returns to me a list with elements foo and baz
+	
+	> x[c(1, 3)]
+		$foo
+		[1] 1 2 3 4
+
+		$baz
+		[1] "hello"
+		
+	[[ can be used to index a list where the index itself was computed
+	sometimes the name of the element is the result of some computation
+	so we can create a variable called name, and use that as the operator to
+	the [[ operator
+	
+	> name <- "foo";
+	> x[name]
+		$foo
+		[1] 1 2 3 4
+
+	> x$name # name does not exist as a name, but only as a variable
+		NULL
+	> x$foo
+		[1] 1 2 3 4
+
+	[[ operator can take an integer sequence rather than just a single number.
+	it recurses into the list, effectively 2-D indexing (double subsetting)
+	
+	> x <- list(a = list(10,12,14), b=c(3.14, 2.81))
+	> x[[c(1,3)]] # element 3 of element 1
+		[1] 14
+	> x[[c(2,1)]] # element 1 of element 2
+		[1] 3.14
+
+Subsetting R objects: Matrices
+	matrices can be subsetted in the usual way using the i,j notation
+	> x <- matrix(1:6, 2, 3)
+	> x[1,2]
+		[1] 3
+	> x[2,1]
+		[1] 2
+	> x[1, ] # indices can also be missing, giving row 1
+		[1] 1 3 5
+	> x[ ,2] # or giving column 2
+		[1] 3 4
+
+	by default when a single element of a matrix is retrieved, is returned a vector of length 1
+	rather than a 1x1 matrix.
+	I don't get back a matrix, but an vector with just that element in it
+	so x[1,2] returns a vector with element 1,2 in it, not a matrix 1x1 containing that element
+	we can override this behaviouR with the drop=FALSE argument to the subsetting operation
+	by default the subsetting drops the dimension, with drop=FALSE this is not done
+	so we get a 2 dimensional object back, rather than the 1 dimensional object that
+	would be returned by the drop=TRUE default behaviour
+	> x[1,2]
+		[1] 3
+	> x[1,2, drop=FALSE];
+		 [,1]
+	[1,]    3
+	
+	when you subset a single column or a single row, you don't get back a matrix
+	when you subset out the first row, you might expect a matrix 1x3 containing the 
+	elements of the first row. That's not what you get
+	you get back a vector containing the elements of the first row
+	> x <- matrix(1:6, 2, 3)
+	> x[1, ]
+		[1] 1 3 5
+	> x[1, , drop=FALSE]
+		 [,1] [,2] [,3]
+	[1,]    1    3    5
+
+Subsetting R objects: Subsetting with names
+	Partial Matching - can save a lot of time at the command-line
+	works with [[ and $ operators
+	lets's just alias a to aardvark
+	
+	> x <- list(aardvark=1:5)
+	> x$a
+		[1] 1 2 3 4 5
+	> x[["a"]]
+		NULL
+	> x[["a", exact = FALSE]]
+		[1] 1 2 3 4 5
+	
+	[[ expects that the name will be an exact match, but we can suppress this by 
+	specifying the exact=FALSE argument
+	
+Subsetting R objects, removing NA objects
+	> x <- c(1, 2, NA, 4, NA, 5)
+	> bad <- is.na(x)
+	> bad
+		[1] FALSE FALSE  TRUE FALSE  TRUE FALSE
+	> x[bad]
+		[1] NA NA
+	> x[!bad]
+		[1] 1 2 4 5
+
+	Now, consider multiple objects, x and y, each of which have some missing values
+	we can use complete.cases to create a vector containing logical values
+	for complete cases, 
+	TRUE if both are present, FALSE otherwise
+	
+	> x <- c(1, 2, NA, 4, NA, 5)
+	> y <- c("a", "b", NA, "d", NA, "f")
+	> good <- complete.cases(x,y);
+	> good
+		[1]  TRUE  TRUE FALSE  TRUE FALSE  TRUE
+	> x[good]
+		[1] 1 2 4 5
+	> y[good]
+		[1] "a" "b" "d" "f"
+
+	you can also use complete cases to remove missing values from data frames
+	in the following example, all we want are the rows where all values are non missing
+	so, load the airquality data
+	
+	> airquality <- read.csv("hw1_data.csv");
+	> airquality[1:6, ]
+	  Ozone Solar.R Wind Temp Month Day
+	1    41     190  7.4   67     5   1
+	2    36     118  8.0   72     5   2
+	3    12     149 12.6   74     5   3
+	4    18     313 11.5   62     5   4
+	5    NA      NA 14.3   56     5   5
+	6    28      NA 14.9   66     5   6
+
+	# build the good matrix using complete.cases
+	> good <- complete.cases(airquality);
+	# use the good matrix to subset airquality
+	# and then take the first 6 good rows
+	> airquality[good, ][1:6, ]
+	  Ozone Solar.R Wind Temp Month Day
+	1    41     190  7.4   67     5   1
+	2    36     118  8.0   72     5   2
+	3    12     149 12.6   74     5   3
+	4    18     313 11.5   62     5   4
+	7    23     299  8.6   65     5   7
+	8    19      99 13.8   59     5   8
+	
+	complete.cases very useful function
+	
+Vectorized operations
+	Makes it easy to use on the command-line and write code without having to do 
+	lots of looping
+	things can happen in parallel over two vectors
+	> x <- 1:4; y <-6:9
+	> x+y
+		[1]  7  9 11 13
+
+	we can also do vectorized operations on boolean expressions and other arithmetic 
+	expressions 
+	> x >2
+		[1] FALSE FALSE  TRUE  TRUE
+	> x >= 2
+		[1] FALSE  TRUE  TRUE  TRUE
+	> y ==8
+		[1] FALSE FALSE  TRUE FALSE
+	> x * y
+		[1]  6 14 24 36
+	> x / y
+		[1] 0.1666667 0.2857143 0.3750000 0.4444444
+
+	We can also apply vectorized operations to matrices
+	> x <- matrix(1:4, 2, 2); y <- matrix(rep(10,4), 2, 2)
+	> x * y
+ 	    [,1] [,2]
+	[1,]   10   30
+	[2,]   20   40
+	
+	This is not MATRIX multiplication, simply element by element multiplication
+	
+	> x/y
+	     [,1] [,2]
+	[1,]  0.1  0.3
+	[2,]  0.2  0.4
+
+	This IS matrix multiplication
+	> x %*% y
+     [,1] [,2]
+	[1,]   40   40
+	[2,]   60   60
+
+Introduction to swirl
+	Experimental feature, statistics with interactive r learning
+	SWIRL
+	
+	
+Week 2
+-----
+Control Structures in R
+	Allow you to control the flow of an R programme
+	Very similar to other languages
+	if:else
+	for:
+	while:
+	repeat:
+	break:
+	next: skip an iteration
+	return: exit a function
+	
+	
+if:else
+	if(<condition>) 
+	{
+		# do something
+	}
+	else if(<other condition>)
+	{
+		# do something else
+	{
+	else
+	{
+	# do something else by default
+	}
+	
+if(x>3) {
+	y <- 10
+	}else{
+	y<-0
+	}
+	
+	==or==
+	
+	y <- if (x>3) {
+	10
+	}else{
+	0
+	}
+	
+for
+	for(i in 1:10) {
+		print(i)
+	}
+
+	# all of these will produce the same output
+	> for (i in 1:4){print(x[i])}
+	# seq_along creates an integer vector based on the length of its argument
+	
+	> for(i in seq_along(x)) { print(x[i])}
+	> for(letter in x){print(letter)}
+	> for(i in 1:4) print(x[i])
+		[1] "a"
+		[1] "b"
+		[1] "c"
+		[1] "d"
+		
+	Nested For Looops
+	> x<- matrix(1:6, 2, 3)
+	> for(i in seq_len(nrow(x))){
+	+ for(j in seq_len(ncol(x))){
+	+ print(x[i,j])
+	+ }
+	+ }
+		[1] 1
+		[1] 3
+		[1] 5
+		[1] 2
+		[1] 4
+		[1] 6
+
+While Loops
+	> count <- 0
+	> while(count < 10){
+	+ print(count)
+	+ count <- count+1
+	+ }
+		[1] 0
+		[1] 1
+		[1] 2
+		[1] 3
+		[1] 4
+		[1] 5
+		[1] 6
+		[1] 7
+		[1] 8
+		[1] 9
+		
+
+Repeat, Next, Break
+	repeat requires a break that is guaranteed to occur at some time
+	
+Next, Return
+	Next, to skip an iteration of a loop
+	Return as in other languages, exit andreturn values
+
+	add2 <- function(x, y) {
+	  x + y
+	}
+
+	# function to return a vector of the elements of x (a vector) that are > 10
+	above10 <- function(x)
+	{
+	  # this will return a logical vector, use, indicating whcih members of x are > 10 or an empty numberic
+	  # vector, if there are ni elements above 10
+		use <- x > 10
+		x[use]
+	}
+
+	# function to return a vector of the elements of x (a vector) that are > a given number n
+	# and uses a default value of n = 10
+	above <- function(x, n = 10) 
+	{
+	  use <- x > n
+	  x[use]
+	}
+
+	# take a matrix or data frame and calculate the mean of each column
+	# y is a data frame or a matrix
+	columnMean <- function(y)
+	{
+	  # count the number of columns in the matrix
+	  nc = ncol(y);
+	  # create a vector with nc entries, each default initialized to 0 
+	  means <- numeric(nc);
+	  for (i in 1:nc)
+	  {
+		means[i] <- mean(y[,i])
+	  }
+	  means;
+	}
+	
+	
+More on Functions
+	Functions are R objects of class Function
+	Functions are considered first-class objects, so they can be treated in the same
+	way as any other first-class objects. Functions can also be defined within the scope of
+	other functions. The implications of this are discussed in Lexical Scoping
+	The return value of a function is the value of the last expression to be evaluated
+	within an R function
+	
+	Arguments. Named arguments can have default values.
+	Formal arguments are those that are included in the function definition
+	The formals() function returns a list of all the formal arguments of a function
+	Not every function call makes use of all the formal arguments
+	Function arguments may be missing or might have default values if they have not been
+	specified by the user.
+	Function arguments can be matched by position or by name
+	 sd()
+	calculates the standard deviation
+	Arguments can be specified based on position, or by name
+	You can mix positional arguments and named arguments
+	this allows you to mess around with the order of arguments, but why bother?
+	
+	> mydata <- rnorm(100)
+	> sd(mydata)
+		[1] 1.154282
+	> sd(x = mydata)
+		[1] 1.154282
+	> sd(x = mydata, na.rm=FALSE)
+		[1] 1.154282
+	> sd(na.rm=FALSE, x = mydata)
+		[1] 1.154282
+	> sd(na.rm=FALSE, mydata)
+		[1] 1.154282
+
+	args(lm)
+	function (formula, data, subset, weights, na.action, method = "qr", 
+   	 model = TRUE, x = FALSE, y = FALSE, qr = TRUE, singular.ok = TRUE, 
+   	 contrasts = NULL, offset, ...) 
+
+
+Argument matching. On the command-line, named arguments are very useful, particularly
+	if you want to call arguments by name other than the ones that are to take
+	default arguments.
+	Also very useful for plotting, as these functions often have a very long argument
+	list
+	
+	Function name matching also works. You can provide a partial match for an argument name
+	and as long as the short name supplied is unique, then R will do a partial match
+	If exact name does not match, R will look for a partial match, and if that does not work
+	R will look for a positional match
+	
+	In addition to not specifying a default value you can also set an argument value to NULL
+
+R includes lazy evaluation.
+	This means that the arguments to a function are only evaluated as they are needed
+	If the function uses, for example, only the first argument, and the second is not used,
+	then the function does not use the second argument, does not evaluate it, and 
+	R does not complain about the missing argument which was never used
+	
+	In the following example, R does not complain
+	
+	f2 <- function(a,b)
+	{
+	  a^2
+	}
+
+	# but in this case, R does complain, but only after the print(a) call
+	f3 <- function(a, b)
+	{
+	  print(a)
+	  print(b)
+	}
+		[1] 45
+		Error in print(b) : argument "b" is missing, with no default
+	
+The ... argument
+	Used when extending another function and you don't want to copy across
+	all the arguments used in the first function.
+	So, in the following example, myplot can be called with all the same arguments that 
+	we expect in a call to plot, but we don't have to specify them explicitly.
+	
+	myplot <- function(x, y, type = "1", ...)
+	{
+		plot(x,y, type = type, ...);
+	}
+
+Generic functions use ... so that extra arguments can be passed to methods
+	> mean
+	function (x, ...)
+	UseMethod("mean")
+	
+	the .. argument is necessary when the number of arguments passed to a function cannot
+	be known in advance
+	One good example would be in the paste function which concatenates a vector of strings
+	it can take a variable number of arguments, the number of whcih cannot be known in 
+	advance.
+	
+	> args(paste)
+	function (..., sep = " ", collapse = NULL) 
+	
+	> args(cat)
+	function (..., file = "", sep = " ", fill = FALSE, labels = NULL, 
+		append = FALSE) 
+		
+	Cat pastes together a number of strings(like cat in UNIX/Linux/Mac OSX)
+	One catch with ... is that any arguments that appear after the ... on the 
+	argument list must be named explicitly and cannot be partially matched.
+	You cannot use positional matching or partial matching for the arguments that come 
+	after the ...
+	Otherwise there is no way for R to know if you are passing something onwards via the 
+	... or passing something as a different argument
+	
+	This can lead to unexpected results, so be careful when using
+	..., partial matching etc.
+	
+Scoping Rules, Symbol Binding
+	How does R assign a value to a symbol from within a function
+	Example of function lm, which already exists in R
+	Is it the existing or the new declaration that is used
+	
+	R searches through a number of environments, which are lists of symbols and values
+	search the global environment, for the requested symbol
+	If there is a symbol found, it will take that symbol first
+	
+	If there is no match in the global environment, then R will search the namespaces of 
+	the packages that are loaded
+	
+	search()
+	 [1] ".GlobalEnv"        "tools:rstudio"     "package:stats"     "package:graphics"  "package:grDevices"
+ 	[6] "package:utils"     "package:datasets"  "package:methods"   "Autoloads"         "package:base"     
+	
+	somewhere on this list, R is going to look for a function called lm (linear models)
+	.GlobalEnv is equivalent to the user's workspace.
+	The order of packages matters, and the users can specify the order in which packages
+	get loaded when they start up, so you cannot assume
+	that a symbol will always match to the same thing.
+	
+	When a user loads a package with the library call, the namespace of that package
+	gets put in position 2 of the search list (immediately after .GlobalEnv).
+	and everything else gets pushed down one place on the list
+	
+	R has separate namespaces for functions and non-functions, so it is possible to have
+	an object names c and a function also named c
+
+Scoping Rules
+	Determine how a value is bound to a free variabel in a function
+	R uses lexical scoping or static scoping
+	A common alternative is dynamic scoping
+	Lexical scoping turns out to be particularly valuable for simplifying statistical 
+	calculations
+	
+	In the following, z is a free variable, since it was not specified in the declaration 
+	of the function
+	
+	f4 <- function(x, y) 
+	{
+ 	 x^2 + y^2 / z
+	}
+	
+Lexical scoping Rules
+	The valuables of free variables are searched for in the environment in which the 
+	function was defined
+	An environment is a collection of (symbol, value) pairs
+	x and 3.14
+	Every environment has a parent environment, and it is possible for a parent to have 
+	multiple children
+	
+	The only environment without a parent is the empty environment
+	a function + an environment = a closure or a function closure
+	
+	These function closures are the key to a lot of interesting operations in R
+	
+	Searching for the value of a free variable
+	First, look for the environment in which the function was defined
+	That is the parent environment.
+	If I can't find something in that environment, the search continues in the parent
+	of that environment
+	
+	The search continues through the list of parent environments until we find the value 
+	for this free variable. This continues until we hit the top-level environment
+	Usually this is the .Global environment (workspace) or the namespace of a package
+	After the top-level environment, we continue down the search list until we hit the 
+	empty environment. If a value for a given symbol cannot be found once the empty 
+	environment is reached, then an error is thrown saying a value cannot be found for that 
+	symbol
+	
+	I'm going to skip the rest of this, as I feel it has more to do with Compiler design 
+	than with the use of the R programming language.
+	
+Coding Standards in  R
+	Some basic minimal standard when coding in R:
+		Always write and save using text editor. 
+		Indentation
+		Limit the width of your code
+		Using preferences to change indentation
+		Limit the length of functions. Keep them simple by doing only one basic activity
+		This enhances both readability and modularity
+		This also assists debugging and traceback by examining the function stack
+		
+Dates and Times in R:
+	R has a special way to represent dates and times, using special classes.
+	Dates are represented by the Date class
+	Times are represented by the POSIXct and the POSIXlt classes
+	Dates are stored internally as number of days since 1st January 1970
+	Times are stored internally as number of seconds since 1st January 1970
+	
+	x <- as.Date("1970-01-01"); # as YYYY-MM-DD
+	> x;
+		[1] "1970-01-01"
+	> unclass(x);
+		[1] 0
+	> unclass(as.Date("1970-01-02"))
+		[1] 1
+	
+	POSIX - Family of Computing Standards (based on UNIX)
+	POSIXct, times are represented as very large integers.
+	Useful for storing dates, for example, in a Data Frame, makes more efficient use of space
+	POSIXlt, Stores time as a list, including a bunch of other useful information, day 
+	of week, etc... day of the year or month, month itself
+	Generic functions that operate on dates and times 
+	weekdays() gives the day of the week
+	months() gives the month names
+	quarters() gives the quarter numbers "Q1", Q2, Q3, Q4
+	These generic functions operate on instances of class POSIXct, POSIXlt or Date
+	
+	x <- Sys.time();
+	> x
+		[1] "2015-08-17 11:11:12 IST"
+	> p <- as.POSIXlt(x);
+	> names(unclass(p));
+		[1] "sec"    "min"    "hour"   "mday"   "mon"    "year"   "wday"   "yday"   "isdst"  "zone"   "gmtoff"
+	> p$sec
+		[1] 12.93365
+	
+	strptime() function converts dates writte in character string format into date or time objects
+	these use format strings
+	
+	dateString <- c("January 10, 2012 10:40", "December 14, 2015 11:15");
+	> datestring;
+		[1] "January 10, 2012 10:40"  "December 14, 2015 11:15"
+	> x <- strptime(dateString, "%B %d, %Y %H:%M");
+	> x;
+		[1] "2012-01-10 10:40:00 GMT" "2015-12-14 11:15:00 GMT"
+	> class(x);
+		[1] "POSIXlt" "POSIXt" 
+	You don't need to remember all of these, look them up using help(strptime)
+	
+	Once you have them in one of the date/time formats, you can compare and operate on them
+	add, subtract, compare etc..
+	x <- as.Date("2012-01-01");
+	> y <- strptime("09 Jan 2011 11:23:45", "%d %b %Y %H:%M:%S")
+	> x <- as.POSIXlt(x);
+	> x-y
+		Time difference of 356.5252 days
+		
+	Date/Time operators keep track of very tricky things like leap years, 
+	leap seconds, daylight savings time, etc...
+		
+	x <- as.Date("2012-02-28");
+	> y <- as.Date("2012-03-01");
+	> y-x
+		Time difference of 2 days
+		
+	x<- as.POSIXct("2012-03-01 04:00", tz="GMT")
+	> y<- as.POSIXct("2012-03-01 04:00", tz="EST")
+	> x-y
+		Time difference of -5 hours
+	
+	Many of the plot functions recognise date/time functions
+	
+Week 3
+	Loop functions are very useful particularly in the interactive setting
+	they usually have the word  apply in the somewhere
+	lapply, tapply, mapply, sapply, apply
+		lapply() loop over a list
+		sapply() loop over a list, but try to simplify the output
+		apply() apply a function over the margins(?) of an array
+		tapply() apply a function over a vector
+		mapply() multivariate(?) version of apply
+	an associated function split() is also useful, particularly in conjunction
+	with lapply()
+	
+	lapply() applies over a list of objects and apply a function to every
+	element of that list
+	
+	takes three arguments, a list, a function name, and other arguments via ... 
+	to be passed to the function
+	if x is not a list, it will be coerced to a list. If it is not possible to 
+	coerce it to a list, this will throw an error
+	
+	The looping is done internally in C code (to make it faster)
+	
+	List can contain any number of different types of objects
+	The function will return something for every single objects in that list
+	and the returned objects will be assembled into a list
+	
+	x <- list(a = 1:5, b = rnorm(10));
+	> lapply(x,mean);
+	$a
+		[1] 3
+	$b
+		[1] 0.1031459
+
+	What comes out will always be a list
+	In this case, the output list is the mean of each of the constituent elements
+	in the input list
+	
+	x <- list(a = 1:4, b = rnorm(10), c=rnorm(20,1), d=rnorm(100,5));
+	> lapply(x,mean);
+	$a
+		[1] 2.5
+	$b
+		[1] -0.6492157
+	$c
+		[1] 1.137573
+	$d
+		[1] 4.956495
+
+	# this will apply runif to generate 1, 2, 3 and 4 random variables 
+	# in vectors if size 1, 2, 3 and 4, using a uniform distribution between
+	0 (default value) and 1 (default value)
+	x <- 1:4
+	> lapply(x, runif);
+		[[1]]
+			[1] 0.9317706
+		[[2]]
+			[1] 0.7362802 0.6930730
+		[[3]]
+			[1] 0.3659086 0.2882903 0.7089693
+		[[4]]
+			[1] 0.37149867 0.82295571 0.37008393 0.03329836
+
+	# or, we would generate random variables in the range 0 - 10
+	# then we need to pass some arguments to the runif function which are not
+	# the default values
+	x <- 1:4
+	> lapply(x, runif, min=0, max=10);
+		[[1]]
+			[1] 8.089035
+		[[2]]
+			[1] 5.300923 8.660419
+		[[3]]
+			[1] 8.061041 7.846111 4.685600
+		[[4]]
+			[1] 2.2900960 0.8437773 6.7850869 8.6298249
+			
+	Anonymous Functions - functions that don't have names
+	lapply() and others make heavy use of anonymous functions
+	(inner functions)
+	
+	> x <- list(a=matrix(1:4, 2, 2), b=matrix(1:6,3,2));
+	> x
+	$a
+    		 [,1] [,2]
+		[1,]    1    3
+		[2,]    2    4
+	$b
+    		 [,1] [,2]
+		[1,]    1    4
+		[2,]    2    5
+		[3,]    3    6
+
+	> lapply(x, function(elt) elt[,1]);
+	$a
+		[1] 1 2
+	$b
+	[1] 1 2 3
+	
+	sapply() is just a variant of lapply that tries to simplify the output of lapply
+	lapply always returns a list, but sometimes you don't want a list
+	if the result is a list where element is a list of length 1
+	sapply will simplify that into a vector
+	if lapply would have returned a list of elements, each of which was the same length,
+	say 5, then instead of a list of list objects, sapply will return a single matrix
+	of width 5
+	if it cannot figure out how to simplify it, it will just return the same list
+	as lapply would have returned.
+	
+	in the case of an earlier example, the out is provided as a list of lists
+	we would like a list of elements
+	> x <- list(a = 1:4, b = rnorm(10), c=rnorm(20,1), d=rnorm(100,5));
+	> lapply(x,mean);
+	$a
+		[1] 2.5
+	$b
+		[1] 0.3371954
+	$c
+		[1] 1.272654
+	$d
+		[1] 5.086493
+
+		 sapply(x,mean)
+ 	       a         b         c         d 
+	2.5000000 0.3371954 1.2726539 5.0864931
+	
+Loop functions:
+	apply function
+	"over the margins of an array" 
+	Usually used to apply a function to the rows or columns of an array, 
+	may be matrices, or 3-d arrays etc.
+	Such, as taking the average of a list of matrices for example
+	Some say using apply is faster or better, but not true.
+	It just involves less typing.
+	Very useful in the command-line doing exploratory analysis
+	
+	first argument x is an array ( a vector that has dimensions attached)
+	a MARGIN is an integer vector which indicates which margins should be retained
+	fun is the applied function to be applied to the MARGINS
+
+	# This calculates the mean of each column of the matrix
+	# the following matrix has two dimensions
+	# dimension 1 has 20 rows and dimension 2 has 10 columns
+	x <- matrix(rnorm(200), 20, 10)
+
+	# when you apply the funciton mean over the matrix, you want to keep the second dimension (10 columns)
+	# and you want to collapse the first dimension (20 columns)
+	# so the following will generate a vector of length 10
+	apply(x,2,mean);
+		[1]  0.27439271  0.32592794 -0.37209174  0.01005297 -0.22061227  0.63044951
+ 		[7]  0.12472902  0.60910339 -0.06899427 -0.32565312
+
+	# now, when you apply the function sum over the matrix, you want to keep the first dimension (20 rows)
+	# and you want to collapse the second dimension (10 columns)
+	# so the following will generate a vector of length 20
+	apply(x,1,sum);
+	 [1]  1.470405287  3.695373058 -3.585167659  2.414553973  1.577486709
+	 [6]  0.219698090  6.265557982  0.004990271  1.113412301  5.298736570
+	[11]  0.543325828 -3.273780387 -1.790707802 -0.308723057  3.545024282
+	[16]  2.711870941 -2.659647312  3.349008835 -1.835894980  0.990560095
+	
+	For simple operations, there are special functions
+	For example, calculating the sum or mean of a column or a row etc
+	rowSums, rowMeans, colSums, colMeans, but they have been highly optimzed as an
+	alternative to apply
+	
+	apply can also be used to apply other types of functions
+	Say, I want to calculate the 25th and the 75th percentile of the data in an array
+	
+	> x <- matrix(rnorm(200),20,10);
+	> apply(x,1,quantile, probs=c(0.25, 0.75));
+				  [,1]       [,2]        [,3]       [,4]       [,5]       [,6]
+		25% -0.5963915 -0.1922137 -0.96006166 -0.8619080 -1.5543563 -0.5973851
+		75%  1.1314451  0.6993099  0.07166677  0.5263077 -0.2096217  0.5076171
+					[,7]       [,8]       [,9]      [,10]      [,11]      [,12]
+		25% -1.475460827 -0.8091843 -0.9161577 -0.3761905 -0.5335400 -0.3678845
+		75%  0.004992461 -0.2066058  0.2033654  0.6435745  0.9019949  0.5778434
+				[,13]      [,14]      [,15]     [,16]      [,17]      [,18]      [,19]
+		25% 0.5833988 -0.9756746 -0.3707922 0.2106178 -0.7990245 -0.2621262 -0.6105674
+		75% 1.1283707  0.6410594  0.7419447 1.3510771  0.4040058  0.6751226  0.6095528
+				 [,20]
+		25% -0.7567691
+		75%  0.6987747
+	
+	
+	gives us 20 x 25th percentile and 20 x 75th percentile for each of the 20 columns (which I want to keep)
+	goes through each row and calculates 25th and 75th percentile
+	Will create a matrix 2x20 with 2 rows and 20 coulmns
+	
+	Suppose I had more than a Matrix, an array, two rows and two columns and depth 10
+	2x2 matrices, 10 of them
+	I want to take the average of each of these
+	I want to keep the first and second dimensions, but collapse the third
+	so, 
+	
+	a <- array(rnorm(2,2,10),c(2,2,10));
+	> apply(a, c(1,2), mean);
+		          [,1]      [,2]
+		[1,] -3.313492 -3.313492
+		[2,]  3.905647  3.905647
+
+	# we gave a vector 1,2 as an argument, so we collapsed 3 and left 1 and 2 intact
+	We can also use rowmeans using dims=2 as an argument
+	
+	mapply is a multivariate version of lappy and sapply functions
+	applies a function in parallel over a set of different arguments
+	lappy, sapply, tapply only apply over the elements of a single object
+	If you have the elemtns of 2 lists as the arguments, then mapply is used
+	to take the elements of list 1 as one argument and elements of list 2 as the other.
+	So, mapply can take many lists as arguments.
+	so, the first argument is the function you wish to apply
+	has to have be at least as many as the number of lists you are going to pass to mapply
+	so the lists will be passed through the... argument to the function
+	The simplify argument is the same as in sapply
+	
+	So, we create a list 1,2,3,4
+	> a <- list(rep(1,4), rep(2,3), rep(3,2), r .... [TRUNCATED] 
+	> # or we could use mapply, by supplying the correct arguments
+	> # since we are repeatedly calling the rep function with
+	> # different arguments
+	> b < .... [TRUNCATED] 
+	> a
+		[[1]]
+		[1] 1 1 1 1
+
+		[[2]]
+		[1] 2 2 2
+
+		[[3]]
+		[1] 3 3
+
+		[[4]]
+		[1] 4
+
+	> b
+		[[1]]
+		[1] 1 1 1 1
+
+		[[2]]
+		[1] 2 2 2
+
+		[[3]]
+		[1] 3 3
+
+		[[4]]
+		[1] 4
+		
+	> noise <- function(n,mean,sd) {
+		rnorm(n,mean,sd);
+	} # end function definition
+	> noise(5,1,2)
+		[1]  1.55801004 -2.59574494 -0.08577167  3.44983739 -2.08045156
+	> noise(1:5,1:5,2)
+		[1] 0.7447444 0.9643688 6.6826463 6.6946668 2.7778213
+		
+	What we wanted was 1 normal random of mean 1, 2 random normals of mean 2 etc
+	But that function isn;t doing that, so we will use the mapply function instead
+	by vectorizing it.
+	
+	> mapply(noise, 1:5, 1:5, 2)
+		[[1]]
+		[1] 1.691292
+
+		[[2]]
+		[1]  3.259897 -2.562828
+
+		[[3]]
+		[1]  1.7971323 -0.3170168  0.4553192
+
+		[[4]]
+		[1] 2.890792 4.524819 5.133898 4.620507
+
+		[[5]]
+			[1] 1.290508 3.341373 7.027103 8.080626 2.792093
+			
+	# which is the same as, but a lot simpler than
+	a <- list(noise(1,1,2), noise(2,2,2), noise (3,3,2), noise(4,4,2), noise(5,5,2))
+
+		
+		[[1]]
+			[1] 0.3077276
+
+		[[2]]
+			[1]  6.407149 -2.685521
+
+		[[3]]
+			[1] -1.200097  2.139853  4.939929
+
+		[[4]]
+			[1]  1.4694777  3.6278634  5.8051157 -0.6909731
+
+		[[5]]
+			[1] 5.889085 3.759678 3.460615 2.173719 3.694151
+
+Loop functions: tapply
+	Used to apply function over subsets of a vector
+	You are going to have another object to identify which elements of the numeric
+	vector represents a group
+	first argument is a numeric (or other vector) second vector identifies to which 
+	group each element of the first vector belongs
+	fun is the function you want to apply, or an anonymous function and then ... arguments
+	simplify indicates whether you want to simplify the result
+	ten normal variables, ten uniform variables, and ten normals having a mean of 1
+
+	> x <- c(rnorm(10), runif(10), rnorm(10,1));
+	> f <- gl(3,10);
+	> tapply(x, f, mean);
+		         1          2          3 
+		-0.3959345  0.6943702  1.1775065 	
+	
+	
+	If you don't simplify the result, then what you get back is going to be a list
+	simplify=TRUE by default
+	
+	> tapply(x, f, mean, simplify=FALSE);
+		$`1`
+		[1] -0.1702084
+
+		$`2`
+		[1] 0.516251
+
+		$`3`
+		[1] 1.599594
+		
+	> tapply(x, f, range); # range is giving me the min and max of each group
+		$`1`
+		[1] -1.386647  1.350640
+
+		$`2`
+		[1] 0.03477939 0.83334492
+
+		$`3`
+		[1] -0.1450584  1.9151964
+		
+Loop Functions, split
+	tapply splits a vector into little pieces and applies a summary function 
+	to those pieces, and then brings those pieces back together again.
+	split splits a vector into pieces determined by a factor or a list of factors.
+	x is a vector
+	f is a factor (or coerced to one, or a list of factors)
+	drop indicates whether empty factors levels should be dropped
+	
+	very handy for use in conjunction with lapply and mapply etc.
+	
+	x <- c(rnorm(10), runif(10), rnorm(10,1));
+	f <- gl(3,10);
+
+	> split(x, f);
+		$`1`
+		 [1]  1.68342471 -0.08852192  0.47162544  0.29418558 -2.75552260  2.40914205
+		 [7]  0.26817213 -0.00787619  1.20306115 -0.45129049
+
+		$`2`
+		 [1] 0.7341148 0.8084971 0.2598419 0.7843998 0.3313043 0.8531947 0.4565995
+		 [8] 0.5108040 0.6142145 0.1117540
+
+		$`3`
+		 [1]  2.3412805 -0.5494704  1.5514728 -0.5698357  1.2037660  1.5213003
+		 [7]  1.3188308 -1.3655054  0.8787376  1.1181909
+
+		Factor variable splits x into three parts
+		factor variable has three levels
+		get a list back for the forst 10 (normals)
+		10 uniforms and 10 normals
+		split always returns a list back 
+	
+	If you want to do something with this list, you can use lapply or sapply
+	so, we can embed a split call within a lapply function call etc.
+	
+	x <- c(rnorm(10), runif(10), rnorm(10,1));
+	f <- gl(3,10);
+
+	> lapply(split(x, f), mean);
+		$`1`
+		[1] -0.1312475
+
+		$`2`
+		[1] 0.4266008
+
+		$`3`
+		[1] 1.238804
+		
+	
+	USing split to split the x vector, and then take the output and send it to 
+	lapply with function mean
+	
+	This could also be done directly using the tapply function, but this offers 
+	an option
+	
+	Split can be used to split much more complex types of objects than would be 
+	the case with the tapply function directly
+	
+	library(datasets);
+	head(airquality);
+		  Ozone Solar.R Wind Temp Month Day
+		1    41     190  7.4   67     5   1
+		2    36     118  8.0   72     5   2
+		3    12     149 12.6   74     5   3
+		4    18     313 11.5   62     5   4
+		5    NA      NA 14.3   56     5   5
+		6    28      NA 14.9   66     5   6
+		
+	Say we wanted to calculate the mean within each month of the data above
+	split the data frame into monthly pieces, then calculate the monthly 
+	means of the individual columns
+	We are going to split by creating a factor variable based on the month
+	variable
+	
+	library(datasets);
+	> s <- split(airquality, airquality$Month);
+	> lapply(s, function(x) colMeans(x[, c("Ozone", "Solar.R", "Wind")]));
+	$`5`
+	   Ozone  Solar.R     Wind 
+		  NA       NA 11.62258 
+
+	$`6`
+		Ozone   Solar.R      Wind 
+		   NA 190.16667  10.26667 
+
+	$`7`
+		 Ozone    Solar.R       Wind 
+			NA 216.483871   8.941935 
+
+	$`8`
+	   Ozone  Solar.R     Wind 
+		  NA       NA 8.793548 
+
+	$`9`
+	   Ozone  Solar.R     Wind 
+		  NA 167.4333  10.1800 
+		  
+	We can also call sapply here, simplifying the result, by putting
+	all these numbers into a matrix with 3 rows and 5 columns
+	
+	library(datasets);
+	s <- split(airquality, airquality$Month);
+	sapply(s, function(x) colMeans(x[, c("Ozone", "Solar.R", "Wind")]));
+					   5         6          7        8        9
+		Ozone         NA        NA         NA       NA       NA
+		Solar.R       NA 190.16667 216.483871       NA 167.4333
+		Wind    11.62258  10.26667   8.941935 8.793548  10.1800
+		
+	Now, we remove the NAs
+	library(datasets);
+	s <- split(airquality, airquality$Month);
+	sapply(s, function(x) colMeans(x[, c("Ozone", "Solar.R", "Wind")], na.rm=TRUE));
+						5         6          7          8         9
+		Ozone    23.61538  29.44444  59.115385  59.961538  31.44828
+		Solar.R 181.29630 190.16667 216.483871 171.857143 167.43333
+		Wind     11.62258  10.26667   8.941935   8.793548  10.18000
+		
+	
+	Split is a very powerful function for splitting a vector according to
+	the contents of a factor, and then applying a function across those
+	partial-vectors. 
+	
+Splitting on more than one level.
+	So far, we have split only on one dimension;
+	What if we want to split based on several factors. 
+	Say, gender and race
+
+
+	> x  <- rnorm(10);
+	> f1 <- gl(2,5); # 2 levels, 5 times
+	> f2 <- gl(5,2); # 5 levels, 2 times
+	> interaction(f1, f2);
+		 [1] 1.1 1.1 1.2 1.2 1.3 2.3 2.4 2.4 2.5 2.5
+		Levels: 1.1 2.1 1.2 2.2 1.3 2.3 1.4 2.4 1.5 2.5
+		(we will see later that there are empty levels in this interaction)
+		2.1, 2.1, 1.4, 1.5 do not exist in the top array
+		
+	Total combination of 10 different levels.
+	Interaction prints out a total of 10 levels
+	
+	Now we can split the numeric vector, x, according to the two factors
+	we don't have to call the interaction function, that will be called
+	automatically for us.
+	
+	> str(split(x, list(f1, f2)));
+		List of 10
+		 $ 1.1: num [1:2] 1.154 0.783
+		 $ 2.1: num(0) 
+		 $ 1.2: num [1:2] -1.1594 -0.0932
+		 $ 2.2: num(0) 
+		 $ 1.3: num 0.623
+		 $ 2.3: num 0.819
+		 $ 1.4: num(0) 
+		 $ 2.4: num [1:2] -1.189 -0.114
+		 $ 1.5: num(0) 
+		 $ 2.5: num [1:2] 0.0129 -0.3515
+	
+	Just pass a list with the two factors, f1 and f2
+	Returns a list with the levels of the 10 different interaction factors
+	There are some empty levels, with zero elements in them.
+	We could take that list and lapply or sapply over it, or we could
+	drop the empty levels by using the drop=TRUE argument
+	
+	> str(split(x, list(f1, f2),drop=TRUE));
+		List of 6
+		 $ 1.1: num [1:2] -0.783 -0.879
+		 $ 1.2: num [1:2] 1.1427 0.0465
+		 $ 1.3: num -0.738
+		 $ 2.3: num -0.525
+		 $ 2.4: num [1:2] 0.3298 0.0324
+		 $ 2.5: num [1:2] -1.0797 0.0498
+	
+Debugging tools (built-in part of R)
+	Message, Warning, Error, Condition,
+	These may indicate that something is wrong
+	Warning: something unexpected happened, not enough to kill the whole thing
+	Error: Fatal problem, stops execution of the function
+	Condition: All three of the above are conditions. You can create your own
+	condition classes
+	
+	Warning:
+	log(-1);
+		[1] NaN
+		Warning message:
+		In log(-1) : NaNs produced
+	
+	Aside: In the following code, invisible prevents autoprinting, which is the 
+	printing of the last value returned by the function.
+	Calling the function causes the object to be returned, but not printed 
+	as is automatically the case.
+	All print functions actually return the object that got printed.
+	So you could assigned the output of a print statement to an object.
+	
+	So, our function does not know how to handle NA, so it will throw an error
+	> printmessage(1);
+		[1] "x is greater than zero"
+	> printmessage(0);
+		[1] "x is less than or equal to zero"
+	> printmessage(-2);
+		[1] "x is less than or equal to zero"
+	> printmessage(NA);
+		Error in if (x > 0) { : missing value where TRUE/FALSE needed
+
+	We can fix this by handling the NA value
+	> printmessage(log(-1));
+		[1] "x is a missing value!"
+		Warning message:
+		In log(-1) : NaNs produced
+		
+	Questions:
+		Is it coder error, or user error?
+		What WAS your input? How did you call the function?
+		What were you expecting? Output messages, other results?
+			I was expecting this (was that correct), I got that (was that correct?)
+		What did you get?
+		How does what you got differ from what you were expecting?
+		Were your expectations correct in the first place?
+		Can you reproduce the problem?
+		
+Debugging tools in R
+	traceback: prints the function stack
+	debug: flags a function for debug mode, by allowing you to step through it
+	browser: suspends the execution of a function whenever it is called and puts the 
+		function in debug mode, similar to debug, but occurs later in the function
+		like a breakpoint
+	trace: allows you to insert debugging code into a function at specific places.
+		Allows you to edit the behaviour of the function without modifying its code, 
+		to which we may not have access
+	recover: allows you to modify the error behaviour so that you can browse the 
+		function call stack. Recover allows you to resume execution, to override the 
+		fact that an error caused the function to halt. For use with error 
+		handlers.
+	Of course, the usual print and cat functions will also help.
+	Some people argue that over-reliance on the debugger causes sloppy coding habits
+	That some people would just code it and let it fail, then use the debugger to sort it out.
+	
+Debugging examples
+	
+	> mean(xyz)
+		Error in mean(xyz) : object 'xyz' not found
+	> traceback()
+		1: mean(xyz)
+	
+A more complex example	
+	> lm(y-x)
+		Error in formula.default(object, env = baseenv()) : invalid formula
+		In addition: Warning message:
+		In Ops.factor(y, x) : ‘-’ not meaningful for factors
+	> traceback()
+		9: stop("invalid formula")
+		8: formula.default(object, env = baseenv())
+		7: formula(object, env = baseenv())
+		6: as.formula(formula)
+		5: model.frame.default(formula = y - x, drop.unused.levels = TRUE)
+		4: stats::model.frame(formula = y - x, drop.unused.levels = TRUE)
+		3: eval(expr, envir, enclos)
+		2: eval(mf, parent.frame())
+		1: lm(y - x)
+
+	This shows us that at the 7th level, the error occurred.
+	
+	Debug function does not really work well in the static format, but this example
+	illustrates it in any case
+	
+	> debug(lm)
+	> lm(y - x)
+	debugging in: lm(y - x)
+	debug: {
+ 	   ret.x <- x
+ 		...
+		...
+		...
+		z$qr <- NULL
+ 		z
+	}
+	
+	You can debug any function, whether you wrote it or not. 
+	It will print out the entire function body code
+	the a browse prompt.
+	You are now in the browser
+	This is just like the workspace, an embedded workspace.
+	The environment of that browser is what is in the environment of the function
+	
+	n <cr> causes the next line to be executed, and the code environment to be
+	highlighted above
+	
+	You can further debug function calls from within the browser, bringing you to
+	a third level in the browser.
+	
+	debug(<function about to be called>)
+	n <cr>
+	So we can nest debug calls
+	
+	Recover: you can set the global option to be to recover
+	This presents you with a menu of options, traceback, 
+	read.csv is a wrapper for read.table which calls file()
+	so, error occurred at the third level, so you can step into the function calls
+	before where the error occurred, to see what caused the ultimate function 
+	call to fail.
+	
+ 	Message
+ 	Warning
+ 	Error
+ 	
+ 	Summary of debugging techniques and tools.
+ 	These are interactive tools, which is their strength.
+ 	Debugging tools are not a substitute for thinking!
+ 	
+ Week 4 - Simulation and Profiling
+ 	The str function - display the internal structure of an R object
+ 	an alternative to summary
+ 	Useful for large lists, which may contain nested lists
+ 	one line of output per nested object
+ 	> str(str)
+ 	> str(lm)
+ 	> st(ls) 
+ 	etc..
+ 	x <- rnorm(100, 2, 4)
+ 		str(x)
+			num [1:100] -5.06 0.12 7.46 1.85 -1.03 ...	
+	tells us it is a number vector and gives us the first 5 values
+	Create a factor
+	> f <- gl(40, 10)
+	> str(f)
+ 		Factor w/ 40 levels "1","2","3","4",..: 1 1 1 1 1 1 1 1 1 1 ...
+	It is a factor with 40 levels, named as "1", "2", "3", "4", all of which have the label 1
+	
+	> library(datasets)
+	> # head(airquality)
+	> str(airquality)
+		'data.frame':	153 obs. of  6 variables:
+		 $ Ozone  : int  41 36 12 18 NA 28 23 19 8 NA ...
+		 $ Solar.R: int  190 118 149 313 NA NA 299 99 19 194 ...
+		 $ Wind   : num  7.4 8 12.6 11.5 14.3 14.9 8.6 13.8 20.1 8.6 ...
+		 $ Temp   : int  67 72 74 62 56 66 65 59 61 69 ...
+		 $ Month  : int  5 5 5 5 5 5 5 5 5 5 ...
+		 $ Day    : int  1 2 3 4 5 6 7 8 9 10 ...
+	
+	Very useful for quick examination of the structure of R objects
+	> m <- matrix(rnorm(100),10,10)
+	> str(m)
+	 num [1:10, 1:10] -1.401 -1.716 -0.432 -1.027 0.85 ...
+
+	> # print column 1
+	> m[,1]
+	 [1] -1.4006718 -1.7157018 -0.4323202 -1.0269951  0.8500790  1.6980681
+	 [7] -0.5201369  1.1274070 -0.9279968 -0.4422805
+ 
+	library(datasets)
+	s <- split(airquality, airquality$Month);
+	str(s);
+	
+	This gives us a list of 5 different data frames
+	Each data frame gives us data for a given month
+	The data are only collected over 5 different months.
+	September, for example, is as follows
+	 $ 9:'data.frame':	30 obs. of  6 variables:
+	  ..$ Ozone  : int [1:30] 96 78 73 91 47 32 20 23 21 24 ...
+	  ..$ Solar.R: int [1:30] 167 197 183 189 95 92 252 220 230 259 ...
+	  ..$ Wind   : num [1:30] 6.9 5.1 2.8 4.6 7.4 15.5 10.9 10.3 10.9 9.7 ...
+	  ..$ Temp   : int [1:30] 91 92 93 93 87 84 80 78 75 73 ...
+	  ..$ Month  : int [1:30] 9 9 9 9 9 9 9 9 9 9 ...
+	  ..$ Day    : int [1:30] 1 2 3 4 5 6 7 8 9 10 ...
+	  
+	  .
+	  .
+	  .
+	  .
+	  
