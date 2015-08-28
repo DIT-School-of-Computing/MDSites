@@ -2020,4 +2020,47 @@ R Profiler
 	That caused RStudio not to start, so I replaced it with
 	ln -sf libRblas.0.dylib libRblas.dylib
 	
+Profiler Part 2
+	rprof();
+	summaryRprof();
+	do not use system.time() function and rprof() function together.
+	rprof() keeps track of the function call stack at regularly sampled intervals
+	prints that out every 0.02 seconds
+	If the function takes < 0.02 to run, rprof will probably not catch it
+	If your program runs very quickly, rprof will probably be useless.
 	
+	each line of output is the function call stack
+	at the very right is the first function called
+	to the left are the later called functions, in order
+	the pattern of the output changes according to the nature of the code
+	lm.fit will be very prevalent, for example in call stack for lm
+	summaryRprof() function simplifies this.
+	summaryrProf simplifies the output.
+	There are two methods for normalising the data you get out of summaryRpof,
+	by.total() divides the time spent in a given function by the total run time 
+	by.self() which does the same but which first subtracts time spent in functions below 
+	it in the call stack
+	
+	How many times that function appeared in the call-stack
+	top-level function: 100% of the time, so generally not where the
+	real work occurs.
+	So in the top level function, but subtracting all the helper functions that 
+	it uses.
+	When you subtract out the lower level functions, usually there is very little
+	left in the upper level functions
+	by.self tells you how much time is being spent in a given function after
+	subtracting out all the time it spends in lower-level functions that it calls.
+	This gives a more accurate picture of the time spent in the 'local' code of
+	a function.
+	
+	by.total, sorts the lower level functions in descending order of the amount
+	of time spent in called functions.
+	by.self() subtracts out the lower level function calls, and again, sorts this 
+	in descending order of time spent
+	lm.fit()and as.list.data.frame() are the top two in the lm() function
+		
+	summaryRprof sampling.interval and sampling.time (elapsed time)
+	
+	profiler prints the function call stack, so breaking your code into multiple
+	functions will help to analyse your R code.
+	Any called C or Fortran code will not be profiled.	
