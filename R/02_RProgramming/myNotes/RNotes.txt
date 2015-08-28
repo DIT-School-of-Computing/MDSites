@@ -1820,7 +1820,7 @@ A more complex example
 	  .
 	  .
 	  .
-Sumulation
+Simulation
 	rnorm - simulate normal random variables
 	dnorm - evalueate the Normal probability density
 	pnorm - evaluates the comulative distribution for a Normal distribution
@@ -1942,5 +1942,82 @@ Simulating a linear model.
 	plot(x,y);
 
 Simulation in R - Random Sampling
+	Sample Function
+		allows you to draw randomly from a specific set of objects that 
+		you specify, by default, without replacement
+	set.seed(1);
+	sample(1:10, 4);
+	sample(letters, 5);
+	# permutation
+	sample(1:10);
+	# with replacements
+	sample(1:10, replace=TRUE);
+	
+	Draw random samples from specific probability distributions
+	norm, binom, poisson, exponential, gamma etc.
+	sample from vectors
+	set the seed any time you simulate data, so you can reproduce the results
+	that you got at a later date
+	
+R Profiler
+	Profiler can figure out why something is taking so much time etc, and
+	can suggest strategies to 'fix' your code.
+	Is your code actually running slowly?
+	Profiling is a systematic way to figure out how mush time is being spent in
+	specific parts of your code.
+	For example, code looks fine when running 'locally' on a specific
+	data-set. 
+	But when it gets embedded into other code, its speed becomes more critical 
+	and more noticeable.
+	General Rule: Don't optimize your code. At least not as a priority.
+	Make the code run, make it readable, make it so others can understand it.
+	Later, when it is working, you can look at optimising particular parts.
+	Design the code first, then, later, try to optimize it.
+	Don't try to optimize it first.
+	
+	Collect some data to figure it out. You collect the data by profiling
+	system.time(...);
+	Takes an R expression as input, and calculates the time to execute that code
+	returns an object of the class proc.time();
+	If there is an error, it gives the time until the error occurred.
+	
+	User time and elapsed time
+	elapsed time it the wall-clock time, as opposed to the time charged to the
+	CPU, which is different, as it does not include wait times.
+	
+	Elapsed time can be greater than the user time.
+	Elapsed time can be smaller than the user time, if the machine has multiple
+	cores and/or processors.
+	
+	The basic R programme does not use multiple cores as of yet, but it can use
+	libraries that can exploit multiple cores, such as linear regression etc.
+	BLAS: Basic Linear Algebra Standard (Libraries) vec/Lib or Accelerate on Mac
 
+	Parallel processing libraries. Can use multiple cores and multiple computers
+	
+	> system.time(readLines("http://www.jhsph.edu"));
+	   user  system elapsed 
+	  0.006   0.003   0.491
+	
+	# CPU spends 0.006, user spends 0.491 waiting for response and computer
+	  
+	> x <- hilbert(1000);
+
+	> system.time(svd(x));
+ 	  user  system elapsed 
+	  3.128   0.030   3.185 
+
+	# if my machine were (correctly) using parallel libraries etc, then the 
+	elapsed time would be a fraction of the user time.
+	
+	Here I spent some time trying to ensure that r on my macBook uses the available
+	cores. This was not successful, so I may want to return to this.
+	
+	https://cran.r-project.org
+	cd /Library/Frameworks/R.framework/Resources/lib
+	ln -sf libRblas.vecLib.dylib libRblas.dylib
+	
+	That caused RStudio not to start, so I replaced it with
+	ln -sf libRblas.0.dylib libRblas.dylib
+	
 	
