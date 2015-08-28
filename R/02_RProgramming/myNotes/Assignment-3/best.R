@@ -13,7 +13,7 @@ get30DayMortalityRateHeartAttack <- function() {
 getValidOutcomes<- function() {
   # outcomes <- getOutcomes()[0,c(11,17,23)];
   outcomes <- getOutcomes();
-  getValidOutcomes <- tolower(substring(names(outcomes)[c(11,17,23)], 46));
+  getValidOutcomes <- substring(names(outcomes)[c(11,17,23)], 46);
 }
 
 best <- function(state, outcome) {
@@ -28,13 +28,12 @@ best <- function(state, outcome) {
     stop("invalid state");
   }
   
-  else if (! is.element(outcome, getValidOutcomes())) {
+  else if (! is.element(tolower(sub(' ','.',outcome)), tolower(getValidOutcomes()))) {
     stop("invalid outcome");
   }
   
   else {
-    # print("good state, good outcome");
-    head(outcomesData[c(2,11,17,23),1], 1);
+    print("good state, good outcome");
   }
   # return hospital name in that state with lowest 30-day death-rate
 }
