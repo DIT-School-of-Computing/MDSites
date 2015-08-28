@@ -1,6 +1,6 @@
 # function to load all the outcomes data
 getOutcomes <- function() {
-  getOutcomes <- read.csv("outcome-of-care-measures.csv", colClasses="character");  
+  getOutcomes <- read.csv("outcome-of-care-measures.csv", colClasses="character");
 } # end of function getOutcomes
 
 # function to return a vector of valid state abbreviations
@@ -41,11 +41,24 @@ best <- function(state, outcome) {
   }
   
   else {
-    print("good state, good outcome");
-
+    # print("good state, good outcome");
     outcomesData <- getOutcomes();
     newData <- subset(outcomesData, State==toupper(state));
-    newData[,7];
+    if(identical(outcome,"heart.attack")) {
+    newData <- newData[,c(2,7,11)];
+    }
+    else if(identical(outcome,"heart.failure")) {
+      newData <- newData[,c(2,7,17)];
+    }
+    else if(identical(outcome,"pneumonia")) {
+      newData <- newData[,c(2,7,23)];
+    }
+      
+      newData[,3] <- suppressWarnings(as.numeric(newData[,3]));
+    # newRecs <- complete.cases(newData);
+    newData <- newData[complete.cases(newData),];
+    newData <- newData[ order(newData[,3], decreasing=FALSE), ]  # Use built-in R functions
+    newData[1,1];
   }
   # return hospital name in that state with lowest 30-day death-rate
 }
