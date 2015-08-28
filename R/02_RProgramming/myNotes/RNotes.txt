@@ -468,7 +468,7 @@ Subsetting R Objects - Basics
 	$
 	can all be used for subsetting
 	[ - returns an object of the same class as the original, vector/vector list/list 
-		can be used to select more than one elemenbt of an object (usually)
+		can be used to select more than one element of an object (usually)
 	[[ used to extract a single element of a list or a dataframe
 		the returned object will not necessarily be an instance of list or dataframe
 		lists can hold things of different classes, so [[ can return different class objects
