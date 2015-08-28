@@ -3,23 +3,38 @@ getOutcomes <- function() {
 }
 
 getStatesVector <- function() {
-  allData <- read.csv("outcome-of-care-measures.csv", colClasses="character");
-  getStatesVector <- unique(allData[,7]);
+  getStatesVector <- unique(getOutcomes()[,"State"])
+}
+
+get30DayMortalityRateHeartAttack <- function() {
+  getOutcomesVector <- unique(getOutcomes()[1,11]);
+}
+
+getValidOutcomes<- function() {
+  # outcomes <- getOutcomes()[0,c(11,17,23)];
+  outcomes <- getOutcomes();
+  getValidOutcomes <- tolower(substring(names(outcomes)[c(11,17,23)], 46));
 }
 
 best <- function(state, outcome) {
   # read outcome data
-  outcome <- getOutcomes();
+  outcomesData <- getOutcomes();
   
-  # check the state and outcome are valie
+  # check the state and outcome are valid
+  # outcome <- gsub(' ','.', outcome);
+  print(outcome);
+  
   if(! is.element(state, getStatesVector())) {
     stop("invalid state");
   }
+  
+  else if (! is.element(outcome, getValidOutcomes())) {
+    stop("invalid outcome");
+  }
+  
   else {
-    print("good state");
+    # print("good state, good outcome");
+    head(outcomesData[c(2,11,17,23),1], 1);
   }
   # return hospital name in that state with lowest 30-day death-rate
-  
 }
-
-best("MA", "DEAD");
