@@ -27,7 +27,7 @@ getValidOutcomes<- function() {
 # function to return the best hostpital in a given state for a given outcome
 best <- function(state, outcome) {
   # read outcome data
-  outcomesData <- getOutcomes();
+  # outcomesData <- getOutcomes();
   
   # check the state and outcome are valid
   
@@ -42,7 +42,10 @@ best <- function(state, outcome) {
   
   else {
     print("good state, good outcome");
-    outcomesData <- tolower(outcomesData$state) == tolower(state);
+
+    outcomesData <- getOutcomes();
+    newData <- subset(outcomesData, State==toupper(state));
+    newData[,7];
   }
   # return hospital name in that state with lowest 30-day death-rate
 }
