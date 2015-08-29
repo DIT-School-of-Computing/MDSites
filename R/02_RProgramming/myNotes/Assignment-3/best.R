@@ -31,12 +31,20 @@ best <- function(state, outcome) {
   
   # check the state and outcome are valid
   
+  if (identical(outcome, "heart failure")) {
+    outcome <- "heart.failure";
+  }
+  
+  if (identical(outcome, "heart attack")) {
+    outcome <- "heart.attack";
+  }
+
   # if the state name is not valid
-  if(! is.element(tolower(state), tolower(getStatesVector()))) {
+  if( ! (is.element(tolower(state), tolower(getStatesVector())))) {
     stop("invalid state");
   }
   
-  else if (! is.element(tolower(sub(' ','.',outcome)), tolower(getValidOutcomes()))) {
+  else if (! (is.element(tolower(sub(' ','.',outcome)), tolower(getValidOutcomes())))) {
     stop("invalid outcome");
   }
   
