@@ -46,8 +46,8 @@ rankhospital <- function (state, outcome, num = "best") {
     newData[,3] <- suppressWarnings(as.numeric(newData[,3]));
     # newRecs <- complete.cases(newData);
     newData <- newData[complete.cases(newData),];
-    newData <- newData[ order(newData[,3], decreasing=FALSE), ]  # Use built-in R functions
-
+    newData <- newData[ order(newData[,3], newData[,2], decreasing=FALSE), ]  # Use built-in R functions
+    
     # decide which entry to retuen
     if (identical(num,"best")) {
         newData[1,1];
