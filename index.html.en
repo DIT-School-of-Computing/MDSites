@@ -1,7 +1,7 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="styles.css">
-	<title>Apache works on this machine</title>
+	<title>Mark Deegan coding samples</title>
 </head>
 <body>
 <h1>That Works!!</h1>
@@ -20,6 +20,10 @@
 	<a href="php.html">Examples using PHP</a>
 		<br>
 	<a href="xml.html">Examples using XML</a>
+		<br>
+	<a href="google.html.en">Examples using Google</a>
+		<br>
+	<a href="./movieApp/index.html">Movie Application Example</a>
 		<br>
 </body>
 </html>

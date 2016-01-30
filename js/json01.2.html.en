@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html>
+<head>
+    <title>Read JSON from SOLR</title>
+<head>
+
 <body>
 
 <div id="id01"></div>
